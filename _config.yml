@@ -24,7 +24,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
+title: CHAINLP
 email: chloamme@gmail.com
 author: GitHub User
 
