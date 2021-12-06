@@ -52,8 +52,8 @@ Here is a **capture block**.
 \2. 21312  
 \4. 4214  
 
-```
 {% highlight python wl linenos %}
+```
 import networkx as nx
 from collections import Counter
 
@@ -92,8 +92,8 @@ for (a, b), neighbors in common_neighbors.items():
         idx = diagrams[key].index(g)
     cna_signature = key + (idx,)
     particle_counts[a].update([cna_signature])
-{% endhighlight %}
 ```
+{% endhighlight %}
 
 ```cpp
 void insert(const char* key) {
