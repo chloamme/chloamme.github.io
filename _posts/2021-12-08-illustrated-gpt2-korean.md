@@ -1,8 +1,11 @@
 ---
-layout: prediction_post
-published: True
-title: The Illustrated GPT-2 (Visualizing Transformer Language Models)
+layout: post
+title: GPT-2 일러스트 (Transformer Language Model 시각화)
+subtitle: The Illustrated GPT-2 (Visualizing Transformer Language Models)
+categories: markdown
+tags: [example, markdown]
 ---
+
 
 
 <span class="discussion">Discussions:
