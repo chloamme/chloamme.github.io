@@ -2,8 +2,8 @@
 layout: post
 title: GPT-2 일러스트 (Transformer Language Model 시각화)
 subtitle: The Illustrated GPT-2 (Visualizing Transformer Language Models)
-categories: markdown
-tags: [example, markdown]
+categories: translation
+tags: [gpt2, language model]
 ---
 
 
@@ -21,10 +21,13 @@ tags: [example, markdown]
   <br />
 </div>
 
+<div class="img-div-any-width" markdown="0">
+  <image src="/assets/images/gpt2/openAI-GPT-2-3.png"/>
+  <br />
+</div>
 
 <div class="tooltip" markdown="1">
 올 해, 우리는 눈부시게 빛나는 머신러닝 어플리케이션을 보았습니다. [The OpenAI GPT-2](https://openai.com/blog/better-language-models/)는 조리있고 열정적인 에세이들을 써내는 엄청난 능력을 보여주었습니다. 우리가 현재의 language model들이 만들어낼 것이라 기대하는 수준 이상이었습니다. GPT-2는 특별히 새로운 아키텍처는 아닙니다 -- GPT-2의 아키텍처는 decoder로만 구성된 transformer와 매우 유사합니다. 하지만 GPT-2는 방대한 양의 dataset으로 훈련된, transformer 기반의 매우 큰 language model입니다. 이번 글에서, 이 모델이 이러한 결과를 만들어낼 수 있게 한 architecture를 알아보고자 합니다. self-attention layer르 깊이 있게 살펴보고, language modeling 그 이상의 decoder-only transformer를 위한 application들을 살펴보도록 하겠습니다. 
-
 <span class="tooltiptext">
 This year, we saw a dazzling application of machine learning. [The OpenAI GPT-2](https://openai.com/blog/better-language-models/) exhibited impressive ability of writing coherent and passionate essays that exceed what we anticipated current language models are able to produce. The GPT-2 wasn't a particularly novel architecture -- it's architecture is very similar to the decoder-only transformer. The GPT2 was, however, a very large, transformer-based language model trained on a massive dataset. In this post, we'll look at the architecture that enabled the model to produce its results. We will go into the depths of its self-attention layer. And then we'll look at applications for the decoder-only transformer beyond language modeling.
 </span>
