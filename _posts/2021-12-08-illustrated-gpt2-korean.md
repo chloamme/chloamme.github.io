@@ -632,9 +632,10 @@ I'd like to note a few oversimplifications in this post:
 * 그림에서 공간을 효과적으로 사용하기 위해 회전/치환을 자유롭게 사용했습니다. 하지만 구현 때에는, 보다 더 정확히 해야 합니다. 
 * Transformer는 레이어 정규화(layer normalization)를 많이 사용하며, 꽤 중요합니다. 이전 블로그 포스팅 'Illustrated Transformer'에서는 몇가지를 언급했었지만, 이번 포스팅에서는 self-attention에 집중했습니다.
 * vector를 표현하기 위해 더 많은 상자(box)들로 표현해야할 때가 있습니다. 저는 이 상자들을 "zoom in"으로 표시했습니다. 예를 들어 다음과 같습니다:
-<span class="tooltiptext"  markdown="1">
-* I used "words" and "tokens" interchangeably. But in reality, GPT2 uses Byte Pair Encoding to create the tokens in its vocabulary. This means the tokens are usually parts of words.
-* The example we showed runs GPT2 in its inference/evaluation mode. That's why it's only processing one word at a time. At training time, the model would be trained against longer sequences of text and processing multiple tokens at once. Also at training time, the model would process larger batch sizes (512) vs. the batch size of one that evaluation uses.
+<span class="tooltiptext" text-align="left">
+I used "words" and "tokens" interchangeably. But in reality, GPT2 uses Byte Pair Encoding to create the tokens in its vocabulary. This means the tokens are usually parts of words.
+<br />
+The example we showed runs GPT2 in its inference/evaluation mode. That's why it's only processing one word at a time. At training time, the model would be trained against longer sequences of text and processing multiple tokens at once. Also at training time, the model would process larger batch sizes (512) vs. the batch size of one that evaluation uses.
 <br />
 I took liberties in rotating/transposing vectors to better manage the spaces in the images. At implementation time, one has to be more precise.
 <br />
