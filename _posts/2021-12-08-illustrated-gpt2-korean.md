@@ -469,14 +469,12 @@ I have highlighted three places in the sentence where the words are referring to
 * <strong style="color:#D81B60">그것</strong>은 로봇을 가르킵니다.
 * <strong style="color:#689F38">그러한 명령들</strong>은 이 법칙의 앞부분(참고: 한국어에서는 언어 구조 상 뒷부분에 위치)의, "인간이 그것에 내리는 명령들"을 가르킵니다.
 * <strong style="color:#6D4C41">제 1원칙</strong>은 제 1원칙 전체를 가르킵니다.
-<span class="tooltiptext">
-<p align="left">
-<strong style="color:#D81B60">it</strong> refers to the robot
+<span class="tooltiptext" style="display: inline-block; text-align: left;">
+<strong>*</strong><strong style="color:#D81B60">it</strong> refers to the robot
 <br />
-<strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
+<strong>*</strong><strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
 <br />
-<strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
-</p>
+<strong>*</strong><strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
 </span>
 </div>
 
@@ -635,8 +633,7 @@ I'd like to note a few oversimplifications in this post:
 * 그림에서 공간을 효과적으로 사용하기 위해 회전/치환을 자유롭게 사용했습니다. 하지만 구현 때에는, 보다 더 정확히 해야 합니다. 
 * Transformer는 레이어 정규화(layer normalization)를 많이 사용하며, 꽤 중요합니다. 이전 블로그 포스팅 'Illustrated Transformer'에서는 몇가지를 언급했었지만, 이번 포스팅에서는 self-attention에 집중했습니다.
 * vector를 표현하기 위해 더 많은 상자(box)들로 표현해야할 때가 있습니다. 저는 이 상자들을 "zoom in"으로 표시했습니다. 예를 들어 다음과 같습니다:
-<span class="tooltiptext">
-<p align="left">
+<span class="tooltiptext" style="display: inline-block; text-align: left;">
 I used "words" and "tokens" interchangeably. But in reality, GPT2 uses Byte Pair Encoding to create the tokens in its vocabulary. This means the tokens are usually parts of words.
 <br />
 The example we showed runs GPT2 in its inference/evaluation mode. That's why it's only processing one word at a time. At training time, the model would be trained against longer sequences of text and processing multiple tokens at once. Also at training time, the model would process larger batch sizes (512) vs. the batch size of one that evaluation uses.
@@ -646,7 +643,6 @@ I took liberties in rotating/transposing vectors to better manage the spaces in 
 Transformers use a lot of layer normalization, which is pretty important. We've noted a few of these in the Illustrated Transformer, but focused more on self-attentionin this post.
 <br />
 There are times when I needed to show more boxes to represent a vector. I indicate those as "zooming in". For example:
-</p>
 </span>
 </div>
 
