@@ -160,6 +160,7 @@ How high can we stack up these blocks? It turns out that's one of the main disti
 <blockquote class='subtle'>
 <strong>First Law of Robotics</strong><br />
 A robot may not injure a human being or, through inaction, allow a human being to come to harm.
+<br />
 (로보틱스 제1원칙: 로봇은 인간에 해를 가하거나, 혹은 행동을 하지 않음으로써 인간에게 해가 가도록 해서는 안 된다.)
 </blockquote>
 
@@ -465,9 +466,9 @@ I have highlighted three places in the sentence where the words are referring to
 
 <div class="tooltip" markdown="1">
 * <strong style="color:#D81B60">그것</strong>은 로봇을 가르킵니다.
-* <strong style="color:#689F38">그러한 명령들</strong>은 이 법칙의 앞부분(참고: 한국어에서는 언어 구조 상 뒷쪽에 위치)인, "인간이 그것에 내리는 명령들"을 가르킵니다.
+* <strong style="color:#689F38">그러한 명령들</strong>은 이 법칙의 앞부분(참고: 한국어에서는 언어 구조 상 뒷부분에 위치)의, "인간이 그것에 내리는 명령들"을 가르킵니다.
 * <strong style="color:#6D4C41">제 1원칙</strong>은 제 1원칙 전체를 가르킵니다.
-<span class="tooltiptext">
+<span class="tooltiptext" align="left">
 <strong style="color:#D81B60">it</strong> refers to the robot
 <br />
 <strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
@@ -477,14 +478,14 @@ I have highlighted three places in the sentence where the words are referring to
 </div>
 
 <div class="tooltip" markdown="1">
-이 것이 self-attention이 하는 일 입니다. (neural network를 통해 전달되는) 단어를 처리하기 전에, 특정 단어의 context를 설명하는 관련 word들에 대한 모델의 이해를 만듭니다. segment에서 각 word가 얼마나 관련되어 있는지 score를 할당하고, 그 vector representation을 합산하는 방법으로 이를 수행합니다.
+이 것이 self-attention이 하는 일입니다. (neural network로 전달해서) 단어를 처리하기 전에, 특정 단어의 context를 설명하는 관련 word들에 대한 모델의 이해를 만듭니다. segment에서 각 word가 얼마나 관련되어 있는지 score를 할당하고, 그 vector representation을 합산하는 방법으로 이를 수행합니다.
 <span class="tooltiptext">
 This is what self-attention does. It bakes in the model's understanding of relevant and associated words that explain the context of a certain word before processing that word (passing it through a neural network). It does that by assigning scores to how relevant each word in the segment is, and adding up their vector representation.
 </span>
 </div>
 
 <div class="tooltip" markdown="1">
-예를 들어, 상단의 block에서 self-attention layer는 단어 "it"을 처리할 때 "a robot"에 attention을 줍니다. neural network으로 전달하는 vector는, 그 3개의 단어들의 vector에 각 score들이 곱해진 것의 합 입니다. 
+예를 들어, 상단의 block에서 self-attention 레이어는 단어 "it"을 처리할 때 "a robot"에 attention을 줍니다. neural network으로 전달하는 vector는, 그 3개의 단어들의 vector에 각 score들을 곱한 것의 합입니다. 
 <span class="tooltiptext">
 As an example, this self-attention layer in the top block is paying attention to "a robot" when it processes the word "it". The vector it will pass to its neural network is a sum of the vectors for each of the three words multiplied by their scores.
 </span>
@@ -495,22 +496,24 @@ As an example, this self-attention layer in the top block is paying attention to
   <br />
 </div>
 
-#### Self-Attention Process
+#### Self-Attention 프로세스
 <div class="tooltip" markdown="1">
-Self-attention은 segment에서 각 token의 path를 따라 처리됩니다. 중요한 요소들은 다음 세가지 vector들 입니다:
+Self-attention은 segment에서 각 token의 경로를 따라 처리됩니다. 중요한 요소들은 다음 세가지 vector들 입니다:
 <span class="tooltiptext">
 Self-attention is processed along the path of each token in the segment. The significant components are three vectors:
 </span>
 </div>
 
 <div class="tooltip" markdown="1">
-* <span class="decoder">Query</span>: Query는 다른 모든 word들(해당 key 사용)과 score를 계산하는데 사용되는 현재 단어(word)를 나타냅니다. 우리는 현재 처리 중인 token의 query 값에만 관심이 있습니다.
-* <span class="context">Key</span>: Key vector는 segment에서 모든 word들에 대한 label과 같습니다. 관련 word를 검색할 때 매칭되는 항목입니다.
-* <span class="step_no">Value</span>: Value vector는 실제 word representation 입니다. 우리가 각 단어가 얼마나 관련이 있는지 score를 매기고 나면, 현재의 word를 표현하기 위해 합산한 값입니다.
-<span class="tooltiptext">
-* <span class="decoder">Query</span>: The query is a representation of the current word used to score against all the other words (using their keys). We only care about the query of the token we're currently processing.
-* <span class="context">Key</span>: Key vectors are like labels for all the words in the segment. They're what we match against in our search for relevant words.
-* <span class="step_no">Value</span>: Value vectors are actual word representations, once we've scored how relevant each word is, these are the values we add up to represent the current word.
+* <span class="decoder">Query</span>: Query는 다른 모든 word들과 score를 계산(각 단어마다 고유 key값 사용)하는데 사용되는 현재 단어(word)의 representation 입니다. 우리는 현재 처리 중인 token의 query 값만 고려합니다.
+* <span class="context">Key</span>: Key vector는 segment에서 모든 word들에 대한 레이블과 같습니다. 관련 word를 검색할 때 매칭해보는 항목입니다.
+* <span class="step_no">Value</span>: Value vector는 실제 word representation 입니다. 각 단어가 얼마나 관련이 있는지 score를 매기고 나면, 현재의 word를 표현(representation)하기 위한 합산(add up)한 값입니다.
+<span class="tooltiptext" align="left">
+<span class="decoder">Query</span>: The query is a representation of the current word used to score against all the other words (using their keys). We only care about the query of the token we're currently processing.
+<br />
+<span class="context">Key</span>: Key vectors are like labels for all the words in the segment. They're what we match against in our search for relevant words.
+<br />
+<span class="step_no">Value</span>: Value vectors are actual word representations, once we've scored how relevant each word is, these are the values we add up to represent the current word.
 </span>
 </div>
 
@@ -521,7 +524,7 @@ Self-attention is processed along the path of each token in the segment. The sig
 </div>
 
 <div class="tooltip" markdown="1">
-대강 비유해보자면, 서류 캐비넷에서 어떤 서류를 찾는 것과 같다고 생각하는 것 입니다. Query는 찾고자 하는 주제를 적은 메모지 입니다. Key는 캐비넷 안의 서류 폴더들에 달린 label과 같습니다. 메모장과 tag를 매칭시키면, 폴더에서 내용물을 꺼내는데, 이 내용물이 바로 value vector 입니다. 단지 다른 점은, 하나의 value만 찾지 않고, 여러 폴더들에서 여러 value들을 찾는다는 것 입니다.
+대략적으로 비유해보자면, 서류 캐비넷에서 어떤 서류를 찾는 것과 같다고 생각할 수 있습니다. Query는 찾고자 하는 주제를 적은 메모지 입니다. Key는 캐비넷 안의 서류 폴더들에 달린 레이블과 같습니다. 메모지과 tag(레이블)를 매칭시키면, 폴더에서 내용물을 꺼내는데, 이 내용물이 바로 value vector 입니다. 단지 다른 점은, 하나의 value만 찾는 것이 아니라, 여러 폴더들에서 여러 value들의 혼합을 찾는다는 것입니다.
 <span class="tooltiptext">
 A crude analogy is to think of it like searching through a filing cabinet. The query is like a sticky note with the topic you're researching. The keys are like the labels of the folders inside the cabinet. When you match the tag with a sticky note, we take out the contents of that folder, these contents are the value vector. Except you're not only looking for one value, but a blend of values from a blend of folders.
 </span>
@@ -554,16 +557,16 @@ We multiply each value by its score and sum up -- resulting in our self-attentio
 </div>
 
 <div class="tooltip" markdown="1">
-이 가중치 혼합된 value vector는, 50%는 단어 ```robot```에, 30%는 ```a```에, 19%는 ```it```에 attention을 준 vector를 생성합니다. 이 글의 뒷부분에서, self-attention에 대해 더 자세히 알아보겠습니다. 지금은, 모델의 output을 향한 stack의 여정을 계속합시다.
+이 가중치 혼합된 value vector는, 50%는 단어 ```robot```에, 30%는 ```a```에, 19%는 ```it```에 attention을 준 vector를 생성합니다. 이 글의 뒷부분에서, self-attention에 대해 더 자세히 알아보겠습니다. 지금은, 모델의 출력을 향하여 윗쪽 stack을 계속 알아봅시다.
 <span class="tooltiptext">
 This weighted blend of value vectors results in a vector that paid 50% of its "attention" to the word ```robot```, 30% to the word ```a```, and 19% to the word ```it```. Later in the post, we'll got deeper into self-attention. But first, let's continue our journey up the stack towards the output of the model.
 </span>
 </div>
 
-#### Model Output
+#### 모델 출력
 
 <div class="tooltip" markdown="1">
-모델의 최상위 block이 (최상위 block의 self-attention 및 neural network 계산을 거친 결과인) output vector를 생성할 때 , 모델은 그 vector와 embedding matrix를 곱합니다. 
+모델의 최상위 block이 (최상위 block의 self-attention 및 neural network 계산을 거친 결과인) output vector를 생성할 때, 모델은 그 vector와 embedding matrix를 곱합니다. 
 <span class="tooltiptext">
 When the top block in the model produces its output vector (the result of its own self-attention followed by its own neural network), the model multiplies that vector by the embedding matrix.
 </span>
@@ -575,7 +578,7 @@ When the top block in the model produces its output vector (the result of its ow
 </div>
 
 <div class="tooltip" markdown="1">
-embedding matrix의 각 행은 모델 어휘(vocab)의 단어의 embedding에 해당합니다. 이 곱셈의 결과는 모델의 어휘에서 각 word에 대한 score로 해석됩니다.
+embedding matrix의 각 행은 모델 어휘(vocab) 단어들의 embedding에 해당합니다. 이 곱셈의 결과는 모델의 어휘에서 각 word에 대한 score로 해석됩니다. (즉, 단얼르 선택하기 위한 score로 사용할 수 있습니다.)
 <span class="tooltiptext">
 Recall that each row in the embedding matrix corresponds to the embedding of a word in the model's vocabulary. The result of this multiplication is interpreted as a score for each word in the model's vocabulary.
 </span>
@@ -587,7 +590,7 @@ Recall that each row in the embedding matrix corresponds to the embedding of a w
 </div>
 
 <div class="tooltip" markdown="1">
-가장 높은 score를 갖는 token을 선택해봅시다 (top_k = 1). 그러나 모델이 다른 word들도 고려한다면 더 좋은 결과를 얻을 수 있습니다. 더 좋은 전략은 전체 리스트에서 score를 어떤 word를 고르기 위한 확률값으로 사용하여 단어(word)를 선택하는 것 입니다 (그래서 높은 score를 갖는 word들이 선택될 가능성이 더 높습니다). 절충안은 top_k를 40으로 잡고, 모델이 가장 높은 score를 갖는 40개의 word를 고려하도록 하는 것 입니다.
+가장 높은 score를 갖는 token을 선택할 수도 있습니다 (top_k = 1). 하지만, 모델이 다른 word들도 고려한다면 더 좋은 결과를 얻을 수 있습니다. 더 좋은 전략은 전체 리스트에서 score를 어떤 word를 고르기 위한 확률값으로 사용하여 단어(word)를 선택하는 것 입니다 (그래서 높은 score를 갖는 word들이 선택될 가능성이 더 높습니다). 절충안은, top_k를 40으로 잡고 모델이 가장 높은 score를 갖는 40개의 word를 고려하도록 하는 것 입니다.
 <span class="tooltiptext">
 We can simply select the token with the highest score (top_k = 1). But better results are achieved if the model considers other words as well. So a better strategy is to sample a word from the entire list using the score as the probability of selecting that word (so words with a higher score have a higher chance of being selected). A middle ground is setting top_k to 40, and having the model consider the 40 words with the highest scores.
 </span>
@@ -600,23 +603,23 @@ We can simply select the token with the highest score (top_k = 1). But better re
 </div>
 
 <div class="tooltip" markdown="1">
-그렇게 함으로써, 모델은 하나의 word를 출력하면서 한 iteration을 종료합니다. 모델은 전체적으로 context가 생성(1024개의 token)될 때 까지 혹은 EOS(end-of-sequence) token이 생성될 떄까지 iteration을 계속 수행합니다.
+그렇게 해서, 모델은 하나의 word를 출력하면서 한 iteration을 종료합니다. 모델은 전체 컨텍스트가 생성(1024개의 token)될 때까지 혹은 EOS(end-of-sequence) token이 생성될 떄까지 iteration을 계속 수행합니다.
 <span class="tooltiptext">
 With that, the model has completed an iteration resulting in outputting a single word. The model continues iterating until the entire context is generated (1024 tokens) or until an end-of-sequence token is produced.
 </span>
 </div>
 
-### End of part #1: The GPT-2, Ladies and Gentlemen
+### 파트 #1의 마무리
 
 <div class="tooltip" markdown="1">
-And there we have it.(?) GPT2 동작 방식에 대한 요약입니다. 만약 self-attention 레이어의 안쪽에서 무슨 일이 일어나는지 궁금하다면, 아래의 보너스 섹션을 살펴보세요. 나중에 transformer 모델을 더 쉽게 조사하고 설명할 수 있도록, self-attention을 설명하는 더 시각적인 언어(설명)를 도입하기 위해 이 글을 썼습니다. (looking at you, TransformerXL와 XLNet).
+이 파트는 끝났고, 우리는 해냈습니다. GPT2 동작 방식에 대한 간단한 요약이었습니다. 만약 self-attention 레이어의 안쪽에서 무슨 일이 일어나는지 궁금하다면, 아래의 보너스 섹션을 살펴보세요. TransformerXL와 XLNet와 같은 후속 transformer 모델을 더 쉽게 알아보고 설명할 수 있도록, self-attention을 설명하는 더 시각적인 언어(설명)로 표현하기 위해 이 글을 썼습니다. 
 <span class="tooltiptext">
 And there we have it. A run down of how the GPT2 works. If you're curious to know exactly what happens inside the self-attention layer, then the following bonus section is for you. I created it to introduce more visual language to describe self-attention in order to make describing later transformer models easier to examine and describe (looking at you, TransformerXL and XLNet).
 </span>
 </div>
 
 <div class="tooltip" markdown="1">
-이 글에서 매우 단순화 시켰던 점들은 다음과 같습니다:
+이 글에서 매우 단순화시킨 점들은 다음과 같습니다:
 <span class="tooltiptext">
 I'd like to note a few oversimplifications in this post:
 </span>
@@ -624,17 +627,21 @@ I'd like to note a few oversimplifications in this post:
 
 
 <div class="tooltip" markdown="1">
-* "word"와 "token"을 같은 의미로 사용했습니다. 하지만 실제로는, GPT2는 어휘(vocab)의 token들을 만들기 위해 BPE(Byte Pair Encoding)을 사용합니다. 이 것은 일만적으로 token이 word의 일부임을 의미합니다.
-* 예로 든 GPT2는 추론(inference)/평가(evaluation) 모드입니다. (설명 과정에서) 한번에 하나의 word만을 처리하는 이유입니다. 학습(training) 시에는, 모델은 더 긴 text sequence에 대해 학습하며 한번에 여러개의 token을 처리할 것입니다. 또한, 모델은 evaluation 때 사용하는 배치 사이즈 보다 더 큰 배치 사이즈 (512)를 처리할 것 입니다.
+* "word"와 "token"을 같은 의미로 사용했습니다. 하지만 실제로는, GPT2는 어휘(vocab)의 token들을 만들기 위해 BPE(Byte Pair Encoding)을 사용합니다. 이 것은 일반적으로 token이 word의 일부임을 의미합니다.
+* 예로 든 GPT2는 추론(inference)/평가(evaluation) 모드입니다. (설명 과정에서) 한번에 하나의 word만을 처리하는 이유입니다. 학습(training) 시에는, 모델은 더 긴 문자열 시퀀스에 대해 학습하며, 한번에 여러개의 token을 처리할 것입니다. 또한, 모델은 evaluation 때 사용하는 배치 사이즈 보다 더 큰 배치 사이즈 (512)를 처리할 것 입니다.
 * 그림에서 공간을 효과적으로 사용하기 위해 회전/치환을 자유롭게 사용했습니다. 하지만 구현 때에는, 보다 더 정확히 해야 합니다. 
-* Transformer는 레이어 정규화(layer normalization)을 많이 사용하며, 꽤 중요합니다. 이전 블로그 포스팅 'Illustrated Transformer'에서는 이 것들 중 몇가지를 언급하긴 했지만, 이번 포스팅에서는 self-attention에 집중했습니다.
-* vector를 표현하기 위해 더 많은 상자(box)들로 표현해야할 떄가 있습니다. 저는 이 상자들을 "zoom in"으로 표시했습니다. 예를 들어 다음과 같습니다:
-<span class="tooltiptext">
-* I used "words" and "tokens" interchangeably. But in reality, GPT2 uses Byte Pair Encoding to create the tokens in its vocabulary. This means the tokens are usually parts of words.
-* The example we showed runs GPT2 in its inference/evaluation mode. That's why it's only processing one word at a time. At training time, the model would be trained against longer sequences of text and processing multiple tokens at once. Also at training time, the model would process larger batch sizes (512) vs. the batch size of one that evaluation uses.
-* I took liberties in rotating/transposing vectors to better manage the spaces in the images. At implementation time, one has to be more precise.
-* Transformers use a lot of layer normalization, which is pretty important. We've noted a few of these in the Illustrated Transformer, but focused more on self-attentionin this post.
-* There are times when I needed to show more boxes to represent a vector. I indicate those as "zooming in". For example:
+* Transformer는 레이어 정규화(layer normalization)를 많이 사용하며, 꽤 중요합니다. 이전 블로그 포스팅 'Illustrated Transformer'에서는 몇가지를 언급했었지만, 이번 포스팅에서는 self-attention에 집중했습니다.
+* vector를 표현하기 위해 더 많은 상자(box)들로 표현해야할 때가 있습니다. 저는 이 상자들을 "zoom in"으로 표시했습니다. 예를 들어 다음과 같습니다:
+<span class="tooltiptext" align="left">
+I used "words" and "tokens" interchangeably. But in reality, GPT2 uses Byte Pair Encoding to create the tokens in its vocabulary. This means the tokens are usually parts of words.
+<br />
+The example we showed runs GPT2 in its inference/evaluation mode. That's why it's only processing one word at a time. At training time, the model would be trained against longer sequences of text and processing multiple tokens at once. Also at training time, the model would process larger batch sizes (512) vs. the batch size of one that evaluation uses.
+<br />
+I took liberties in rotating/transposing vectors to better manage the spaces in the images. At implementation time, one has to be more precise.
+<br />
+Transformers use a lot of layer normalization, which is pretty important. We've noted a few of these in the Illustrated Transformer, but focused more on self-attentionin this post.
+<br />
+There are times when I needed to show more boxes to represent a vector. I indicate those as "zooming in". For example:
 </span>
 </div>
 
@@ -644,10 +651,10 @@ I'd like to note a few oversimplifications in this post:
 </div>
 
 
-## Part #2: The Illustrated Self-Attention <a name="part-2-illustrated-self-attention" href="#part-2-illustrated-self-attention">#</a>
+## 파트 #2: 그림으로 설명하는 Self-Attention <a name="part-2-illustrated-self-attention" href="#part-2-illustrated-self-attention">#</a>
 
 <div class="tooltip" markdown="1">
-이 글의 앞 부분에서 단어 ```it```을 처리하는 layer에 self-attention을 적용하는 것을 보여주기 위해 이 그림을 보여주었습니다.
+이 글의 앞 부분에서 단어 ```it```을 처리하는 레이어에서 self-attention을 적용하는 것을 보여주기 위해 이 그림을 보여주었습니다.
 <span class="tooltiptext">
 Earlier in the post we showed this image to showcase self-attention being applied in a layer that is processing the word ```it```:
 </span>
