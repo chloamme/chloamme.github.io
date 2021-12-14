@@ -315,11 +315,37 @@ table {
   margin-left: 0px; /* Use half of the width (120/2 = 60), to center the tooltip */
 }
 
+.tooltip .tooltiptext_left {
+  visibility: hidden;
+  background-color: grey;
+  color: white;
+  text-align: left;
+  padding: 5px 2px;
+  border-radius: 6px;
+  opacity: 0.9;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 0%; 
+  margin-left: 0px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
 
 .tooltip:active .tooltiptext {
+  visibility: visible;
+}
+
+
+.tooltip:hover .tooltiptext_left {
+  visibility: visible;
+}
+
+.tooltip:active .tooltiptext_left {
   visibility: visible;
 }
