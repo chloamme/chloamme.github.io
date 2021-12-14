@@ -73,13 +73,8 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
   * 음악 생성(Music Generation)
 </div>
 <span class="tooltiptext">
-
-<div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
-
-<div style="text-align:center" markdown="1">  
+  
 **Contents**
-</div>
-
 * **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
   * What is a Language Model
   * Transformers for Language Modeling
@@ -102,7 +97,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
   * Summarization
   * Transfer Learning
   * Music Generation
-</div>
+</span>
 
 
 </div>
