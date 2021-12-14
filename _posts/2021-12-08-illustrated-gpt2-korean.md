@@ -73,7 +73,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * 음악 생성(Music Generation)
 </div>
 <span class="tooltiptext">
-* **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
+* Part 1: GPT2 And Language Modeling
   * What is a Language Model
   * Transformers for Language Modeling
   * One Difference From BERT
@@ -81,7 +81,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
   * Crash Course in Brain Surgery: Looking Inside GPT-2
   * A Deeper Look Inside
   * End of part #1: The GPT-2, Ladies and Gentlemen
-* **[Part 2: The Illustrated Self-Attention](#part-2-illustrated-self-attention)**
+* Part 2: The Illustrated Self-Attention
   * Self-Attention (without masking)
   * 1- Create Query, Key, and Value Vectors
   * 2- Score
@@ -90,7 +90,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
   * GPT-2 Masked Self-Attention
   * Beyond Language modeling
   * You've Made it!
-* **[Part 3: Beyond Language Modeling](#part-3-beyond-language-modeling)**
+* Part 3: Beyond Language Modeling
   * Machine Translation
   * Summarization
   * Transfer Learning
@@ -109,7 +109,7 @@ So what exactly is a language model?
 
 ### Language Model 이란
 <div class="tooltip" markdown="1">
-[The Illustrated Word2vec](/illustrated-word2vec/)에서 language model이 무엇인지 살펴보았습니다 -- 기본적으로는, 문장의 일부를 보고 다음 단어를 예측하는 것을 할 수 있는 머신 러닝 모델입니다. 가장 유명한 language model로는 현재까지 입력된 것을 보고 다음 단어를 제안하는 스마트폰 키보드가 있습니다. 
+이전 글인 [The Illustrated Word2vec](/illustrated-word2vec/)([한국어 번역본](https://databreak.netlify.app/2019-04-25-Illustrated_word2vec/))에서 language model이 무엇인지 살펴보았습니다 -- 기본적으로는, 문장의 일부를 보고 다음 단어를 예측하는 것을 할 수 있는 머신 러닝 모델입니다. 가장 유명한 language model로는 현재까지 입력된 것을 보고 다음 단어를 제안하는 스마트폰 키보드가 있습니다. 
 <span class="tooltiptext">
 In [The Illustrated Word2vec](/illustrated-word2vec/), we've looked at what a language model is -- basically a machine learning model that is able to look at part of a sentence and predict the next word. The most famous language models are smartphone keyboards that suggest the next word based on what you've currently typed.
 </span>
