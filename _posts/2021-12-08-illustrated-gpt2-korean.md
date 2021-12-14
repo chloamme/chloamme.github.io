@@ -74,27 +74,27 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 </div>
 <span class="tooltiptext">
 * Part 1: GPT2 And Language Modeling
-  * What is a Language Model
-  * Transformers for Language Modeling
-  * One Difference From BERT
-  * The Evolution of The Transformer Block
-  * Crash Course in Brain Surgery: Looking Inside GPT-2
-  * A Deeper Look Inside
-  * End of part #1: The GPT-2, Ladies and Gentlemen
+- What is a Language Model
+- Transformers for Language Modeling
+- One Difference From BERT
+- The Evolution of The Transformer Block
+- Crash Course in Brain Surgery: Looking Inside GPT-2
+- A Deeper Look Inside
+- End of part #1: The GPT-2, Ladies and Gentlemen
 * Part 2: The Illustrated Self-Attention
-  * Self-Attention (without masking)
-  * 1- Create Query, Key, and Value Vectors
-  * 2- Score
-  * 3- Sum
-  * The Illustrated Masked Self-Attention
-  * GPT-2 Masked Self-Attention
-  * Beyond Language modeling
-  * You've Made it!
+- Self-Attention (without masking)
+- 1- Create Query, Key, and Value Vectors
+- 2- Score
+- 3- Sum
+- The Illustrated Masked Self-Attention
+- GPT-2 Masked Self-Attention
+- Beyond Language modeling
+- You've Made it!
 * Part 3: Beyond Language Modeling
-  * Machine Translation
-  * Summarization
-  * Transfer Learning
-  * Music Generation
+- Machine Translation
+- Summarization
+- Transfer Learning
+- Music Generation
 </span>
 </div>
 
@@ -1178,6 +1178,7 @@ They add up to 124M parameters instead of 117M for some reason. I'm not sure why
 </div>
 
 ## Part 3: Beyond Language Modeling <a href="#part-3-beyond-language-modeling" name="part-3-beyond-language-modeling">#</a>
+
 <div class="tooltip" markdown="1">
 decoder-only transformer는 language modeling 이상의 가능성들을 계속 보여줍니다. 위와 유사한 그림으로 설명할 수 있는 성공을 보여준 application들이 많이 있습니다 (?). 이러한 application 몇 개를 보면서 이번 포스팅을 마치고자 합니다. 
 <span class="tooltiptext">
