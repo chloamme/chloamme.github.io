@@ -451,6 +451,7 @@ Language heavily relies on context. For example, look at the second law:
 
 <strong>Second Law of Robotics</strong><br />
 A robot must obey the orders given <strong style="color:#D81B60">it</strong> by human beings except where <strong style="color:#689F38">such orders</strong> would conflict with the <strong style="color:#6D4C41">First Law</strong>.
+<br />
 (로보틱스 제2원칙: 로봇은 인간이 <strong style="color:#D81B60">그것</strong>에 내리는 명령들에 복종해야만 하며, 단 <strong style="color:#689F38">이러한 명령들</strong>이 <strong style="color:#6D4C41">제1원칙</strong>에 위배될 때는 예외로 한다.)
 
 </blockquote>
@@ -468,7 +469,9 @@ I have highlighted three places in the sentence where the words are referring to
 * <strong style="color:#6D4C41">제 1원칙</strong>은 제 1원칙 전체를 가르킵니다.
 <span class="tooltiptext">
 <strong style="color:#D81B60">it</strong> refers to the robot
+<br />
 <strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
+<br />
 <strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
 </span>
 </div>
