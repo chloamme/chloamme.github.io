@@ -1,19 +1,19 @@
 ---
 layout: post
-title: GPT-2 일러스트 (Transformer Language Model 시각화)
+title: 그림으로 설명하는 GPT-2 (Transformer Language Model 시각화)
 subtitle: The Illustrated GPT-2 (Visualizing Transformer Language Models)
 categories: translation
 tags: [gpt2, language model]
 ---
 
+* 이 글은 GPT-2에 대해 이해하기 쉽게 그림으로 설명한 Jay Alammar님의 [블로그](https://jalammar.github.io)의 글을 저자의 허락을 받고 번역한 글 입니다.
+ 원문은 [The Illustrated GPT-2 (Visualizing Transformer Language Models)
+](https://jalammar.github.io/illustrated-gpt2/)에서 확인하실 수 있습니다.
+* 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역(번역체) 보다는 개념에 대한 설명을 쉽게 하는 문장으로 표현하는 쪽으로 더 무게를 두어 번역 했습니다.
+* 번역문-원문 단락 비교를 원하시는 분들을 위해 [찬](nlpinkorean.github.io)님께서 만들어두신 원문 tooltip 확인 기능(번역 글에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
+<p align="center">(이하 본문)</p>
 
-
-<span class="discussion">Discussions:
-<a href="https://news.ycombinator.com/item?id=20677411" class="hn-link">Hacker News (64 points, 3 comments)</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/cp8prq/p_the_illustrated_gpt2_visualizing_transformer/" class="">Reddit r/MachineLearning (219 points, 18 comments)</a>
-</span>
-
-<span class="discussion">Translations: <a href="https://habr.com/ru/post/490842/">Russian</a></span>
-
+---
 
 
 <div class="img-div-any-width" markdown="0">
@@ -21,13 +21,9 @@ tags: [gpt2, language model]
   <br />
 </div>
 
-<div class="img-div-any-width" markdown="0">
-  <image src="/assets/images/gpt2/openAI-GPT-2-3.png"/>
-  <br />
-</div>
 
 <div class="tooltip" markdown="1">
-올 해, 우리는 눈부시게 빛나는 머신러닝 어플리케이션을 보았습니다. [The OpenAI GPT-2](https://openai.com/blog/better-language-models/)는 조리있고 열정적인 에세이들을 써내는 엄청난 능력을 보여주었습니다. 우리가 현재의 language model들이 만들어낼 것이라 기대하는 수준 이상이었습니다. GPT-2는 특별히 새로운 아키텍처는 아닙니다 -- GPT-2의 아키텍처는 decoder로만 구성된 transformer와 매우 유사합니다. 하지만 GPT-2는 방대한 양의 dataset으로 훈련된, transformer 기반의 매우 큰 language model입니다. 이번 글에서, 이 모델이 이러한 결과를 만들어낼 수 있게 한 architecture를 알아보고자 합니다. self-attention layer르 깊이 있게 살펴보고, language modeling 그 이상의 decoder-only transformer를 위한 application들을 살펴보도록 하겠습니다. 
+올 해, 우리는 눈부시게 빛나는 머신러닝 어플리케이션을 보았습니다. [OpenAI의 GPT-2](https://openai.com/blog/better-language-models/)는 조리있고 강렬한 에세이들을 써내는 엄청난 능력을 보여주었습니다. 우리가 현재의 language model들이 만들어낼 것으로 기대하는 수준 이상이었습니다. GPT-2는 특별히 새로운 아키텍처는 아닙니다 -- GPT-2의 아키텍처는 decoder로만 구성된 transformer와 매우 유사합니다. 하지만 GPT-2는 방대한 양의 dataset으로 훈련된, transformer 기반의 매우 큰 language model입니다. 이번 글에서, 이 모델이 이러한 결과를 만들어낼 수 있게 한 아키텍처를 알아보고자 합니다. self-attention 레이어를 깊이 있게 살펴보고, language model 그 이상의 decoder-only transformer를 위한 어플리케이션들을 살펴보도록 하겠습니다. 
 <span class="tooltiptext">
 This year, we saw a dazzling application of machine learning. [The OpenAI GPT-2](https://openai.com/blog/better-language-models/) exhibited impressive ability of writing coherent and passionate essays that exceed what we anticipated current language models are able to produce. The GPT-2 wasn't a particularly novel architecture -- it's architecture is very similar to the decoder-only transformer. The GPT2 was, however, a very large, transformer-based language model trained on a massive dataset. In this post, we'll look at the architecture that enabled the model to produce its results. We will go into the depths of its self-attention layer. And then we'll look at applications for the decoder-only transformer beyond language modeling.
 </span>
@@ -35,7 +31,7 @@ This year, we saw a dazzling application of machine learning. [The OpenAI GPT-2]
 
 
 <div class="tooltip" markdown="1">
-저의 이번 목표는, 이전 글인 [The Illustrated Transformer](/illustrated-transformer/)에 더 많은 시각적 설명을 첨가하여 transformer의 내부 동작 원리를 설명하고, 최초의 논문으로 부터 어떻게 발전되어 왔는지에 대해 설명하는 것 입니다. 이러한 시각적 언어를 통해 향후의 transformer 기반의 모델들이, 내부 동작 방식이 진화에도 더 쉽게 설명이 되었으면 하는 바람이 있습니다.
+저의 이번 목표는, 이전 글인 [The Illustrated Transformer](/illustrated-transformer/)에 더 많은 시각적 설명을 더하여 transformer의 내부 동작 원리를 설명하고, 최초의 논문으로 부터 어떻게 발전되어 왔는지에 대해 설명하는 것 입니다. 이러한 시각적 설명을 통해, 내부 동작 방식이 계속 진화되고 있는 transformer 기반의 후속 모델들이 더 쉽게 설명이 되었으면 하는 바람이 있습니다.
 <span class="tooltiptext">
 My goal here is to also supplement my earlier post, [The Illustrated Transformer](/illustrated-transformer/), with more visuals explaining the inner-workings of transformers, and how they've evolved since the original paper. My hope is that this visual language will hopefully make it easier to explain later Transformer-based models as their inner-workings continue to evolve.
 </span>
@@ -48,18 +44,16 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 <div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
 
 <div style="text-align:center" markdown="1">  
-
-**Contents**
-
+**목차**
 </div>
 
 <div class="tooltip" markdown="1">
 * **[파트 1: GPT2와 Language Modeling](#part-1-got-and-language-modeling)**
   * Language Model이란
   * Language Modeling을 위한 Transformers 
-  * BERT와 다른 한가지
+  * BERT와 다른점 한가지
   * Transformer Block의 발전
-  * 뇌 외과적 설명을 위한 집중 코스 : GPT-2의 내부를 살펴보기
+  * 뇌 외과 집중 과정: GPT-2의 내부를 살펴보기
   * 더 깊이 살펴보기
   * 파트 1의 끝: GPT-2, 신사 숙녀 여러분
 * **[파트 2: Self-Attention의 설명](#part-2-illustrated-self-attention)**
@@ -77,7 +71,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
   * 전이 학습(Transfer Learning)
   * 음악 생성(Music Generation)
 <span class="tooltiptext">
-Part 1: GPT2 And Language Modeling
+* **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
   * What is a Language Model
   * Transformers for Language Modeling
   * One Difference From BERT
@@ -85,7 +79,7 @@ Part 1: GPT2 And Language Modeling
   * Crash Course in Brain Surgery: Looking Inside GPT-2
   * A Deeper Look Inside
   * End of part #1: The GPT-2, Ladies and Gentlemen
-Part 2: The Illustrated Self-Attention
+* **[Part 2: The Illustrated Self-Attention](#part-2-illustrated-self-attention)**
   * Self-Attention (without masking)
   * 1- Create Query, Key, and Value Vectors
   * 2- Score
@@ -94,7 +88,7 @@ Part 2: The Illustrated Self-Attention
   * GPT-2 Masked Self-Attention
   * Beyond Language modeling
   * You've Made it!
-Part 3: Beyond Language Modeling
+* **[Part 3: Beyond Language Modeling](#part-3-beyond-language-modeling)**
   * Machine Translation
   * Summarization
   * Transfer Learning
