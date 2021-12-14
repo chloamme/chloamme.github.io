@@ -511,7 +511,7 @@ Self-attention is processed along the path of each token in the segment. The sig
 * <span class="decoder">Query</span>: Query는 다른 모든 word들과 score를 계산(각 단어마다 고유 key값 사용)하는데 사용되는 현재 단어(word)의 representation 입니다. 우리는 현재 처리 중인 token의 query 값만 고려합니다.
 * <span class="context">Key</span>: Key vector는 segment에서 모든 word들에 대한 레이블과 같습니다. 관련 word를 검색할 때 매칭해보는 항목입니다.
 * <span class="step_no">Value</span>: Value vector는 실제 word representation 입니다. 각 단어가 얼마나 관련이 있는지 score를 매기고 나면, 현재의 word를 표현(representation)하기 위한 합산(add up)한 값입니다.
-<span class="tooltiptext">
+<span class="tooltiptext_left">
 <span class="decoder">Query</span>: The query is a representation of the current word used to score against all the other words (using their keys). We only care about the query of the token we're currently processing.
 <br />
 <span class="context">Key</span>: Key vectors are like labels for all the words in the segment. They're what we match against in our search for relevant words.
