@@ -10,7 +10,7 @@ tags: [gpt2, language model]
  원문은 [The Illustrated GPT-2 (Visualizing Transformer Language Models)
 ](https://jalammar.github.io/illustrated-gpt2/)에서 확인하실 수 있습니다.
 * 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역(번역체) 보다는 개념에 대한 설명을 쉽게 하는 문장으로 표현하는 쪽으로 더 무게를 두어 번역 했습니다.
-* 번역문-원문 단락 비교를 원하시는 분들을 위해 [찬](nlpinkorean.github.io)님께서 만들어두신 원문 tooltip 확인 기능(번역 글에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
+* 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](nlpinkorean.github.io)님께서 만들어두신 tooltip 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
 <p align="center">(이하 본문)</p>
 
 ---
@@ -42,7 +42,6 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 <!--more-->
 
 
-<div class="tooltip" markdown="1">
 <div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
 
   <div style="text-align:center" markdown="1">  
@@ -51,11 +50,11 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 
   * **[파트 1: GPT2와 Language Modeling](#part-1-got-and-language-modeling)**
     * Language Model이란
-    * Language Modeling을 위한 Transformers 
-    * BERT와 다른점 한가지
-    * Transformer Block의 발전
-    * 뇌 외과 집중 과정: GPT-2의 내부를 살펴보기
-    * 더 깊이 살펴보기
+    * Language Modeling을 위한 Transformer
+    * BERT와 한가지 차이점
+    * Transformer block의 진화
+    * GPT-2의 내부를 살펴보기
+    * 더 깊이 알아보기
     * 파트 1의 끝: GPT-2, 신사 숙녀 여러분
   * **[파트 2: Self-Attention의 설명](#part-2-illustrated-self-attention)**
     * (masking 없는) Self-Attention
@@ -71,31 +70,6 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * 요약(Summarization)
     * 전이 학습(Transfer Learning)
     * 음악 생성(Music Generation)
-</div>
-<span class="tooltiptext">
-* Part 1: GPT2 And Language Modeling
-- What is a Language Model
-- Transformers for Language Modeling
-- One Difference From BERT
-- The Evolution of The Transformer Block
-- Crash Course in Brain Surgery: Looking Inside GPT-2
-- A Deeper Look Inside
-- End of part #1: The GPT-2, Ladies and Gentlemen
-* Part 2: The Illustrated Self-Attention
-- Self-Attention (without masking)
-- 1- Create Query, Key, and Value Vectors
-- 2- Score
-- 3- Sum
-- The Illustrated Masked Self-Attention
-- GPT-2 Masked Self-Attention
-- Beyond Language modeling
-- You've Made it!
-* Part 3: Beyond Language Modeling
-- Machine Translation
-- Summarization
-- Transfer Learning
-- Music Generation
-</span>
 </div>
 
 ## 파트 #1: GPT2와 Language Modeling <a href="#part-1-got-and-language-modeling" name="part-1-got-and-language-modeling">#</a>
@@ -120,11 +94,8 @@ In [The Illustrated Word2vec](/illustrated-word2vec/), we've looked at what a la
   <br />
 </div>
 
-
-
-
 <div class="tooltip" markdown="1">
-이런 측면에서는 GPT-2가 키보드 앱의 다음단어 예측 기능이라고 말할 수 있지만, 스마트폰이 가진 것 이상으로 훨씬 더 크고 더욱 복잡합니다. GPT-2는 OpenAI 연구원들이 연구를 위한 노력의 일환으로 인터넷을 크롤링한 WebText라는 대량의 dataset(40GB)으로 학습 되었습니다. 스토리지 크기 측면에서 비교를 해본다면, 제가 사용하고 있는 키보드 앱인 SwiftKey가 78MB의 공간을 차지합니다. 훈련된 GPT-2 중에서 가장 작은 것의 경우에, 모든 파라미터를 저장하기 위해 500MB의 저장공간을 차지합니다. 가장 큰 GPT-2의 경우에는 사이즈가 13배 크기 때문에, 6.5GB 이상의 저장 공간을 차지할 수 있습니다. 
+이런 점에서는 GPT-2가 기본적으로 키보드 앱의 다음단어 예측 기능과 동일하다고 말할 수도 있겠지만, 키보드 앱 이상으로 훨씬 더 크고 더욱 복잡합니다. GPT-2는 OpenAI에서 연구 노력의 일환으로 인터넷을 크롤링한 대량의 dataset(40GB)인 WebText으로 학습 되었습니다. 스토리지 크기 측면으로 비교를 해본다면, 제가 사용하고 있는 키보드 앱인 SwiftKey가 78MB의 공간을 차지합니다. 훈련된 GPT-2 중에서 가장 작은 것의 경우에, 모든 파라미터를 저장하기 위해 500MB의 저장공간을 차지합니다. 가장 큰 GPT-2의 경우에는 사이즈가 13배 크기 때문에, 6.5GB 이상의 저장 공간을 차지할 수 있습니다. 
 <span class="tooltiptext">
 In this sense, we can say that the GPT-2 is basically the next word prediction feature of a keyboard app, but one that is much larger and more sophisticated than what your phone has. The GPT-2 was trained on a massive 40GB dataset called WebText that the OpenAI researchers crawled from the internet as part of the research effort. To compare in terms of storage size, the keyboard app I use, SwiftKey, takes up 78MBs of space. The smallest variant of the trained GPT-2, takes up 500MBs of storage to store all of its parameters. The largest GPT-2 variant is 13 times the size so it could take up more than 6.5 GBs of storage space.
 </span>
@@ -138,17 +109,17 @@ In this sense, we can say that the GPT-2 is basically the next word prediction f
 
 
 <div class="tooltip" markdown="1">
-GPT-2를 실험하는 가장 좋은 방법은 [AllenAI GPT-2 Explorer](https://gpt2.apps.allenai.org/?text=Joel%20is)를 이용하는 것 입니다. GPT-2를 사용하여, (확률 점수와 함께) 다음 단어로 가능한 10개의 예측을 표시해줍니다. 단어를 선택한 뒤 예측된 단어 리스트를 보고 계속해서 글의 구절을 작성할 수 있습니다. 
+GPT-2를 시험해보는 가장 좋은 방법은 [AllenAI의 GPT-2 Explorer](https://gpt2.apps.allenai.org/?text=Joel%20is)를 이용하는 것 입니다. GPT-2를 사용하여, (확률 점수와 함께) 다음 단어로 가능한 10개의 예측을 표시해줍니다. 그 것들 중에서 한 단어를 선택한 뒤, 다시 예측된 리스트를 보고, 계속해서 글을 작성해나갈 수 있습니다. 
 <span class="tooltiptext">
 One great way to experiment with GPT-2 is using the [AllenAI GPT-2 Explorer](https://gpt2.apps.allenai.org/?text=Joel%20is). It uses GPT-2 to display ten possible predictions for the next word (alongside their probability score). You can select a word then see the next list of predictions to continue writing the passage.
 </span>
 </div>
 
 
-### Transformers for Language Modeling
+### Language Modeling을 위한 Transformer
 
 <div class="tooltip" markdown="1">
-[Illustrated Transformer](/illustrated-transformer/)에서 본 것과 같이, 최초의 transformer model은 encoder와 decoder로 구성되어 있습니다 -- 그 각각은 우리가 transformer block들 이라고 부르는 것들을 쌓아놓은 것(stack) 입니다. 이 architecture는 원래 기계 번역을 다뤘었기 때문에, 적합했었습니다 -- encoder-decoder architecture가 과거에 성공적이었던 문제였습니다. (?)
+[Illustrated Transformer](/illustrated-transformer/)에서 본 것과 같이, 최초의 transformer 모델은 encoder와 decoder로 구성되어 있습니다 -- 그 각각은 우리가 transformer 블록(block) 이라고 부르는 것들을 쌓아놓은 것(stacking) 입니다. 이 아키텍처는 원래 기계 번역 용도로 적합했었습니다 -- encoder-decoder 아키텍처가 과거에는 성공적이었습니다.
 <span class="tooltiptext">
 As we've seen in The [Illustrated Transformer](/illustrated-transformer/), the original transformer model is made up of an encoder and decoder -- each is a stack of what we can call transformer blocks. That architecture was appropriate because the model tackled machine translation  -- a problem where encoder-decoder architectures have been successful in the past.
 </span>
@@ -161,7 +132,7 @@ As we've seen in The [Illustrated Transformer](/illustrated-transformer/), the o
 </div>
 
 <div class="tooltip" markdown="1">
-이후 연구들에서 architecture에서 encoder 또는 decoder 중 하나를 없애고, 단 하나의 transformer block들의 stack을 사용합니다 -- block들을 현실적으로 가능한 한 높이 쌓아 올리고, 대량의 텍스트들을 학습에 이용하고, 엄청난 양의 컴퓨팅을 투하합니다. (이러한 language model들을 학습하는데 수십만 달러, [AlphaStar](https://deepmind.com/blog/alphastar-mastering-real-time-strategy-game-starcraft-ii/)의 경우 수백만 달러)
+많은 후속 연구들에서는 architecture에서 encoder 또는 decoder 중 하나를 없애고, 하나의 transformer 블록층(block stack)만을 사용합니다 -- block들을 현실적으로 가능한 한 높이 쌓아 올리고, 대량의 텍스트들을 학습에 이용하고, 엄청난 양의 컴퓨팅을 투하합니다. (이러한 language model들을 학습하는데 수십만 달러, [AlphaStar](https://deepmind.com/blog/alphastar-mastering-real-time-strategy-game-starcraft-ii/)의 경우 수백만 달러 소요)
 <span class="tooltiptext">
 A lot of the subsequent research work saw the architecture shed either the encoder or decoder, and use just one stack of transformer blocks -- stacking them up as high as practically possible, feeding them massive amounts of training text, and throwing vast amounts of compute at them (hundreds of thousands of dollars to train some of these language models, likely millions in the case of [AlphaStar](https://deepmind.com/blog/alphastar-mastering-real-time-strategy-game-starcraft-ii/)).
 </span>
@@ -173,7 +144,7 @@ A lot of the subsequent research work saw the architecture shed either the encod
 </div>
 
 <div class="tooltip" markdown="1">
-얼마나 이 block들을 높에 쌓을 수 있을까요? 이것이 GPT2 model 크기 간의 주요 구별 요소임이 밝혀졌습니다.
+얼마나 이 block들을 높에 쌓을 수 있을까요? 이것이 GPT2 모델 크기를 결정짓는 주요 구별 요소임이 밝혀졌습니다.
 <span class="tooltiptext">
 How high can we stack up these blocks? It turns out that's one of the main distinguishing factors between the different GPT2 model sizes:
 </span>
@@ -185,20 +156,16 @@ How high can we stack up these blocks? It turns out that's one of the main disti
 </div>
 
 
-### One Difference From BERT
+### BERT와 한가지 차이점
 <blockquote class='subtle'>
 <strong>First Law of Robotics</strong><br />
-<div class="tooltip" markdown="1">
-로봇은 사람을 해치거나, 행동(action)하지 않아서 인간이 해를 입도록 내버려두어서는 안됩니다.
-<span class="tooltiptext">
 A robot may not injure a human being or, through inaction, allow a human being to come to harm.
-</span>
-</div>
+(로보틱스 제1원칙: 로봇은 인간에 해를 가하거나, 혹은 행동을 하지 않음으로써 인간에게 해가 가도록 해서는 안 된다.)
 </blockquote>
 
 
 <div class="tooltip" markdown="1">
-GPT-2는 transformer의 decoder 블럭으로 구성됩니다. 반대로 BERT는, transformer의 encoder 블럭을 사용합니다. 다음 섹션에서 이 차이를 실험해보겠습니다. 하지만, 이 둘 간의 중요한 차이 하나는 GPT2가 다른 전통적인 language model들 처럼 한번에 하나의 token을 출력한다는 것 입니다. 잘 훈련된 GPT-2가 로보틱스의 제 1법칙을 낭독(출력)하도록 해봅시다.
+GPT-2는 transformer의 decoder 블럭으로 구성됩니다. 반대로 BERT는, transformer의 encoder 블럭을 사용합니다. 다음 섹션에서 이 차이를 살펴보겠습니다. 하지만, 이 둘 간의 주요한 차이는 GPT2가 다른 전통적인 language model들 처럼 한번에 하나의 token을 출력한다는 것 입니다. 잘 훈련된 GPT-2가 로보틱스의 제 1원칙을 출력하도록 해봅시다.
 <span class="tooltiptext">
 The GPT-2 is built using transformer decoder blocks. BERT, on the other hand, uses transformer encoder blocks. We will examine the difference in a following section. But one key difference between the two is that GPT2, like traditional language models, outputs one token at a time. Let's for example prompt a well-trained GPT-2 to recite the first law of robotics:
 </span>
@@ -210,7 +177,7 @@ The GPT-2 is built using transformer decoder blocks. BERT, on the other hand, us
 </div>
 
 <div class="tooltip" markdown="1">
-이러한 모델들이 실제로 동작하는 방식은, 각 token이 생성된 후에 입력 시퀀스에 더해지는 것 입니다. 그러한 새 시퀀스는, 다음 스텝에서, 모델의 입력으로 들어갑니다. 이 것을 "auto-regression"이라고 부릅니다. 이 것은 [RNN을 과도하게 효과적으로 만든](https://karpathy.github.io/2015/05/21/rnn-effectiveness/) idea 중 하나 입니다.
+이러한 모델들은 각 token이 생성된 후에 입력 시퀀스에 더해지는 방식으로 동작합니다. 그러한 새 시퀀스는 다음 단계에서 모델의 입력으로 들어갑니다. 이 것을 "auto-regression"이라고 부릅니다. 이 것은 [RNN을 엄청나게 효과적으로 만든](https://karpathy.github.io/2015/05/21/rnn-effectiveness/) 방법 중 하나 입니다.
 <span class="tooltiptext">
 The way these models actually work is that after each token is produced, that token is added to the sequence of inputs. And that new sequence becomes the input to the model in its next step. This is an idea called "auto-regression". This is one of the ideas that [made RNNs unreasonably effective](https://karpathy.github.io/2015/05/21/rnn-effectiveness/).
 </span>
@@ -223,25 +190,25 @@ The way these models actually work is that after each token is produced, that to
 </div>
 
 <div class="tooltip" markdown="1">
-GPT2, 그리고 이후에 등장한 TransformerXL과 XLNet과 같은 모델들은 본질적으로 auto-regressive입니다. BERT는 그렇지 않습니다. 이 것은 상충관계(trade off)가 있습니다. auto-regression 특성을 잃는 대신, BERT는 더 좋은 결과를 내기 위해 단어의 양쪽 방향에서 context를 활용할 수 있는 능력을 얻었습니다. XLNet은 autoregression을 되돌리면서 양쪽 방향의 context를 활용하기 대안적 방법을 찾습니다. (?)
+GPT2와 TransformerXL, XLNet과 같은 후속 모델들은 본질적으로 auto-regressive입니다. BERT는 그렇지 않습니다. 이 것은 상충관계(trade off)가 있습니다. auto-regression 특성을 잃는 대신, BERT는 더 좋은 결과를 내기 위해 단어의 양쪽 방향으로부터의 context를 활용할 수 있는 능력을 얻었습니다. XLNet은 autoregression을 되돌리면서 양쪽 방향의 context를 활용하기 대안적 방법을 찾습니다. (?)
 <span class="tooltiptext">
 The GPT2, and some later models like TransformerXL and XLNet are auto-regressive in nature. BERT is not. That is a trade off. In losing auto-regression, BERT gained the ability to incorporate the context on both sides of a word to gain better results. XLNet brings back autoregression while finding an alternative way to incorporate the context on both sides.
 </span>
 </div>
 
-### The Evolution of the Transformer Block
+### Transformer block의 진화
 
 <div class="tooltip" markdown="1">
-[initial transformer paper](https://arxiv.org/abs/1706.03762)에서는 두가지 타입의 transformer block에 대해 소개합니다. 
+[최초의 transformer 논문(Attention Is All You Need)](https://arxiv.org/abs/1706.03762)에서는 두가지 타입의 transformer block에 대해 소개합니다. 
 <span class="tooltiptext">
 The [initial transformer paper](https://arxiv.org/abs/1706.03762) introduced two types of transformer blocks:
 </span>
 </div>
 
-#### The Encoder Block
+#### Encoder block
 
 <div class="tooltip" markdown="1">
-먼저 encoder block 입니다:
+먼저 encoder block입니다:
 <span class="tooltiptext">
 First is the encoder block:
 </span>
@@ -251,7 +218,7 @@ First is the encoder block:
   <image src="/images/xlnet/transformer-encoder-block-2.png"/>
   <br />
   <div class="tooltip" markdown="1">
-  최초의 transformer 논문에서 encoder block은 input을 특정 max sequence length(예: 512개의 토큰)까지 가질 수 있습니다. input sequence가 이 한계 보다 짧으면 괜찮습니다. sequence의 나머지 부분에 padding을 할 수 있습니다.
+  최초의 transformer 논문에서 encoder block은 입력을 특정 최대 시퀀스 길이(예: 512개의 토큰)까지 가질 수 있습니다. 입력 시퀀스가 이 길이보다 짧으면 괜찮습니다. 시퀀스의 나머지 부분에 패딩(padding)을 덧붙일 수 있습니다.
   <span class="tooltiptext">
   An encoder block from the original transformer paper can take inputs up until a certain max sequence length (e.g. 512 tokens). It's okay if an input sequence is shorter than this limit, we can just pad the rest of the sequence.
   </span>
@@ -259,9 +226,9 @@ First is the encoder block:
 </div>
 
 
-#### The Decoder Block
+#### Decoder block
 <div class="tooltip" markdown="1">
-두번째로, encoder block의 architecture를 살짝 변형한 decoder block이 있습니다 -- encoder로 부터의 특정 segment에 attention을 줄 수 있도록 하는 layer 입니다.
+두번째로, encoder block의 아키텍처를 살짝 변형한 decoder block이 있습니다 -- encoder로 부터의 특정 segment에 attention을 줄 수 있도록 하는 레이어가 있습니다.
 <span class="tooltiptext">
 Second, there's the decoder block which has a small architectural variation from the encoder block -- a layer to allow it to pay attention to specific segments from the encoder:
 </span>
@@ -273,14 +240,14 @@ Second, there's the decoder block which has a small architectural variation from
 </div>
 
 <div class="tooltip" markdown="1">
-여기서의 self-attention layer에서의 주요 다른 특징은, 앞으로 나올 token들을 masking하는 것 입니다 -- BERT 처럼 word를 [mask]로 치환하는 것이 아니라, aelf-attention 계산 시에, 계산되어야 하는 위치의 오른쪽에 있는 token들로부터의 정보를 막는 방법으로 차단합니다.
+decoder의 self-attention 레이어에서의 주요 다른 특징은, 앞으로 나올 token들을 masking하는 것 입니다 -- BERT 처럼 word를 [mask]로 치환하는 것이 아니라, aelf-attention 계산 시에, 계산되어야 하는 위치의 오른쪽에 있는 token들로부터의 정보를 막는 방법으로 차단합니다.
 <span class="tooltiptext">
 One key difference in the self-attention layer here, is that it masks future tokens -- not by changing the word to [mask] like BERT, but by interfering in the self-attention calculation blocking information from tokens that are to the right of the position being calculated.
 </span>
 </div>
 
 <div class="tooltip" markdown="1">
-예를 들어, #4번의 경로를 강조 표시하면, 우리는 현재와 이전 token들에 대해선만 주의/주목(attention)을 줄 수 있습니다.
+예를 들어, #4번의 경로를 볼 때, 현재와 이전 token들만이 attention 됨을 알 수 있습니다.
 <span class="tooltiptext">
 If, for example, we're to highlight the path of position #4, we can see that it is only allowed to attend to the present and previous tokens:
 </span>
@@ -292,7 +259,7 @@ If, for example, we're to highlight the path of position #4, we can see that it 
 </div>
 
 <div class="tooltip" markdown="1">
-(BERT가 사용하는) self-attention과 (GPT-2가 사용하는) masked self-attention이 확연히 다르다는 것은 중요합니다. 일반 self-attention block은 자신보다 오른쪽에 있는 token을 선택(pick의 오타로 추정 (?))할 수 있도록 합니다. masked self-attention의 경우에는, 이런 상황을 방지합니다.
+(BERT가 사용하는) self-attention과 (GPT-2가 사용하는) masked self-attention이 확연히 다르다는 것은 중요합니다. 일반 self-attention block은 자신보다 오른쪽에 있는 token을 계산 과정에서 볼 수 있도록 합니다. masked self-attention의 경우에는, 이런 상황을 막습니다.
 <span class="tooltiptext">
 It's important that the distinction between self-attention (what BERT uses) and masked self-attention (what GPT-2 uses) is clear. A normal self-attention block allows a position to peak at tokens to its right. Masked self-attention prevents that from happening:
 </span>
@@ -305,7 +272,7 @@ It's important that the distinction between self-attention (what BERT uses) and 
 
 #### The Decoder-Only Block
 <div class="tooltip" markdown="1">
-최초의 논문에 이어, [Generating Wikipedia by Summarizing Long Sequences](https://arxiv.org/pdf/1801.10198.pdf)에서는 language modeling이 가능한, 다른 배열의 transformer block을 제안했습니다. 이 모델은 transformer의 encoder를 버렸습니다. 그러한 이유로, 이 모델을 "Transformer-Decoder"라고 부르겠습니다. 이 초창기의 transformer 기반의 language model은 6개의 transformer decoder block으로 구성되었습니다:
+최초의 논문에 이어, [Generating Wikipedia by Summarizing Long Sequences 논문](https://arxiv.org/pdf/1801.10198.pdf)에서는 language modeling이 가능한, 다른 배열의 transformer block을 제안했습니다. 이 모델은 transformer의 encoder를 버렸습니다. 그러한 이유로, 이 모델을 "Transformer-Decoder"라고 부르겠습니다. 이 초창기의 transformer 기반의 language model은 6개의 transformer decoder block을 쌓아 구성했습니다:
 <span class="tooltiptext">
 Subsequent to the original paper, [Generating Wikipedia by Summarizing Long Sequences](https://arxiv.org/pdf/1801.10198.pdf) proposed another arrangement of the transformer block that is capable of doing language modeling. This model threw away the Transformer encoder. For that reason, let's call the model the "Transformer-Decoder". This early transformer-based language model was made up of a stack of six transformer decoder blocks:
 </span>
@@ -315,7 +282,7 @@ Subsequent to the original paper, [Generating Wikipedia by Summarizing Long Sequ
   <image src="/images/xlnet/transformer-decoder-intro.png"/>
   <br />
   <div class="tooltip" markdown="1">
-  이 decoder block들은 동일합니다. 첫번째를 확대했기 때문에, self-attention layer가 mask된 변형임을 알 수 있습니다. 현재는, 이 모델이 특정 segment에서 최대 4,000개 token까지 참조할 수 있음을 주목하세요 -- 최초 transformer에서 512개 였던 것에서 크게 업그레이드 되었습니다.
+  이 decoder block들은 동일합니다. 첫번째 block을 확대했기 때문에, self-attention 레이어가 masked 버전임을 알 수 있습니다. 현재는, 이 모델이 특정 segment에서 최대 4,000개 token까지 참조할 수 있습니다 -- 최초 transformer에서 512개 였던 것에 비하면 크게 업그레이드 되었습니다.
   <span class="tooltiptext">
   The decoder blocks are identical. I have expanded the first one so you can see its self-attention layer is the masked variant. Notice that the model now can address up to 4,000 tokens in a certain segment -- a massive upgrade from the 512 in the original transformer.
   </span>
@@ -323,7 +290,7 @@ Subsequent to the original paper, [Generating Wikipedia by Summarizing Long Sequ
 </div>
 
 <div class="tooltip" markdown="1">
-이 block들은, 두번째 self-attention layer를 제거한 것을 제외하면, 최초의 decoder block들과 매우 유사합니다. 비슷한 architecture가 [Character-Level Language Modeling with Deeper Self-Attention](https://arxiv.org/pdf/1808.04444.pdf)에서, 한번에 하나의 문자(letter/character)를 예측하는 language model을 만들기 위해 실험되었습니다.
+이 block들은, 두번째 self-attention layer를 제거한 것을 제외하면, 최초의 decoder block들과 매우 유사합니다. 비슷한 아키텍처가 [Character-Level Language Modeling with Deeper Self-Attention 논문](https://arxiv.org/pdf/1808.04444.pdf)에서, 한번에 하나의 문자(letter/character)를 예측하는 language model을 만들기 위해 실험되었습니다.
 <span class="tooltiptext">
 These blocks were very similar to the original decoder blocks, except they did away with that second self-attention layer. A similar architecture was examined in [Character-Level Language Modeling with Deeper Self-Attention](https://arxiv.org/pdf/1808.04444.pdf) to create a language model that predicts one letter/character at a time.
 </span>
@@ -331,13 +298,13 @@ These blocks were very similar to the original decoder blocks, except they did a
 
 
 <div class="tooltip" markdown="1">
-OpenAI의 GPT-2 모델은 이러한 decoder만으로 구성된 block들을 사용합니다.
+OpenAI의 GPT-2 모델은 이러한 decoder만으로 구성된 block들(decoder-only blocks)을 사용합니다.
 <span class="tooltiptext">
 The OpenAI GPT-2 model uses these decoder-only blocks.
 </span>
 </div>
 
-### Crash Course in Brain Surgery: Looking Inside GPT-2
+### GPT-2의 내부를 살펴보기
 
 <blockquote class='subtle' markdown="block">
 Look inside and you will see,
@@ -345,10 +312,11 @@ The words are cutting deep inside my brain.
 Thunder burning, quickly burning,
 Knife of words is driving me insane, insane yeah.
 ~<strong>[Budgie](https://en.wikipedia.org/wiki/Budgie_(band))</strong>
+(Budgie의 노래 "Crash Course in Brain Surgery" 중에서))
 </blockquote>
 
 <div class="tooltip" markdown="1">
-훈련된 GPT-2를 수술대 위에 올려놓고, 어떻게 동작하는지 살펴봅시다.
+훈련된 GPT-2를 우리의 수술대 위에 올려놓고, 어떻게 동작하는지 살펴봅시다.
 <span class="tooltiptext">
 Let's lay a trained GPT-2 on our surgery table and look at how it works.
 </span>
@@ -366,7 +334,7 @@ Let's lay a trained GPT-2 on our surgery table and look at how it works.
 </div>
 
 <div class="tooltip" markdown="1">
-훈련된 GPT-2 모델을 돌렬보는 가장 간단한 방법은 그 것 자체의 램블링(rambling/패턴없이 되는 대로 퍼져나가는)을 하도록 하는 것 입니다 (엄밀히 따져 말하면, *generating unconditional samples*입니다) -- 또는, prompt를 주고 특정 토픽에 대해 말해보도록 할 수 있습니다. (*interactive conditional samples* 생성이라고도 알려져 있습니다). rambling 방법에서, 우리는 간단히 시작 token을 주고 단어들을 생성하기 시작하도록 할 수 있습니다 (훈련된 모델은 ```<|endoftext|>```를 시작 token으로 쓰지만, 여기서는 ```<s>```으로 사용하겠습니다).
+훈련된 GPT-2 모델을 돌려보는 가장 간단한 방법은 그 것 자체의 램블링(rambling; 패턴없이 되는 대로 퍼져나가는)을 하도록 만드는 것 입니다 (기술적 용어로, *generating unconditional samples*입니다) -- 또는, prompt를 주고 특정 주제에 대해 말해보도록 할 수 있습니다. (*interactive conditional samples* 생성이라고도 알려져 있습니다). rambling 방법에서, 우리는 간단히 start token을 입력해서 단어들을 생성하기 시작하도록 만들 수 있습니다 (훈련된 모델은 ```<|endoftext|>```를 start token으로 쓰지만, 여기서는 ```<s>```으로 사용하겠습니다).
 <span class="tooltiptext">
 The simplest way to run a trained GPT-2 is to allow it to ramble on its own (which is technically called *generating unconditional samples*) -- alternatively, we can give it a prompt to have it speak about a certain topic (a.k.a generating *interactive conditional samples*). In the rambling case, we can simply hand it the start token and have it start generating words (the trained model uses ```<|endoftext|>``` as its start token. Let's call it ```<s>``` instead).
 </span>
@@ -378,14 +346,14 @@ The simplest way to run a trained GPT-2 is to allow it to ramble on its own (whi
 </div>
 
 <div class="tooltip" markdown="1">
-input token 1개 만을 가지고 있는 상황에서, 모델은 경로가 1개만 활성화 됩니다. token은 모든 레이어를 통해 연속적으로 거쳐 처리된 다음 vector가 생성됩니다. 그 vector는 모델의 vocab(어휘)에 대해 score가 매겨질 수 있습니다(?)(모델이 알고 있는 모든 단어들, GPT-2의 경우엔 50,000개의 단어). 이런 경우에 우리는 가장 높은 확률을 갖는 'the'를 선택합니다. But we can certainly mix things up -- 키보드 앱에서 제안하는 단어를 클릭하기를 계속하면, 가끔 반복 루프에 빠질 때가 있고, 이 때 유일한 탈출 방법은 두번째나 세번째로 제안한 단어를 선택하는 것 입니다. 같은 상황이 여기서도 있습니다. GPT-2는 top-k라는 parameter를 가지고 있어서 우리는 모델이 top 단어(top-k가 1인 경우)가 아닌 다른 단어를 샘플링하게 만들 수 있습니다.
+모델은 input token 하나를 가지고 있으므로, 경로가 1개만 활성화 됩니다. token이 모든 레이어를 연속적으로 거쳐 처리되고 나면, 그 경로를 따라 vector가 생성됩니다. 그 vector에 모델의 어휘(vocab) 전체(모델이 알고 있는 모든 단어들, GPT-2의 경우엔 50,000개의 단어)에 대해 점수(score)가 매겨질 수 있습니다. 이 경우에 우리는 가장 높은 확률을 갖는 'the'를 선택했습니다. 하지만, 선택에 변화를 주는 방법도 있습니다 -- 키보드 앱에서 제안하는 단어를 클릭하기를 계속하면, 가끔 반복 루프에 빠질 때가 있고, 이 때 유일한 탈출 방법은 두번째나 세번째로 제안한 단어를 선택하는 것 입니다. 동일한 상황이 여기서도 있습니다. GPT-2는 top-k라는 parameter를 가지고 있어서 우리는 모델이 top 단어(top-k가 1인 경우)가 아닌 다른 단어를 샘플링하게 만들 수도 있습니다.
 <span class="tooltiptext">
 The model only has one input token, so that path would be the only active one. The token is processed successively through all the layers, then a vector is produced along that path. That vector can be scored against the model's vocabulary (all the words the model knows, 50,000 words in the case of GPT-2). In this case we selected the token with the highest probability, 'the'. But we can certainly mix things up -- you know how if you keep clicking the suggested word in your keyboard app, it sometimes can stuck in repetitive loops where the only way out is if you click the second or third suggested word. The same can happen here. GPT-2 has a parameter called top-k that we can use to have the model consider sampling words other than the top word (which is the case when top-k = 1).
 </span>
 </div>
 
 <div class="tooltip" markdown="1">
-다음 단계에서, 첫번째 단계의 output을 input sequence에 덧붙인 뒤 모델이 다음 예측을 수행합니다:
+다음 단계에서, 첫번째 단계의 출력을 입력 시퀀스에 덧붙인 뒤 모델이 다음 예측을 수행합니다:
 <span class="tooltiptext">
 In the next step, we add the output from the first step to our input sequence, and have the model make its next prediction:
 </span>
@@ -397,17 +365,17 @@ In the next step, we add the output from the first step to our input sequence, a
 </div>
 
 <div class="tooltip" markdown="1">
-이번 계산에서는 두 번째 경로만 활성화되는 것을 주목하세요. GPT-2의 각 레이어는 첫번째 token의 interpretation을 재학습하고, 두번째 token을 처리할 때에 사용합니다 (뒤에서 self-attention 섹션에서 더 자세히 알아보겠습니다). GPT-2는 두번째 token에 비추어 첫번째 token을 재해석하지 않습니다. (?)
+이번 계산에서는 두 번째 경로만 활성화되는 것을 주목하세요. GPT-2의 각 레이어는 첫번째 token의 interpretation을 유지하고, 두번째 token을 처리할 때에 사용합니다 (뒤에서 self-attention 섹션에서 더 자세히 알아보겠습니다). GPT-2는 두번째 token에 비추어 첫번째 token을 재계산(re-interpret)하지 않습니다.
 <span class="tooltiptext">
 Notice that the second path is the only that's active in this calculation. Each layer of GPT-2 has retained its own interpretation of the first token and will use it in processing the second token (we'll get into more detail about this in the following section about self-attention). GPT-2 does not re-interpret the first token in light of the second token.
 </span>
 </div>
 
-### A Deeper Look Inside
+### 더 깊이 알아보기
 
-#### Input Encoding
+#### 입력 Encoding
 <div class="tooltip" markdown="1">
-모델에 대해 더 상세하게 알기 위해 더 자세한 사항들을 봅시다. input으로 부터 시작합시다. 이전에 논의했던 다른 NLP 모델들처럼, GPT-2 모델도 embedding matrix에서 input 단어의 embedding을 조회합니다 -- 이 embedding matrix는 학습된 모델의 일부로서, 얻을 수 있는 구성요소 중 하나 입니다. 
+모델에 대해 더 상세하게 알기 위해 더 자세한 사항들을 봅시다. 입력으로 부터 시작합시다. 이전에 논의했던 다른 NLP 모델들처럼, GPT-2 모델도 embedding matrix에서 입력 단어의 embedding을 조회합니다 -- 이 embedding matrix는 학습된 모델의 일부로서 얻을 수 있는, 구성요소 중 하나 입니다. 
 <span class="tooltiptext">
 Let's look at more details to get to know the model more intimately. Let's start from the input. As in other NLP models we've discussed before, the model looks up the embedding of the input word in its embedding matrix -- one of the components we get as part of a trained model.
 </span>
@@ -417,7 +385,7 @@ Let's look at more details to get to know the model more intimately. Let's start
   <image src="/images/gpt2/gpt2-token-embeddings-wte-2.png"/>
   <br />
   <div class="tooltip" markdown="1">
-  각 행은 단어 embedding 입니다: 단어를 표현하고 그 의미를 캡쳐(포함)하는 숫자형태로 표현된 리스트(목록). 이 리스트의 크기는 GPT2 모델 사이즈에 따라 다릅니다. 제일 작은 모델은 단어(토큰) 당 768 embedding 크기를 사용합니다. 
+  각 행은 단어 embedding 입니다: 단어를 표현하고 그 의미를 캡쳐(함유)하는 숫자형태의 표현(representation) 리스트 입니다. 이 리스트의 크기는 GPT2 모델 사이즈에 따라 다릅니다. 제일 작은 모델은 단어(토큰) 당 768 embedding 크기를 사용합니다. 
   <span class="tooltiptext">
   Each row is a word embedding: a list of numbers representing a word and capturing some of its meaning. The size of that list is different in different GPT2 model sizes. The smallest model uses an embedding size of 768 per word/token.
   </span>
@@ -425,7 +393,7 @@ Let's look at more details to get to know the model more intimately. Let's start
 </div>
 
 <div class="tooltip" markdown="1">
-처음에는, embedding matrix에서 start token ```<s>```의 embedding을 조회합니다. 모델의 첫번째 block에 이 정보를 전달하기 전에, 위치 encoding 정보를 통합해야 합니다. -- 위치 encoding은 transformer block으로 sequence 상에서의 word들의 순서 정보를 알려주는 신호(정보)입니다. 훈련된 모델을 구성하는 한 부분은 input의 1024개 위치 각각에 대한 위치 encoding vector입니다.
+처음에는, embedding matrix에서 시작 토큰 ```<s>```의 embedding을 조회합니다. 모델의 첫번째 block에 이 정보를 전달하기 전에, 위치 인코딩(positional encoding) 정보를 통합해야 합니다. -- positional encoding은 transformer block에게, 시퀀스 상에서의 word들의 순서 정보를 알려주는 신호(정보)입니다. 훈련된 모델을 구성하는 또다른 한 부분은 입력의 1024개 위치 각각에 대한 positional encoding vector입니다.
 <span class="tooltiptext">
 So in the beginning, we look up the embedding of the start token ```<s>``` in the embedding matrix. Before handing that to the first block in the model, we need to incorporate positional encoding -- a signal that indicates the order of the words in the sequence to the transformer blocks. Part of the trained model is a matrix that contains a positional encoding vector for each of the 1024 positions in the input.
 </span>
@@ -437,7 +405,7 @@ So in the beginning, we look up the embedding of the start token ```<s>``` in th
 </div>
 
 <div class="tooltip" markdown="1">
-이로써 input 단어들이 transformer의 첫번쨰 block에 전달되기 전에 어떤 처리가 있는지 살펴봤습니다. 또한 훈련된 GPT-2를 구성하는 두개의 weight matrix(가중치 행렬)도 알게 되었습니다.
+이로써 입력 단어들이 transformer의 첫번째 block에 전달되기 전에 어떤 처리를 거치는지 살펴봤습니다. 또한 훈련된 GPT-2를 구성하는 두개의 weight matrix(가중치 행렬)도 알게 되었습니다.
 <span class="tooltiptext">
 With this, we've covered how input words are processed before being handed to the first transformer block. We also know two of the weight matrices that constitute the trained GPT-2.
 </span>
@@ -447,17 +415,17 @@ With this, we've covered how input words are processed before being handed to th
   <image src="/images/gpt2/gpt2-input-embedding-positional-encoding-3.png"/>
   <br />
   <div class="tooltip" markdown="1">
-  word를 transformer block의 첫번째로 전달하는 것은 그 word의 embedding과 #1번 위치의 encoding vector를 더하는 것을 의미합니다.
+  word를 transformer block의 첫번째로 전달하는 것은 그 word의 embedding과 #1번 positional encoding vector를 더하는 것을 의미합니다.
   <span class="tooltiptext">
   Sending a word to the first transformer block means looking up its embedding and adding up the positional encoding vector for position #1.
   </span>
   </div>
 </div>
 
-#### A journey up the Stack
+#### 상위 Stack으로의 이동
 
 <div class="tooltip" markdown="1">
-첫번째 block은 이제 token을 self-attention 프로세스를 통해 전달하고, neural network 레이어로 전달하여 처리할 수 있습니다. 첫번째 transformer block이 이 token을 처리하면, 그 결과 vector를 다음 block에서 처리되도록 윗쪽 stack으로 올립니다. 프로세스는 각 block마다 동일하지만 각 block은 각자의 self-attention 및 neural network sublayer에 대한 weight들을 가지고 있습니다. 
+이제 첫번째 block은 token을 self-attention 프로세스를 통해 전달하고, neural network 레이어로 전달하여 처리할 수 있습니다. 첫번째 transformer block이 이 token을 처리하면, 그 결과 vector를 다음 block에서 처리하도록 윗쪽 stack으로 올립니다. 프로세스는 각 block마다 동일하지만 각 block은 각자의 self-attention 및 neural network 하위 레이어에 대한 weight들을 가지고 있습니다. 
 <span class="tooltiptext">
 The first block can now process the token by first passing it through the self-attention process, then passing it through its neural network layer. Once the first transformer block processes the token, it sends its resulting vector up the stack to be processed by the next block. The process is identical in each block, but each block has its own weights in both self-attention and the neural network sublayers.
 </span>
@@ -473,7 +441,7 @@ The first block can now process the token by first passing it through the self-a
 #### Self-Attention Recap
 
 <div class="tooltip" markdown="1">
-언어는 context(문맥)에 매우 의존적입니다. 예를들어, 제 2법칙을 봅시다:
+언어는 context(문맥)에 매우 의존적입니다. 예를들어, 제 2원칙을 봅시다:
 <span class="tooltiptext">
 Language heavily relies on context. For example, look at the second law:
 </span>
@@ -482,17 +450,13 @@ Language heavily relies on context. For example, look at the second law:
 <blockquote class='subtle'>
 
 <strong>Second Law of Robotics</strong><br />
-<div class="tooltip" markdown="1">
-로봇은 <strong style="color:#6D4C41">제 1법칙</strong>에 위반되는 <strong style="color:#689F38">그러한 명령들</strong>을 제외하고는 인간이 <strong style="color:#D81B60">그것</strong>에게 내린 명령들에 복종해야 한다.
-<span class="tooltiptext">
 A robot must obey the orders given <strong style="color:#D81B60">it</strong> by human beings except where <strong style="color:#689F38">such orders</strong> would conflict with the <strong style="color:#6D4C41">First Law</strong>.
-</span>
-</div>
+(로보틱스 제2원칙: 로봇은 인간이 <strong style="color:#D81B60">그것</strong>에 내리는 명령들에 복종해야만 하며, 단 <strong style="color:#689F38">이러한 명령들</strong>이 <strong style="color:#6D4C41">제1원칙</strong>에 위배될 때는 예외로 한다.)
 
 </blockquote>
 
 <div class="tooltip" markdown="1">
-문장에서 다른 word를 참조하는 단어들 3군데를 하이라이트 표기 했습니다. 이 단어들은 참조하는 context와 통합적으로 보지 않으면 이해 또는 처리할 수 없습니다. 모델이 이 문장을 처리할 때, 다음을 알 수 있어야 합니다.
+문장에서 다른 단어(word)를 참조하는 단어들 3군데를 하이라이트 표기 했습니다. 이 단어들은 참조하는 context와 통합적으로 보지 않으면 이해 또는 처리할 수 없습니다. 모델이 이 문장을 처리할 때, 다음을 알 수 있어야 합니다.
 <span class="tooltiptext">
 I have highlighted three places in the sentence where the words are referring to other words. There is no way to understand or process these words without incorporating the context they are referring to. When a model processes this sentence, it has to be able to know that:
 </span>
@@ -500,12 +464,12 @@ I have highlighted three places in the sentence where the words are referring to
 
 <div class="tooltip" markdown="1">
 * <strong style="color:#D81B60">그것</strong>은 로봇을 가르킵니다.
-* <strong style="color:#689F38">그러한 명령들</strong>은 이 법칙의 앞부분(참고: 한국어에서는 언어 구조 상 뒷쪽에 위치)인, "인간이 그것에게 내린 명령들"을 가르킵니다.
-* <strong style="color:#6D4C41">제 1법칙</strong>은 제 1법칙 전체를 가르킵니다.
+* <strong style="color:#689F38">그러한 명령들</strong>은 이 법칙의 앞부분(참고: 한국어에서는 언어 구조 상 뒷쪽에 위치)인, "인간이 그것에 내리는 명령들"을 가르킵니다.
+* <strong style="color:#6D4C41">제 1원칙</strong>은 제 1원칙 전체를 가르킵니다.
 <span class="tooltiptext">
-* <strong style="color:#D81B60">it</strong> refers to the robot
-* <strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
-* <strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
+<strong style="color:#D81B60">it</strong> refers to the robot
+<strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
+<strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
 </span>
 </div>
 
