@@ -470,11 +470,11 @@ I have highlighted three places in the sentence where the words are referring to
 * <strong style="color:#689F38">그러한 명령들</strong>은 이 법칙의 앞부분(참고: 한국어에서는 언어 구조 상 뒷부분에 위치)의, "인간이 그것에 내리는 명령들"을 가르킵니다.
 * <strong style="color:#6D4C41">제 1원칙</strong>은 제 1원칙 전체를 가르킵니다.
 <span class="tooltiptext" style="display: inline-block; text-align: left;">
-<strong>*</strong><strong style="color:#D81B60">it</strong> refers to the robot
+<strong style="color:#D81B60">it</strong> refers to the robot
 <br />
-<strong>*</strong><strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
+<strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
 <br />
-<strong>*</strong><strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
+<strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
 </span>
 </div>
 
