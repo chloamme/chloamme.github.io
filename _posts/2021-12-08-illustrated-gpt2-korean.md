@@ -43,35 +43,35 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 
 
 <div class="tooltip" markdown="1">
-  <div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
+<div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
 
-    <div style="text-align:center" markdown="1">  
-    **목차**
-    </div>
-
-    * **[파트 1: GPT2와 Language Modeling](#part-1-got-and-language-modeling)**
-      * Language Model이란
-      * Language Modeling을 위한 Transformers 
-      * BERT와 다른점 한가지
-      * Transformer Block의 발전
-      * 뇌 외과 집중 과정: GPT-2의 내부를 살펴보기
-      * 더 깊이 살펴보기
-      * 파트 1의 끝: GPT-2, 신사 숙녀 여러분
-    * **[파트 2: Self-Attention의 설명](#part-2-illustrated-self-attention)**
-      * (masking 없는) Self-Attention
-      * 1- Query, Key, Value 벡터 만들기
-      * 2- Score
-      * 3- Sum
-      * 그림으로 설명하는 Masked Self-Attention
-      * GPT-2 Masked Self-Attention
-      * Language modeling을 넘어
-      * 해냈습니다!
-    * **[파트 3: Language Modeling을 넘어](#part-3-beyond-language-modeling)**
-      * 기계 번역(Machine Translation)
-      * 요약(Summarization)
-      * 전이 학습(Transfer Learning)
-      * 음악 생성(Music Generation)
+  <div style="text-align:center" markdown="1">  
+  **목차**
   </div>
+
+  * **[파트 1: GPT2와 Language Modeling](#part-1-got-and-language-modeling)**
+    * Language Model이란
+    * Language Modeling을 위한 Transformers 
+    * BERT와 다른점 한가지
+    * Transformer Block의 발전
+    * 뇌 외과 집중 과정: GPT-2의 내부를 살펴보기
+    * 더 깊이 살펴보기
+    * 파트 1의 끝: GPT-2, 신사 숙녀 여러분
+  * **[파트 2: Self-Attention의 설명](#part-2-illustrated-self-attention)**
+    * (masking 없는) Self-Attention
+    * 1- Query, Key, Value 벡터 만들기
+    * 2- Score
+    * 3- Sum
+    * 그림으로 설명하는 Masked Self-Attention
+    * GPT-2 Masked Self-Attention
+    * Language modeling을 넘어
+    * 해냈습니다!
+  * **[파트 3: Language Modeling을 넘어](#part-3-beyond-language-modeling)**
+    * 기계 번역(Machine Translation)
+    * 요약(Summarization)
+    * 전이 학습(Transfer Learning)
+    * 음악 생성(Music Generation)
+</div>
 <span class="tooltiptext">
 * **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
   * What is a Language Model
