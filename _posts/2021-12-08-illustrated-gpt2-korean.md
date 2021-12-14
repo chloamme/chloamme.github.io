@@ -470,11 +470,11 @@ I have highlighted three places in the sentence where the words are referring to
 * <strong style="color:#689F38">그러한 명령들</strong>은 이 법칙의 앞부분(참고: 한국어에서는 언어 구조 상 뒷부분에 위치)의, "인간이 그것에 내리는 명령들"을 가르킵니다.
 * <strong style="color:#6D4C41">제 1원칙</strong>은 제 1원칙 전체를 가르킵니다.
 <span class="tooltiptext" style="display: inline-block; text-align: left;">
-<strong style="color:#D81B60">it</strong> refers to the robot
+<span>*</span> <strong style="color:#D81B60">it</strong> refers to the robot
 <br />
-<strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
+<span>*</span> <strong style="color:#689F38">such orders</strong> refers to the earlier part of the law, namely "the orders given it by human beings"
 <br />
-<strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
+<span>*</span> <strong style="color:#6D4C41">The First Law</strong> refers to the entire First Law
 </span>
 </div>
 
@@ -510,11 +510,11 @@ Self-attention is processed along the path of each token in the segment. The sig
 * <span class="context">Key</span>: Key vector는 segment에서 모든 word들에 대한 레이블과 같습니다. 관련 word를 검색할 때 매칭해보는 항목입니다.
 * <span class="step_no">Value</span>: Value vector는 실제 word representation 입니다. 각 단어가 얼마나 관련이 있는지 score를 매기고 나면, 현재의 word를 표현(representation)하기 위한 합산(add up)한 값입니다.
 <span class="tooltiptext"  style="display: inline-block; text-align: left;">
-<span class="decoder">Query</span>: The query is a representation of the current word used to score against all the other words (using their keys). We only care about the query of the token we're currently processing.
+<span>*</span> <span class="decoder">Query</span>: The query is a representation of the current word used to score against all the other words (using their keys). We only care about the query of the token we're currently processing.
 <br />
-<span class="context">Key</span>: Key vectors are like labels for all the words in the segment. They're what we match against in our search for relevant words.
+<span>*</span> <span class="context">Key</span>: Key vectors are like labels for all the words in the segment. They're what we match against in our search for relevant words.
 <br />
-<span class="step_no">Value</span>: Value vectors are actual word representations, once we've scored how relevant each word is, these are the values we add up to represent the current word.
+<span>*</span> <span class="step_no">Value</span>: Value vectors are actual word representations, once we've scored how relevant each word is, these are the values we add up to represent the current word.
 </span>
 </div>
 
@@ -634,15 +634,15 @@ I'd like to note a few oversimplifications in this post:
 * Transformer는 레이어 정규화(layer normalization)를 많이 사용하며, 꽤 중요합니다. 이전 블로그 포스팅 'Illustrated Transformer'에서는 몇가지를 언급했었지만, 이번 포스팅에서는 self-attention에 집중했습니다.
 * vector를 표현하기 위해 더 많은 상자(box)들로 표현해야할 때가 있습니다. 저는 이 상자들을 "zoom in"으로 표시했습니다. 예를 들어 다음과 같습니다:
 <span class="tooltiptext" style="display: inline-block; text-align: left;">
-<span>*</span>I used "words" and "tokens" interchangeably. But in reality, GPT2 uses Byte Pair Encoding to create the tokens in its vocabulary. This means the tokens are usually parts of words.
+<span>*</span> I used "words" and "tokens" interchangeably. But in reality, GPT2 uses Byte Pair Encoding to create the tokens in its vocabulary. This means the tokens are usually parts of words.
 <br />
-<span>*</span>The example we showed runs GPT2 in its inference/evaluation mode. That's why it's only processing one word at a time. At training time, the model would be trained against longer sequences of text and processing multiple tokens at once. Also at training time, the model would process larger batch sizes (512) vs. the batch size of one that evaluation uses.
+<span>*</span> The example we showed runs GPT2 in its inference/evaluation mode. That's why it's only processing one word at a time. At training time, the model would be trained against longer sequences of text and processing multiple tokens at once. Also at training time, the model would process larger batch sizes (512) vs. the batch size of one that evaluation uses.
 <br />
-<span>*</span>I took liberties in rotating/transposing vectors to better manage the spaces in the images. At implementation time, one has to be more precise.
+<span>*</span> I took liberties in rotating/transposing vectors to better manage the spaces in the images. At implementation time, one has to be more precise.
 <br />
-<span>*</span>Transformers use a lot of layer normalization, which is pretty important. We've noted a few of these in the Illustrated Transformer, but focused more on self-attentionin this post.
+<span>*</span> Transformers use a lot of layer normalization, which is pretty important. We've noted a few of these in the Illustrated Transformer, but focused more on self-attentionin this post.
 <br />
-<span>*</span>There are times when I needed to show more boxes to represent a vector. I indicate those as "zooming in". For example:
+<span>*</span> There are times when I needed to show more boxes to represent a vector. I indicate those as "zooming in". For example:
 </span>
 </div>
 
