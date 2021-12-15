@@ -10,7 +10,7 @@ tags: [gpt2, language model]
  원문은 [The Illustrated GPT-2 (Visualizing Transformer Language Models)
 ](https://jalammar.github.io/illustrated-gpt2/)에서 확인하실 수 있습니다.
 * 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역(번역체) 보다는 개념에 대한 설명을 쉽게 하는 문장으로 표현하는 쪽으로 더 무게를 두어 번역 했습니다.
-* 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](https://nlpinkorean.github.io)님께서 만들어두신 tooltip 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
+* 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](https://nlpinkorean.github.io)님께서 만들어두신 툴팁 도움말 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
 <p align="center">(이하 본문)</p>
 
 ---
@@ -1300,8 +1300,8 @@ This concludes our journey into the GPT2, and our exploration of its parent mode
 * OpenAI의 [GPT2 구현](https://github.com/openai/gpt-2) 
 * [Hugging Face](https://huggingface.co/)의 [pytorch-transformers](https://github.com/huggingface/pytorch-transformers) 라이브러리 및 GPT2, BERT 구현, Transformer-XL, XLNet, 최신 transformer model들을 확인해보세요.
 <span class="tooltiptext">
-* The [GPT2 Implementation](https://github.com/openai/gpt-2) from OpenAI
-* Check out the [pytorch-transformers](https://github.com/huggingface/pytorch-transformers) library from [Hugging Face](https://huggingface.co/) in addition to GPT2, it implements BERT, Transformer-XL, XLNet and other cutting-edge transformer models.
+<span>*</span> The [GPT2 Implementation](https://github.com/openai/gpt-2) from OpenAI
+<span>*</span> Check out the [pytorch-transformers](https://github.com/huggingface/pytorch-transformers) library from [Hugging Face](https://huggingface.co/) in addition to GPT2, it implements BERT, Transformer-XL, XLNet and other cutting-edge transformer models.
 </span>
 </div>
 
@@ -1315,6 +1315,7 @@ Thanks to [Lukasz Kaiser](https://twitter.com/lukaszkaiser), [Mathias Müller](h
 
 <div class="tooltip" markdown="1">
 (원문에 대한) 의견이나 수정 사항이 있다면 [@JayAlammar](https://twitter.com/JayAlammar)로 tweet 해주세요.
+<br />
 (번역에서 의견이나 수정 사항은 아래 댓글 창에 남겨주세요!)
 <span class="tooltiptext">
 Comments or corrections? Please tweet me at [@JayAlammar](https://twitter.com/JayAlammar)
