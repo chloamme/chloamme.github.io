@@ -558,7 +558,7 @@ We multiply each value by its score and sum up -- resulting in our self-attentio
 </div>
 
 <div class="tooltip" markdown="1">
-이 가중치 혼합된 value vector는, 50%는 단어 ```robot```에, 30%는 ```a```에, 19%는 ```it```에 attention을 준 vector를 생성합니다. 이 글의 뒷부분에서, self-attention에 대해 더 자세히 알아보겠습니다. 지금은, 모델의 출력을 향하여 윗쪽 stack을 계속 알아봅시다.
+이 가중치 혼합된 value vector는, 50%는 단어 ```robot```에, 30%는 ```a```에, 19%는 ```it```에 attention을 준 vector를 생성합니다. 이 글의 뒷부분에서, self-attention에 대해 더 자세히 알아보겠습니다. 지금은, 모델의 출력 방향으로 윗쪽 stack을 계속 알아봅시다.
 <span class="tooltiptext">
 This weighted blend of value vectors results in a vector that paid 50% of its "attention" to the word ```robot```, 30% to the word ```a```, and 19% to the word ```it```. Later in the post, we'll got deeper into self-attention. But first, let's continue our journey up the stack towards the output of the model.
 </span>
@@ -579,7 +579,7 @@ When the top block in the model produces its output vector (the result of its ow
 </div>
 
 <div class="tooltip" markdown="1">
-embedding matrix의 각 행은 모델 어휘(vocab) 단어들의 embedding에 해당합니다. 이 곱셈의 결과는 모델의 어휘에서 각 word에 대한 score로 해석됩니다. (즉, 단얼르 선택하기 위한 score로 사용할 수 있습니다.)
+embedding matrix의 각 행은 모델 어휘(vocab) 단어들의 embedding에 해당합니다. 이 곱셈의 결과는 모델의 어휘에서 각 word에 대한 score로 해석됩니다. (즉, 단어를 선택하기 위한 score로 사용할 수 있습니다.)
 <span class="tooltiptext">
 Recall that each row in the embedding matrix corresponds to the embedding of a word in the model's vocabulary. The result of this multiplication is interpreted as a score for each word in the model's vocabulary.
 </span>
@@ -610,7 +610,7 @@ With that, the model has completed an iteration resulting in outputting a single
 </span>
 </div>
 
-### 파트 #1의 마무리
+### 파트 #1의 마무리: 몇가지 안내사항
 
 <div class="tooltip" markdown="1">
 이 파트는 끝났고, 우리는 해냈습니다. GPT2 동작 방식에 대한 간단한 요약이었습니다. 만약 self-attention 레이어의 안쪽에서 무슨 일이 일어나는지 궁금하다면, 아래의 보너스 섹션을 살펴보세요. TransformerXL와 XLNet와 같은 후속 transformer 모델을 더 쉽게 알아보고 설명할 수 있도록, self-attention을 설명하는 더 시각적인 언어(설명)로 표현하기 위해 이 글을 썼습니다. 
@@ -673,9 +673,9 @@ In this section, we'll look at the details of how that is done. Note that we'll 
 </span>
 </div>
 
-### Self-Attention (without masking)
+### (Masking 없는) Self-Attention
 <div class="tooltip" markdown="1">
-encoder block에서 계산된 최초의 self-attention을 살펴보는 것으로 부터 시작해봅시다. 한번에 4개의 token만 처리할 수 있는 작은(toy) transformer를 살펴보겠습니다.
+encoder block에서 계산된 최초의 self-attention을 살펴보는 것으로 부터 시작해봅시다. 한번에 4개의 token만 처리할 수 있는 토이(toy) transformer를 살펴보겠습니다.
 <span class="tooltiptext">
 Let's start by looking at the original self-attention as it's calculated in an encoder block. Let's look at a toy transformer block that can only process four tokens at a time.
 </span>
@@ -693,10 +693,10 @@ Self-attention is applied through three main steps:
 1. 각 경로 마다 Query, Key, Value 벡터를 생성합니다.
 2. 각 input token 마다, query vector를 사용하여 모든 다른 key vector들에 대한 score를 계산합니다.
 3. value vector에 그 조합된 score를 곱한 뒤 합산합니다.
-<span class="tooltiptext">
-1. Create the Query, Key, and Value vectors for each path.
-2. For each input token, use its query vector to score against all the other key vectors
-3. Sum up the value vectors after multiplying them by their associated scores.
+<span class="tooltiptext" style="display: inline-block; text-align: left;">
+<span>1.</span> Create the Query, Key, and Value vectors for each path.
+<span>2.</span> For each input token, use its query vector to score against all the other key vectors
+<span>3.</span> Sum up the value vectors after multiplying them by their associated scores.
 </span>
 </div>
 
@@ -705,50 +705,48 @@ Self-attention is applied through three main steps:
   <br />
 </div>
 
-### 1- Create Query, Key, and Value Vectors
+### 1- Query, Key, Value Vector 생성
 <div class="tooltip" markdown="1">
-첫번째 경로를 봅시다. query를 받아서, 모든 key들과 비교할 것입니다. 각 key 별로 score를 계산해냅니다. self-attention에서의 첫번쨰 단계는 각 token 경로 별 3개의 vector를 계산하는 것 입니다 (지금부터는 attention head는 무시합니다):
+첫번째 경로를 봅시다. query를 받아서, 모든 key들과 비교할 것입니다. 각 key 별로 score를 계산합니다. self-attention에서의 첫번째 단계는 각 token 경로 별 3개의 vector를 계산하는 것 입니다 (attention head는 일단은 무시합니다):
 <span class="tooltiptext">
 Let's focus on the first path. We'll take its query, and compare against all the keys. That produces a score for each key. The first step in self-attention is to calculate the three vectors for each token path (let's ignore attention heads for now):
 </span>
 </div>
 
-
 <div class="img-div-any-width" markdown="0">
-  1) 각 input token 마다, weight matrix W^Q, W^K, W^V를 곱하여 query vector, key vector, value vector를 생성합니다. 
+  1) 각 input token 마다, weight matrix <strong style="color:#A144B8">W^Q</strong>, <strong style="color:#F18533">W^K</strong>, <strong style="color:#329CEB">W^V</strong>를 곱하여 <strong style="color:#A144B8">query vector</strong>, <strong style="color:#F18533">key vector</strong>, <strong style="color:#329CEB">value vector</strong>를 생성합니다. 
   <image src="/images/xlnet/self-attention-1.png"/>
   <br />
 </div>
 
-### 2- Score
+### 2- Score 계산
 <div class="tooltip" markdown="1">
-이제 vector들을 갖게 되었고, #2번 단계를 위해서만 query 및 key vector를 사용합니다. 우리는 지금 첫번째 token을 집중해서 보고 있기 때문에, 그 token의 query를 모든 key vector들과 곱하여 4개의 token들 각각의 score를 얻습니다. 
+이제 vector들을 갖게 되었고, 현재 #2번 단계에서만 query 및 key vector를 사용합니다. 우리는 지금 첫번째 token을 집중해서 보고 있기 때문에, 그 token의 query를 모든 key vector들과 곱하여 4개의 token들 각각의 score를 얻습니다. 
 <span class="tooltiptext">
 Now that we have the vectors, we use the query and key vectors only for step #2. Since we're focused on the first token, we multiply its query by all the other key vectors resulting in a score for each of the four tokens.
 </span>
 </div>
 <div class="img-div-any-width" markdown="0">  
-  2) 현재의 query vector와 모든 key vector가 얼마나 잘 매칭되는지 score를 얻기 위해 곱셈(dot product) 연산을 합니다. 
+  2) 현재의 <strong style="color:#A144B8">query vector</strong>와 모든 <strong style="color:#F18533">key vector</strong>가 얼마나 잘 매칭되는지 score를 얻기 위해 곱셈(dot product) 연산을 합니다. 
   <image src="/images/xlnet/self-attention-2.png"/>
   <br />
 </div>
 
-
-### 3- Sum
+### 3- 전체 합산
 
 <div class="tooltip" markdown="1">
-우리는 이제 score들과 value vector들을 곱할 수 있습니다. 높은 score의 value는, 결과가 다 더해지고 난 뒤에, 결과 vector의 큰 비중을 차지하게 됩니다.
+우리는 이제 score들과 value vector들을 곱할 수 있습니다. 높은 score의 value는, 결과가 다 더해지고 난 뒤에, 결과 vector에서 높은 비중을 차지하게 됩니다.
 <span class="tooltiptext">
 We can now multiply the scores by the value vectors. A value with a high score will constitute a large portion of the resulting vector after we sum them up.
 </span>
 </div>
 
 <div class="img-div-any-width" markdown="0">
-  3) value vector들을 score들과 곱한 뒤 합산합니다. 
+  3) <strong style="color:#329CEB">value vector들</strong>을 <strong style="color:#E66A93">score들</strong>과 곱한 뒤 모두 합산합니다. 
   <image src="/images/xlnet/self-attention-3-2.png"/>
   <br />
   <div class="tooltip" markdown="1">
-  더 낮은 score일 수록 value vector가 더 투명하게 표시됩니다. 작은 수를 곱하는 것이 vector의 값을 희석하는지(작게 만드는지) 표현합니다.
+  더 낮은 score일 수록 value vector가 더 투명하게 표시됩니다. 작은 수를 곱하는 것이 vector의 값을 희석하는 것(작게 만듦)을 표현합니다.
   <span class="tooltiptext">
   The lower the score, the more transparent we're showing the value vector. That's to indicate how multiplying by a small number dilutes the values of the vector.
   </span>
@@ -756,7 +754,7 @@ We can now multiply the scores by the value vectors. A value with a high score w
 </div>
 
 <div class="tooltip" markdown="1">
-만약 각 경로마다 같은 동작을 수행한다면, 각 해당 token 마다, 적합한 context를 포함하는 token을 표현하는 vector를 얻게 됩니다. 그 값은 transformer block의 다음 하위 layer(feed-forward neural network)에 제공됩니다. 
+만약 각 경로마다 같은 동작을 수행한다면, 각 해당 token 마다, 적합한 context를 포함하는 token의 vector representation을 얻게 됩니다. 그 값은 transformer block의 다음 하위 layer(feed-forward neural network)에 제공됩니다. 
 <span class="tooltiptext">
 If we do the same operation for each path, we end up with a vector representing each token containing the appropriate context of that token. Those are then presented to the next sublayer in the transformer block (the feed-forward neural network):
 </span>
@@ -768,10 +766,10 @@ If we do the same operation for each path, we end up with a vector representing 
   <br />
 </div>
 
-### The Illustrated Masked Self-Attention
+### 그림으로 설명하는 Masked Self-Attention
 
 <div class="tooltip" markdown="1">
-우리는 지금까지 transformer의 self-attention 단계를 살펴보았고, 이제 masked self-attention에 대해 살펴보겠습니다. Masked self-attention은 self-attention과 같지만, #2 단계에서는 다릅니다. 모델이 2개의 token만을 input으로 가진다고 가정하고, 우리는 두번쨰 token을 처리하는 상황입니다. 이러한 경우에, 마지막 2개의 token은 masking 됩니다. 모델은 scoring 단계를 방해합니다. 즉, 기본적으로 앞으로 나올 token에 대한 score를 0으로 만들어서, 모델이 앞으로 나올 word를 반영할 수 없습니다:
+우리는 지금까지 transformer의 self-attention 단계를 살펴보았고, 이제 masked self-attention에 대해 살펴보겠습니다. Masked self-attention은 self-attention과 같지만, #2 단계는 다릅니다. 모델이 2개의 token만을 input으로 가지고 있으며, 우리는 두번째 token을 처리하는 상황이라고 가정해봅시다. 이러한 경우에, 마지막 2개의 token은 masking 됩니다. 모델은 scoring 단계를 방해합니다. 즉, 기본적으로 앞으로 나올 token에 대한 score를 0으로 만들어서, 모델이 앞으로 나올 word를 반영할 수 없습니다:
 <span class="tooltiptext">
 Now that we've looked inside a transformer's self-attention step, let's proceed to look at masked self-attention. Masked self-attention is identical to self-attention except when it comes to step #2. Assuming the model only has two tokens as input and we're observing the second token. In this case, the last two tokens are masked. So the model interferes in the scoring step. It basically always scores the future tokens as 0 so the model can't peak to future words:
 </span>
@@ -795,7 +793,7 @@ This masking is often implemented as a matrix called an attention mask. Think of
 </div>
 
 <div class="tooltip" markdown="1">
-matrix 형태에서, query matrix를 key matrix와 곱해서 score를 계산할 수 있습니다. cell에서 word 대신에 word와 관련된 query(또는 key) vector가 있다고 가정하고 다음과 같이 시각적으로 표현해보겠습니다. 
+matrix 형태에서, query matrix를 key matrix와 곱해서 score를 계산할 수 있습니다. 아래 그림의 각 셀에서 word 대신에 word와 관련된 query (또는 key) vector가 있다고 가정하고 다음과 같이 시각적으로 표현해보겠습니다: 
 <span class="tooltiptext">
 In matrix form, we calculate the scores by multiplying a queries matrix by a keys matrix. Let's visualize it as follows, except instead of the word, there would be the query (or key) vector associated with that word in that cell:
 </span>
@@ -807,7 +805,7 @@ In matrix form, we calculate the scores by multiplying a queries matrix by a key
 </div>
 
 <div class="tooltip" markdown="1">
-곱셈 이후에, attention mask triangle을 적용합니다. masking 하고 싶은 cell들을 마이너스 무한대 또는 매우 큰 음수로 설정합니다 (예. GPT2에서는 -10억):
+곱셈 이후에, attention mask 삼각형을 적용합니다. masking 하고 싶은 셀들을 마이너스 무한대 또는 매우 큰 음수로 설정합니다 (예. GPT2에서는 -10억):
 <span class="tooltiptext">
 After the multiplication, we slap on our attention mask triangle. It set the cells we want to mask to -infinity or a very large negative number (e.g. -1 billion in GPT2):
 </span>
@@ -840,16 +838,16 @@ What this scores table means is the following:
 <div class="tooltip" markdown="1">
 * 모델이 dataset에서 첫번째 케이스(1번 행)를 처리할 때, 단 하나의 단어("robot")만을 포함하며, 그 단어에 모든(100%) attention을 갖습니다.
 * 모델이 dataset에서 두번째 케이스(2번 행)을 처리할 때, "robot must"라는 단어들을 포함하며, "robot"에 48%, "must"에 52%의 attention을 갖으면서 단어 "must"를 처리합니다.
-* 기타 등등
-<span class="tooltiptext">
-* When the model processes the first example in the dataset (row #1), which contains only one word ("robot"), 100% of its attention will be on that word.
-* When the model processes the second example in the dataset (row #2), which contains the words ("robot must"), when it processes the word "must", 48% of its attention will be on "robot", and 52% of its attention will be on "must".
-* And so on
+* 기타 등등...
+<span class="tooltiptext" style="display: inline-block; text-align: left;">
+<span>*</span> When the model processes the first example in the dataset (row #1), which contains only one word ("robot"), 100% of its attention will be on that word.
+<span>*</span> When the model processes the second example in the dataset (row #2), which contains the words ("robot must"), when it processes the word "must", 48% of its attention will be on "robot", and 52% of its attention will be on "must".
+<span>*</span> And so on
 </span>
 </div>
 
 
-### GPT-2 Masked Self-Attention
+### GPT-2의 Masked Self-Attention
 <div class="tooltip" markdown="1">
 GPT-2의 masked attention에 대해 더 깊이 알아봅시다.
 <span class="tooltiptext">
@@ -857,9 +855,9 @@ Let's get into more detail on GPT-2's masked attention.
 </span>
 </div>
 
-#### Evaluation Time: Processing One Token at a Time
+#### 평가 시: 한번에 한 토큰씩 처리
 <div class="tooltip" markdown="1">
-GPT-2가 masked self-attention이 동작하는 것과 똑같이 동작하도록 만들 수 있습니다. 하지만 evaluation 할 때에, 우리 모델이 각 iteration이 끝나고 하나의 새로운 word만 추가할 때, 이미 처리된 token에 대해 이전 경로를 따라 self-attention을 다시 계산하는 것은 비효율적 입니다.  
+GPT-2가 masked self-attention이 동작하는 것과 똑같이 동작하도록 만들 수 있습니다. 하지만 evaluation 할 때에, 우리 모델이 각 iteration이 끝날 때 마다 하나의 새로운 word만 추가할 때, 이미 처리된 token에 대해 이전 경로를 따라 self-attention을 다시 계산하는 것은 비효율적 입니다.  
 <span class="tooltiptext">
 We can make the GPT-2 operate exactly as masked self-attention works. But during evaluation, when our model is only adding one new word after each iteration, it would be inefficient to recalculate self-attention along earlier paths for tokens which have already been processed.
 </span>
@@ -878,7 +876,7 @@ In this case, we process the first token (ignoring `<s>` for now).
 </div>
 
 <div class="tooltip" markdown="1">
-GPT-2는 ```a``` token의 key, value vector를 유지하고 있습니다. 모든 self-attention layer는 그 token에 대한 각각의 key, value vector를 유지합니다.
+GPT-2는 ```a``` token의 key, value vector를 유지하고 있습니다. 모든 self-attention 레이어는 그 token에 대한 각각의 key, value vector를 유지합니다.
 <span class="tooltiptext">
 GPT-2 holds on to the key and value vectors of the the ```a``` token. Every self-attention layer holds on to its respective key and value vectors for that token:
 </span>
@@ -891,7 +889,7 @@ GPT-2 holds on to the key and value vectors of the the ```a``` token. Every self
 </div>
 
 <div class="tooltip" markdown="1">
-이제 다음 iteration에서, 모델이 단어 ```robot```을 처리할 때, query, key, value 쿼리(?)를 생성할 필요가 없습니다. 첫번째 iteration에서 저장한 것을 재사용 합니다. 
+이제 다음 iteration에서, 모델이 단어 ```robot```을 처리할 때, query, key, value를 검색할 필요가 없습니다. 첫번째 iteration에서 저장한 것을 재사용 합니다. 
 <span class="tooltiptext">
 Now in the next iteration, when the model processes the word ```robot```, it does not need to generate query, key, and value queries for the ```a``` token. It just reuses the ones it saved from the first iteration:
 </span>
@@ -902,10 +900,10 @@ Now in the next iteration, when the model processes the word ```robot```, it doe
   <br />
 </div>
 
-#### GPT-2 Self-attention: 1- Creating queries, keys, and values
+#### GPT-2의 Self-attention: 1- querie, key, value 값들 생성
 
 <div class="tooltip" markdown="1">
-단어 ```it```를 처리하는 모델을 가정해봅시다. 하단 block의 경우, 그 token의 input은 `it`의 embedding + 슬롯 #9에 대한 positional encoding이 됩니다. 
+모델이 단어 ```it```를 처리하고 있다고 가정해봅시다. 하단 block의 경우, 그 token에 대한 입력 값은 `it의 embedding + 슬롯 #9에 대한 positional encoding`이 됩니다. 
 <span class="tooltiptext">
 Let's assume the model is processing the word ```it```. If we're talking about the bottom block, then its input for that token would be the embedding of `it` + the positional encoding for slot #9:
 </span>
@@ -918,7 +916,7 @@ Let's assume the model is processing the word ```it```. If we're talking about t
 
 
 <div class="tooltip" markdown="1">
-Transformer에서 모든 block은 각자의 weight를 갖습니다 (이 글의 후반부에서 설명하겠습니다). 가장 먼저 만나는 것은 query, key, value를 생성하는 데 사용하는 weight matrix입니다. (?)
+Transformer에서 모든 block은 각자의 weight를 갖습니다 (이 글의 후반부에서 설명하겠습니다). 우리가 가장 먼저 볼 것은 query, key, value를 생성하는 데 사용하는 weight matrix입니다.
 <span class="tooltiptext">
 Every block in a transformer has its own weights (broken down later in the post). The first we encounter is the weight matrix that we use to create the queries, keys, and values.
 </span>
@@ -927,7 +925,7 @@ Every block in a transformer has its own weights (broken down later in the post)
 <div class="img-div-any-width" markdown="0">
   <image src="/images/gpt2/gpt2-self-attention-2.png"/>
   <div class="tooltip" markdown="1">
-  Self-attention은 input을 weight matrix 곱합니다 (그리고 여기서 표현하지는 않았지만, bias vector를 더해줍니다). 
+  Self-attention은 입력을 weight matrix와 곱합니다 (그리고 여기서 표현하지는 않았지만, bias vector를 더해줍니다). 
   <span class="tooltiptext">
   <br />
   Self-attention multiplies its input by its weight matrix (and adds a bias vector, not illustrated here).
@@ -936,7 +934,7 @@ Every block in a transformer has its own weights (broken down later in the post)
 </div>
 
 <div class="tooltip" markdown="1">
-이 곱셈 연산은 기본적으로 단어 `it`에 대한 query, key, value vector의 연결된 vector를 생성합니다.
+이 곱셈 연산은 기본적으로 단어 `it`에 대한 query, key, value vector의 접합(concat)된 vector를 생성합니다.
 <span class="tooltiptext">
 The multiplication results in a vector that's basically a concatenation of the query, key, and value vectors for the word `it`.
 </span>
@@ -954,10 +952,10 @@ The multiplication results in a vector that's basically a concatenation of the q
   </div>
 </div>
 
-#### GPT-2 Self-attention: 1.5- Splitting into attention heads
+#### GPT-2의 Self-attention: 1.5- attention head로 분할하기
 
 <div class="tooltip" markdown="1">
-이전 예제에서, "multi-head" 부분을 건너뛰고 self-attention을 바로 살펴봤습니다. 이제 그 개념에 대해 약간의 설명을 하는 것이 좋겠습니다. Self attention은 Q, K, V vector의 다른 부분들에 대해 여러번 수행됩니다. attention heads "분할(Splitting)"은 긴 vector를 matrix로 단순히 재구성하는 것 입니다. small GPT2는 12개의 attention head를 갖으며, 재구성된 matrix의 첫번째 차원(dimension)이 됩니다. 
+이전 예제에서, "multi-head" 부분을 건너뛰고 self-attention을 바로 살펴봤습니다. 이제 그 개념에 대해 약간의 설명을 하는 것이 좋겠습니다. Self attention은 Q, K, V vector의 다른 부분들에 대해 여러번 수행됩니다. attention heads의 "분할(splitting)"은 긴 vector를 matrix로 단순히 재구성하는 것 입니다. small GPT2는 12개의 attention head를 갖으며, 재구성된 matrix의 첫번째 차원(dimension)이 됩니다. 
 <span class="tooltiptext">
 In the previous examples, we dove straight into self-attention ignoring the "multi-head" part. It would be useful to shed some light on that concept now. Self attention is conducted multiple times on different parts of the Q,K,V vectors. "Splitting" attention heads is simply reshaping the long vector into a matrix. The small GPT2 has 12 attention heads, so that would be the first dimension of the reshaped matrix:
 </span>
@@ -969,7 +967,7 @@ In the previous examples, we dove straight into self-attention ignoring the "mul
 </div>
 
 <div class="tooltip" markdown="1">
-이전 예제에서, attention head 안에서 어떤 일이 일어나는지 살펴보았습니다. 다수의 attention-heads를 생각하는 방법은 아래와 같습니다 (만약 12개의 attention head의 3개만을 그림으로 표현한다면):
+이전 예제에서, attention head 안에서 어떤 일이 일어나는지 살펴보았습니다. 다수의 attention-head를 생각하는 방법은 아래와 같습니다 (만약 12개의 attention head의 3개만을 그림으로 표현한다면):
 <span class="tooltiptext">
 In the previous examples, we've looked at what happens inside one attention head. One way to think of multiple attention-heads is like this (if we're to only visualize three of the twelve attention heads):
 </span>
@@ -981,7 +979,8 @@ In the previous examples, we've looked at what happens inside one attention head
   <br />
 </div>
 
-#### GPT-2 Self-attention: 2- Scoring
+#### GPT-2의 Self-attention: 2- Score 계산하기
+
 <div class="tooltip" markdown="1">
 우리는 이제 score를 계산하는 것을 처리합니다 -- 우리가 하나의 attention head를 바라보고 있음 (그리고 다른 것들은 비슷한 연산을 수행함)을 알고 있습니다:
 <span class="tooltiptext">
@@ -1007,7 +1006,8 @@ Now the token can get scored against all of keys of the other tokens (that were 
 </div>
 
 
-#### GPT-2 Self-attention: 3- Sum
+#### GPT-2의 Self-attention: 3- 합산하기
+
 <div class="tooltip" markdown="1">
 이전에 살펴본 것과 같이, 각 value를 각 score와 곱하고, 그 결과들을 합산해서, attention-head #1를 위한 self-attention 결과를 만듭니다.
 <span class="tooltiptext">
@@ -1021,7 +1021,7 @@ As we've seen before, we now multiply each value with its score, then sum them u
 </div>
 
 
-#### GPT-2 Self-attention: 3.5- Merge attention heads
+#### GPT-2의 Self-attention: 3.5- attention head를 합치기(merge)
 
 <div class="tooltip" markdown="1">
 여러 attention head를 다루기 위한 방법은, 먼저 이들을 하나의 vector로 접합(concat)하는 것 입니다.
@@ -1035,7 +1035,7 @@ The way we deal with the various attention heads is that we first concatenate th
 </div>
 
 <div class="tooltip" markdown="1">
-하지만 이 vector는 아직 다음 하위 layer로 전달될 준비가 되지 않았습니다. 먼저 hidden state의 이 괴물을 동질적(homogenous) 표현(representation)으로 바꿔야 합니다. 
+하지만 이 vector는 아직 다음 순서의 하위 layer로 전달될 준비가 되지 않았습니다. 먼저 hidden state의 이 결과물을 동질적(homogenous) 표현(representation)으로 바꿔야 합니다. 
 <span class="tooltiptext">
 But the vector isn't ready to be sent to the next sublayer just yet. We need to first turn this Frankenstein's-monster of hidden states into a homogenous representation.
 </span>
@@ -1067,10 +1067,10 @@ And with this, we have produced the vector we can send along to the next layer:
   <br />
 </div>
 
-#### GPT-2 Fully-Connected Neural Network: Layer #1
+#### GPT-2의 Fully-Connected Neural Network: #1번 레이어
 
 <div class="tooltip" markdown="1">
-fully-connected neural network은 self-attention이 representation에 적합한 context를 포함시킨 뒤, block이 input token을 처리하는 곳 입니다. 이 것은 두 개의 layer로 구성되어 있습니다. 첫 번째 layer는 모델 사이즈의 4배 입니다 (GPT2 small의 경우 768 이므로, 이 network는 768*4 = 3072 unit 입니다). 왜 4배 일까요? 그 것은 단순히 최초의 transformer에서 사용한 값과 같습니다 (모델 차원이 512 였고, layer #1은 2048 이었습니다). 이 것은 transformer 모델에 주어진(처리해야 하는) task들을 다루기에 충분한 representation 능력/용량을 주는 것으로 보입니다.
+fully-connected neural network은 self-attention이 representation에 적합한 context를 포함시킨 뒤, block이 입력 token을 처리하는 곳 입니다. 이 것은 두 개의 레이어로 구성되어 있습니다. 첫 번째 레이어는 모델 사이즈의 4배 입니다 (GPT2 small의 경우 768 이므로, 이 network는 768*4 = 3072 unit 입니다). 왜 4배 일까요? 그 것은 단순히 최초의 transformer에서 사용한 값과 같습니다 (모델 차원이 512 였고, #1번 레이어는 2048 이었습니다). 이 것은 transformer 모델에 주어진(처리해야 하는) task들을 다루기에 충분한 representation 능력/용량을 주는 것으로 보입니다.
 <span class="tooltiptext">
 The fully-connected neural network is where the block processes its input token after self-attention has included the appropriate context in its representation. It is made up of two layers. The first layer is four times the size of the model (Since GPT2 small is 768, this network would have 768*4 = 3072 units). Why four times? That's just the size the original transformer rolled with (model dimension was 512 and layer #1 in that model was 2048). This seems to give transformer models enough representational capacity to handle the tasks that have been thrown at them so far.
 </span>
@@ -1089,10 +1089,10 @@ The fully-connected neural network is where the block processes its input token 
 
 
 
-#### GPT-2 Fully-Connected Neural Network: Layer #2 - Projecting to model dimension
+#### GPT-2의 Fully-Connected Neural Network: #2번 레이어 - 모델 차원으로 projection 하기
 
 <div class="tooltip" markdown="1">
-두 번째 layer는 첫 번째 layer의 결과를 모델 차원(dimension; small GPT2의 경우 768)으로 다시 투영합니다. 이 곱셈 연산의 결과는 이 token에 대한 transformer block의 결과입니다.
+두 번째 레이어는 첫 번째 레이어의 결과를 모델 차원(dimension; small GPT2의 경우 768)으로 다시 projection 합니다. 이 곱셈 연산의 결과는 이 token에 대한 transformer block의 결과입니다.
 <span class="tooltiptext">
 The second layer projects the result from the first layer back into model dimension (768 for the small GPT2). The result of this multiplication is the result of the transformer block for this token.
 </span>
@@ -1110,7 +1110,7 @@ The second layer projects the result from the first layer back into model dimens
 
 ### You've Made <span style="color:#7F34AA">It</span>!
 <div class="tooltip" markdown="1">
-이 것이 우리가 다룰 transformer block의 가장 상세한 버전입니다! 당신은 transformer language model 안에서 일어나는 대다수의 것들을 알게 되었습니다. 요약하자면, 우리의 input vector는 이러한 weight matrix들을 만납니다: 
+이 것이 우리가 다룰 transformer block의 가장 상세한 버전입니다! 당신은 transformer language model 안에서 일어나는 대다수의 것들을 알게 되었습니다. 요약하자면, 우리의 입력 vector는 이러한 weight matrix들을 만납니다: 
 <span class="tooltiptext">
 That's the most detailed version of the transformer block we'll get into! You now pretty much have the vast majority of the picture of what happens inside of a transformer language model. To recap, our brave input vector encounters these weight matrices:
 </span>
@@ -1152,16 +1152,16 @@ They add up to 124M parameters instead of 117M for some reason. I'm not sure why
 </span>
 </div>
 
-## Part 3: Beyond Language Modeling <a href="#part-3-beyond-language-modeling" name="part-3-beyond-language-modeling">#</a>
+## 파트 3: Language Modeling, 그 이상의 것 <a href="#part-3-beyond-language-modeling" name="part-3-beyond-language-modeling">#</a>
 
 <div class="tooltip" markdown="1">
-decoder-only transformer는 language modeling 이상의 가능성들을 계속 보여줍니다. 위와 유사한 그림으로 설명할 수 있는 성공을 보여준 application들이 많이 있습니다 (?). 이러한 application 몇 개를 보면서 이번 포스팅을 마치고자 합니다. 
+decoder-only transformer는 language modeling 이상의 가능성들을 계속 보여줍니다. 성공을 보여준 application들이 많이 있습니다. 이러한 application 몇 개를 보면서 이번 포스팅을 마치고자 합니다. 
 <span class="tooltiptext">
 The decoder-only transformer keeps showing promise beyond language modeling. There are plenty of applications where it has shown success which can be described by similar visuals as the above. Let's close this post by looking at some of these applications
 </span>
 </div>
 
-### Machine Translation
+### 기계번역(Machine Translation)
 <div class="tooltip" markdown="1">
 번역(translation)을 하는데에 encoder가 필요하지 않습니다. 이 task를 decoder-only transformer로 처리할 수 있습니다:
 <span class="tooltiptext">
@@ -1175,10 +1175,10 @@ An encoder is not required to conduct translation. The same task can be addresse
 </div>
 
 
-### Summarization
+### 요약(Summarization)
 
 <div class="tooltip" markdown="1">
-요약(Summarization)은 첫 번째 decoder-only transformer가 학습된 task 입니다. 즉, (목차 앞쪽의 서두 부분을 제외하고) 위키피디아 아티클을 읽고 요약하도록 학습했습니다. 실제 서두 부분은 학습 dataset에서 label로 사용되었습니다:
+요약(Summarization)은 첫 번째 decoder-only transformer가 학습된 task 입니다. 즉, (목차 앞쪽의 서두 부분을 제외하고) 위키피디아 아티클을 읽고 요약하도록 학습했습니다. 실제 서두 부분은 학습 dataset에서 레이블로 사용되었습니다:
 <span class="tooltiptext">
 This is the task that the first decoder-only transformer was trained on. Namely, it was trained to read a wikipedia article (without the opening section before the table of contents), and to summarize it. The actual opening sections of the articles were used as the labels in the training datasest:
 </span>
@@ -1203,20 +1203,21 @@ The paper trained the model against wikipedia articles, and thus the trained mod
 
 ### Transfer Learning
 <div class="tooltip" markdown="1">
-[Sample Efficient Text Summarization Using a Single Pre-Trained Transformer](https://arxiv.org/abs/1905.08836) 논문에서, decoder-only transformer는 먼저 language model에 대해 pre-train 하고, 요약(summary)에 대해 finetuning 했습니다. 이 것은 제한된 data 설정(?)에서 encoder-decoder transformer를 pre-train하는 것 보다 더 좋은 결과를 보였습니다.
+[Sample Efficient Text Summarization Using a Single Pre-Trained Transformer](https://arxiv.org/abs/1905.08836) 논문에서, decoder-only transformer는 먼저 language model에 대해 pre-train 하고, 요약(summary)에 대해 finetuning 했습니다. 이 것은 제한된 data 설정에서 encoder-decoder transformer를 pre-train하는 것 보다 더 좋은 결과를 보였습니다.
 <span class="tooltiptext">
 In [Sample Efficient Text Summarization Using a Single Pre-Trained Transformer](https://arxiv.org/abs/1905.08836), a decoder-only transformer is first pre-trained on language modeling, then finetuned to do summarization. It turns out to achieve better results than a pre-trained encoder-decoder transformer in limited data settings.
 </span>
 </div>
 
 <div class="tooltip" markdown="1">
-GPT2 논문도 language modeling에 대해 pre-train한 뒤에 요약(summary)의 결과를 보여줍니다.
+GPT2 논문도 language modeling에 대해 pre-train한 뒤에 요약(summary) task의 결과를 보여줍니다.
 <span class="tooltiptext">
 The GPT2 paper also shows results of summarization after pre-training the model on language modeling.
 </span>
 </div>
 
-### Music Generation
+### 음악 생성(Music Generation)
+
 <div class="tooltip" markdown="1">
 [Music Transformer](https://magenta.tensorflow.org/music-transformer)는 decoder-only transformer를 사용하여 expressive timing과 dynamic한 음악을 생성합니다. "Music Modeling"은 language modeling과 같습니다 -- 모델이 unsupervise한 방법으로 음악을 학습하도록 하고, 샘플 출력하도록 합니다 (우리가 이전에 "rambling"이라고 불렀습니다). 
 <span class="tooltiptext">
@@ -1238,7 +1239,7 @@ You might be curious as to how music is represented in this scenario. Remember t
 </div>
 
 <div class="tooltip" markdown="1">
-연주는 이러한 일련의 one-hot vector들일 뿐입니다. midi 파일은 이러한 포맷으로 변환된ㄹ 수 있습니다. 이 논문에서는 다음과 같은 입력 순서 예시가 있습니다:
+연주는 이러한 일련의 one-hot vector들일 뿐입니다. midi 파일은 이러한 포맷으로 변환될 수 있습니다. 이 논문에서는 다음과 같은 입력 순서 예시가 있습니다:
 <span class="tooltiptext">
 A performance is just a series of these one-hot vectors. A midi file can be converted into such a format. The paper has the following example input sequence:
 </span>
@@ -1250,7 +1251,7 @@ A performance is just a series of these one-hot vectors. A midi file can be conv
 </div>
 
 <div class="tooltip" markdown="1">
-이 입력 순서에 대한 one-hot vector는 이렇게 모양일 것 입니다. 
+이 입력 순서에 대한 one-hot vector는 이런 모양일 것 입니다. 
 <span class="tooltiptext">
 The one-hot vector representation for this input sequence would look like this:
 </span>
@@ -1272,7 +1273,7 @@ I love a visual in the paper that showcases self-attention in the Music Transfor
   <image src="/images/gpt2/music-transformer-self-attention-2.png"/>
   <br />
   <div class="tooltip" markdown="1">
-  "그림 8: 이 작품은 반복되는 삼각형 형태를 가지고 있습니다. query는 뒷쪽 peak들 중 하나에 있고, 곡의 시작부분에 이르기까지 peak의 모든 이전 고음에 attention을 줍니다." ..."[이] 그림은 query (모든 attention 선의 source)와 attention을 받는 이전 메모리(더 많은 softmax 확률을 받는 음표(note)가 강조됨)를 보여줍니다 (?). attention line의 색상은 서로 다른 head에 해당하고 두께는 softmax 확률의 가중치(weight)에 해당합니다."
+  "그림 8: 이 작품은 반복되는 삼각형 형태를 가지고 있습니다. query는 뒷쪽 peak들 중 하나에 있고, 곡의 시작부분에 이르기까지 모든 이전 고음(peak에 있는)에 attention을 줍니다." ..."[이] 그림은 query (모든 attention 선의 source)와 attention을 받는 이전 메모리(더 많은 softmax 확률을 받는 음표(note)가 강조됨)를 보여줍니다. attention line의 색상은 서로 다른 head에 해당하고 두께는 softmax 확률의 가중치(weight)에 해당합니다."
   <span class="tooltiptext">
   "Figure 8: This piece has a recurring triangular contour. The query is at one of the latter peaks and it attends to all of the previous high notes on the peak, all the way to beginning of the piece." ... "[The] figure shows a query (the source of all the attention lines) and previous memories being attended to (the notes that are receiving more softmax probabiliy is highlighted in). The coloring of the attention lines correspond to different heads and the width to the weight of the softmax probability."
   </span>
@@ -1280,13 +1281,13 @@ I love a visual in the paper that showcases self-attention in the Music Transfor
 </div>
 
 <div class="tooltip" markdown="1">
-악보 representation에 대해 부족하다면 [이 영상](https://www.youtube.com/watch?v=ipzR9bhei_o)을 참고해보세요.
+악보 representation에 대해 더 알고 싶으시면 [이 영상](https://www.youtube.com/watch?v=ipzR9bhei_o)을 참고해보세요.
 <span class="tooltiptext">
 If you're unclear on this representation of musical notes, [check out this video](https://www.youtube.com/watch?v=ipzR9bhei_o).
 </span>
 </div>
 
-## Conclusion
+## 결론
 <div class="tooltip" markdown="1">
 이것으로 GPT2로의 여정과 상위 모델인 decoder-only transformer에 대한 탐색을 마치겠습니다. 이 포스팅을 통해 self-attention에 대한 더 깊은 이해와 transformer 내부에서 일어나는 것들에 대해 이해하는 데에 더 편안하기를 바랍니다.
 <span class="tooltiptext">
@@ -1294,7 +1295,7 @@ This concludes our journey into the GPT2, and our exploration of its parent mode
 </span>
 </div>
 
-## Resources
+## 참고자료
 
 <div class="tooltip" markdown="1">
 * OpenAI의 [GPT2 구현](https://github.com/openai/gpt-2) 
@@ -1305,7 +1306,7 @@ This concludes our journey into the GPT2, and our exploration of its parent mode
 </span>
 </div>
 
-## Acknowledgements
+## 감사의 글
 <div class="tooltip" markdown="1">
 [Lukasz Kaiser](https://twitter.com/lukaszkaiser), [Mathias Müller](https://www.cl.uzh.ch/de/people/team/compling/mmueller.html), [Peter J. Liu](https://twitter.com/peterjliu), [Ryan Sepassi](https://twitter.com/rsepassi), [Mohammad Saleh](https://www.linkedin.com/in/mohammad-saleh-39614224/)님들께 이 포스팅의 이전 버전에서 피드백을 주셔서 감사합니다.
 <span class="tooltiptext">
@@ -1314,7 +1315,8 @@ Thanks to [Lukasz Kaiser](https://twitter.com/lukaszkaiser), [Mathias Müller](h
 </div>
 
 <div class="tooltip" markdown="1">
-의견이나 수정이 있다면 [@JayAlammar](https://twitter.com/JayAlammar)로 tweet 해주세요.
+의견이나 수정 요청이 있다면 [@JayAlammar](https://twitter.com/JayAlammar)로 tweet 해주세요.
+(번역에서 코멘트나 수정 요청이 있다면 아래 댓글 창에 남겨주세요!)
 <span class="tooltiptext">
 Comments or corrections? Please tweet me at [@JayAlammar](https://twitter.com/JayAlammar)
 </span>
