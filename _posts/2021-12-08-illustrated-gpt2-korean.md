@@ -55,16 +55,15 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * Transformer block의 진화
     * GPT-2의 내부를 살펴보기
     * 더 깊이 알아보기
-    * 파트 1의 끝: GPT-2, 신사 숙녀 여러분
-  * **[파트 2: Self-Attention의 설명](#part-2-illustrated-self-attention)**
-    * (masking 없는) Self-Attention
-    * 1- Query, Key, Value 벡터 만들기
-    * 2- Score
-    * 3- Sum
+    * 파트 1의 마무리: 몇가지 안내사항
+  * **[파트 2: 그림으로 설명하는 Self-Attention](#part-2-illustrated-self-attention)**
+    * (Masking 없는) Self-Attention
+    * 1- Query, Key, Value 벡터 todtjd
+    * 2- Score 걔산
+    * 3- 전체 합산
     * 그림으로 설명하는 Masked Self-Attention
-    * GPT-2 Masked Self-Attention
-    * Language modeling을 넘어
-    * 해냈습니다!
+    * GPT-2의 Masked Self-Attention
+    * 드디어 해냈습니다! 'It'을 만들어냈습니다!
   * **[파트 3: Language Modeling을 넘어](#part-3-beyond-language-modeling)**
     * 기계 번역(Machine Translation)
     * 요약(Summarization)
@@ -848,6 +847,7 @@ What this scores table means is the following:
 
 
 ### GPT-2의 Masked Self-Attention
+
 <div class="tooltip" markdown="1">
 GPT-2의 masked attention에 대해 더 깊이 알아봅시다.
 <span class="tooltiptext">
@@ -856,6 +856,7 @@ Let's get into more detail on GPT-2's masked attention.
 </div>
 
 #### 평가 시: 한번에 한 토큰씩 처리
+
 <div class="tooltip" markdown="1">
 GPT-2가 masked self-attention이 동작하는 것과 똑같이 동작하도록 만들 수 있습니다. 하지만 evaluation 할 때에, 우리 모델이 각 iteration이 끝날 때 마다 하나의 새로운 word만 추가할 때, 이미 처리된 token에 대해 이전 경로를 따라 self-attention을 다시 계산하는 것은 비효율적 입니다.  
 <span class="tooltiptext">
@@ -1041,7 +1042,7 @@ But the vector isn't ready to be sent to the next sublayer just yet. We need to 
 </span>
 </div>
 
-#### GPT-2 Self-attention: 4- Projecting
+#### GPT-2의 Self-attention: 4- Projecting
 
 <div class="tooltip" markdown="1">
 우리는 모델이 연결된 self-attention 결과를, feed-forward neural network가 처리할 수 있는 하나의 vector로 잘 mapping시킬 수 있도록 학습하도록 만들 것 입니다. 
@@ -1087,8 +1088,6 @@ The fully-connected neural network is where the block processes its input token 
   </div>
 </div>
 
-
-
 #### GPT-2의 Fully-Connected Neural Network: #2번 레이어 - 모델 차원으로 projection 하기
 
 <div class="tooltip" markdown="1">
@@ -1108,7 +1107,8 @@ The second layer projects the result from the first layer back into model dimens
   </span>
 </div>
 
-### You've Made <span style="color:#7F34AA">It</span>!
+### 드디어 해냈습니다! 'It'을 만들어냈습니다!
+
 <div class="tooltip" markdown="1">
 이 것이 우리가 다룰 transformer block의 가장 상세한 버전입니다! 당신은 transformer language model 안에서 일어나는 대다수의 것들을 알게 되었습니다. 요약하자면, 우리의 입력 vector는 이러한 weight matrix들을 만납니다: 
 <span class="tooltiptext">
@@ -1315,8 +1315,8 @@ Thanks to [Lukasz Kaiser](https://twitter.com/lukaszkaiser), [Mathias Müller](h
 </div>
 
 <div class="tooltip" markdown="1">
-의견이나 수정 요청이 있다면 [@JayAlammar](https://twitter.com/JayAlammar)로 tweet 해주세요.
-(번역에서 코멘트나 수정 요청이 있다면 아래 댓글 창에 남겨주세요!)
+(원문에 대한) 의견이나 수정 사항이 있다면 [@JayAlammar](https://twitter.com/JayAlammar)로 tweet 해주세요.
+(번역에서 의견이나 수정 사항은 아래 댓글 창에 남겨주세요!)
 <span class="tooltiptext">
 Comments or corrections? Please tweet me at [@JayAlammar](https://twitter.com/JayAlammar)
 </span>
