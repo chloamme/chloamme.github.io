@@ -64,7 +64,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * 그림으로 설명하는 Masked Self-Attention
     * GPT-2의 Masked Self-Attention
     * 드디어 해냈습니다! 'It'을 만들어냈습니다!
-  * **[파트 3: Language Modeling을 넘어](#part-3-beyond-language-modeling)**
+  * **[파트 3: Language Modeling, 그 이상의 것](#part-3-beyond-language-modeling)**
     * 기계 번역(Machine Translation)
     * 요약(Summarization)
     * 전이 학습(Transfer Learning)
@@ -1079,7 +1079,6 @@ The fully-connected neural network is where the block processes its input token 
 
 <div class="img-div-any-width" markdown="0">
   <image src="/images/gpt2/gpt2-mlp1.gif"/>
-  <br />
   <div class="tooltip" markdown="1">
   (bias vector 생략)
   <span class="tooltiptext">
@@ -1099,12 +1098,12 @@ The second layer projects the result from the first layer back into model dimens
 
 <div class="img-div-any-width" markdown="0">
   <image src="/images/gpt2/gpt2-mlp-2.gif"/>
-  <br />
   <div class="tooltip" markdown="1">
   (bias vector 생략)
   <span class="tooltiptext">
   (Not shown: A bias vector)
   </span>
+  </div>
 </div>
 
 ### 드디어 해냈습니다! 'It'을 만들어냈습니다!
@@ -1201,7 +1200,7 @@ The paper trained the model against wikipedia articles, and thus the trained mod
   <br />
 </div>
 
-### Transfer Learning
+### 전이 학습(Transfer Learning)
 <div class="tooltip" markdown="1">
 [Sample Efficient Text Summarization Using a Single Pre-Trained Transformer](https://arxiv.org/abs/1905.08836) 논문에서, decoder-only transformer는 먼저 language model에 대해 pre-train 하고, 요약(summary)에 대해 finetuning 했습니다. 이 것은 제한된 data 설정에서 encoder-decoder transformer를 pre-train하는 것 보다 더 좋은 결과를 보였습니다.
 <span class="tooltiptext">
