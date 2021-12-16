@@ -190,7 +190,7 @@ The way these models actually work is that after each token is produced, that to
 </div>
 
 <div class="tooltip" markdown="1">
-GPT2와 TransformerXL, XLNet과 같은 후속 모델들은 본질적으로 auto-regressive입니다. BERT는 그렇지 않습니다. 이 것은 상충관계(trade off)가 있습니다. auto-regression 특성을 잃는 대신, BERT는 더 좋은 결과를 내기 위해 단어의 양쪽 방향으로부터의 context를 활용할 수 있는 능력을 얻었습니다. XLNet은 autoregression을 되돌리면서 양쪽 방향의 context를 활용하기 대안적 방법을 찾습니다. (?)
+GPT2와 TransformerXL, XLNet과 같은 후속 모델들은 본질적으로 auto-regressive입니다. BERT는 그렇지 않습니다. 이 것은 상충관계(trade off)가 있습니다. auto-regression 특성을 잃는 대신, BERT는 더 좋은 결과를 내기 위해 단어의 양쪽 방향으로부터의 context를 활용할 수 있는 능력을 얻었습니다. XLNet은 양쪽 방향의 context를 활용하기 대안적 방법과 autoregression을 모두 사용합니다.
 <span class="tooltiptext">
 The GPT2, and some later models like TransformerXL and XLNet are auto-regressive in nature. BERT is not. That is a trade off. In losing auto-regression, BERT gained the ability to incorporate the context on both sides of a word to gain better results. XLNet brings back autoregression while finding an alternative way to incorporate the context on both sides.
 </span>
@@ -1288,7 +1288,7 @@ If you're unclear on this representation of musical notes, [check out this video
 
 ## 결론
 <div class="tooltip" markdown="1">
-이것으로 GPT2로의 여정과 상위 모델인 decoder-only transformer에 대한 탐색을 마치겠습니다. 이 포스팅을 통해 self-attention에 대한 더 깊은 이해와 transformer 내부에서 일어나는 것들에 대해 이해하는 데에 더 편안하기를 바랍니다.
+이것으로 GPT2로의 여정과 상위 모델인 decoder-only transformer에 대한 탐험을 마치겠습니다. 이 포스팅을 통해 self-attention에 대한 더 깊은 이해와 transformer 내부에서 일어나는 것들에 대해 이해하는 것이 더 수월하기를 바랍니다.
 <span class="tooltiptext">
 This concludes our journey into the GPT2, and our exploration of its parent model, the decoder-only transformer. I hope that you come out of this post with a better understanding of self-attention and more comfort that you understand more of what goes on inside a transformer.
 </span>
