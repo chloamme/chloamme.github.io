@@ -42,7 +42,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 <!--more-->
 
 
-<div style="text-align:center" markdown="1">  
+<div  class="tooltip" style="text-align:center" markdown="1">  
   <div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
 
   **목차**
