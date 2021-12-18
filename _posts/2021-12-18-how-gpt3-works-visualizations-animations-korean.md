@@ -8,7 +8,7 @@ tags: [gpt3]
 
 
 <div class="tooltip" markdown="1">
-테크 월드는 GPT3 홍보로 [떠들썩](https://www.theverge.com/21346343/gpt-3-explainer-openai-examples-errors-agi-potential)합니다. (GPT3와 같은) 대규모 언어 모델들은 그 능력으로 우리를 놀래키기 시작했습니다. 대부분의 비즈니스에서 고객용으로 앞 단에 놓기엔 완전히 신뢰(reliable)할 수는 없지만, 이 모델들은 자동화(automation)로의 꾸준한 전환과 지능형 컴퓨터 시스템의 가능성을 가속화할 영리함의 불꽃/가능성(spark)을 보여주고 있습니다.
+요즘 기술분야에서는 GPT3에 대한 [많은 이야기](https://www.theverge.com/21346343/gpt-3-explainer-openai-examples-errors-agi-potential)를 합니다. (GPT3와 같은) 대규모 언어 모델들은 그 능력으로 우리를 놀래키기 시작했습니다. 대부분의 비즈니스에서 고객용으로 앞 단에 놓기엔 완전히 신뢰(reliable)할 수는 없지만, 이 모델들은 자동화(automation)로의 꾸준한 전환과 지능형 컴퓨터 시스템의 가능성을 가속화할 영리함의 불꽃/가능성(spark)을 보여주고 있습니다.
 <span class="tooltiptext">
 The tech world is [abuzz](https://www.theverge.com/21346343/gpt-3-explainer-openai-examples-errors-agi-potential) with GPT3 hype. Massive language models (like GPT3) are starting to surprise us with their abilities. While not yet completely reliable for most businesses to put in front of their customers, these models are showing sparks of cleverness that are sure to accelerate the march of automation and the possibilities of intelligent computer systems. Let's remove the aura of mystery around GPT3 and learn how it's trained and how it works.
 </span>
@@ -48,7 +48,7 @@ The output is generated from what the model "learned" during its training period
 
 
 <div class="tooltip" markdown="1">
-훈련은 모델에게 많은 텍스트를 노출시키는 일련의 과정입니다. That process has been completed. All the experiments you see now are from that one trained model. It was estimated to cost 355 GPU years and cost $4.6m.
+훈련은 모델에게 많은 텍스트를 노출시키는 일련의 과정입니다. 바로 그 GPT3 훈련 과정이 완료되었습니다([추가설명] GPT-3가 공개된 바로 그 시점). (커뮤니티/소셜/유투브 등에서) 지금 보고 계신 모든 실험들은, 바로 그 훈련된 모델로부터 나온 것입니다. 그 모델은 355년(GPU; V100기준) 및 460만 달러($4.6m)가 소비/소요되는 것으로 예상합니다.
 <span class="tooltiptext">
 Training is the process of exposing the model to lots of text. That process has been completed. All the experiments you see now are from that one trained model. It was estimated to cost 355 GPU years and cost $4.6m.
 </span>
@@ -140,7 +140,7 @@ GPT3 actually generates output one token at a time (let's assume a token is a wo
 
 
 <div class="tooltip" markdown="1">
-: 이 것은 GPT-3가 동작하는 설명이며, (주로 엄청나게 큰 규모의) 모델이 얼마나 참신한가에 대한 논의가 아닙니다. 여기서 설명할 아키텍처는 [Generating Wikipedia by Summarizing Long Sequences 논문](https://arxiv.org/pdf/1801.10198.pdf)을 기반으로 하는 transformer decoder 모델입니다.
+강조: 이 것은 GPT-3가 동작하는 설명이며, (주로 엄청나게 큰 규모의) 모델이 얼마나 참신한가에 대한 논의가 아닙니다. 여기서 설명할 아키텍처는 [Generating Wikipedia by Summarizing Long Sequences 논문](https://arxiv.org/pdf/1801.10198.pdf)을 기반으로 하는 transformer decoder 모델입니다.
 <span class="tooltiptext">
 Please note: This is a description of how GPT-3 works and not a discussion of what is novel about it (which is mainly the ridiculously large scale). The architecture is a transformer decoder model based on this paper https://arxiv.org/pdf/1801.10198.pdf
 </span>
