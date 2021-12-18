@@ -69,7 +69,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * 전이 학습(Transfer Learning)
     * 음악 생성(Music Generation)
   </div>
-  <span class="tooltiptext" markdown="1">
+  <span class="tooltiptext" >
   <span>*</span> <span>**</span> [Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)<span>**</span> 
     <span>*</span> What is a Language Model
     <span>*</span> Transformers for Language Modeling
