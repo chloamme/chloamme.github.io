@@ -42,9 +42,9 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 <!--more-->
 
 
-<div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
 
-  <div style="text-align:center" markdown="1">  
+<div style="text-align:center" markdown="1">  
+  <div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
   **목차**
 
   * **[파트 1: GPT2와 Language Modeling](#part-1-got-and-language-modeling)**
@@ -68,6 +68,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * 요약(Summarization)
     * 전이 학습(Transfer Learning)
     * 음악 생성(Music Generation)
+  </div>
   <span class="tooltiptext" markdown="1">
   * **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
     * What is a Language Model
@@ -92,7 +93,6 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * Transfer Learning
     * Music Generation
   </span>
-  </div>
 </div>
 
 
