@@ -70,27 +70,27 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * 음악 생성(Music Generation)
   <span class="tooltiptext">
   <span>*</span> **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
-    * What is a Language Model
-    * Transformers for Language Modeling
-    * One Difference From BERT
-    * The Evolution of The Transformer Block
-    * Crash Course in Brain Surgery: Looking Inside GPT-2
-    * A Deeper Look Inside
-    * End of part #1: The GPT-2, Ladies and Gentlemen
+    <span>*</span> What is a Language Model
+    <span>*</span> Transformers for Language Modeling
+    <span>*</span> One Difference From BERT
+    <span>*</span> The Evolution of The Transformer Block
+    <span>*</span> Crash Course in Brain Surgery: Looking Inside GPT-2
+    <span>*</span> A Deeper Look Inside
+    <span>*</span> End of part #1: The GPT-2, Ladies and Gentlemen
   <span>*</span> **[Part 2: The Illustrated Self-Attention](#part-2-illustrated-self-attention)**
-    * Self-Attention (without masking)
-    * 1- Create Query, Key, and Value Vectors
-    * 2- Score
-    * 3- Sum
-    * The Illustrated Masked Self-Attention
-    * GPT-2 Masked Self-Attention
-    * Beyond Language modeling
-    * You've Made it!
+    <span>*</span> Self-Attention (without masking)
+    <span>*</span> 1- Create Query, Key, and Value Vectors
+    <span>*</span> 2- Score
+    <span>*</span> 3- Sum
+    <span>*</span> The Illustrated Masked Self-Attention
+    <span>*</span> GPT-2 Masked Self-Attention
+    <span>*</span> Beyond Language modeling
+    <span>*</span> You've Made it!
   <span>*</span> **[Part 3: Beyond Language Modeling](#part-3-beyond-language-modeling)**
-    * Machine Translation
-    * Summarization
-    * Transfer Learning
-    * Music Generation
+    <span>*</span> Machine Translation
+    <span>*</span> Summarization
+    <span>*</span> Transfer Learning
+    <span>*</span> Music Generation
   </span>
   </div>
 </div>
