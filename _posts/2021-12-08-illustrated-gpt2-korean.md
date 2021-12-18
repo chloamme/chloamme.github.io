@@ -72,6 +72,32 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 </div>
 
 
+<!-- <div class="tooltip" markdown="1">
+<span class="tooltiptext">
+* **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
+  * What is a Language Model
+  * Transformers for Language Modeling
+  * One Difference From BERT
+  * The Evolution of The Transformer Block
+  * Crash Course in Brain Surgery: Looking Inside GPT-2
+  * A Deeper Look Inside
+  * End of part #1: The GPT-2, Ladies and Gentlemen
+* **[Part 2: The Illustrated Self-Attention](#part-2-illustrated-self-attention)**
+  * Self-Attention (without masking)
+  * 1- Create Query, Key, and Value Vectors
+  * 2- Score
+  * 3- Sum
+  * The Illustrated Masked Self-Attention
+  * GPT-2 Masked Self-Attention
+  * Beyond Language modeling
+  * You've Made it!
+* **[Part 3: Beyond Language Modeling](#part-3-beyond-language-modeling)**
+  * Machine Translation
+  * Summarization
+  * Transfer Learning
+  * Music Generation
+</span>
+</div> -->
 
 ## 파트 #1: GPT2와 Language Modeling <a href="#part-1-got-and-language-modeling" name="part-1-got-and-language-modeling">#</a>
 
