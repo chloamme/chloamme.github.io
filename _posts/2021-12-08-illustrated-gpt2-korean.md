@@ -42,10 +42,11 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 <!--more-->
 
 
-<div  class="tooltip" style="text-align:center" markdown="1">  
-  <div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
+<div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
 
+  <div style="text-align:center" markdown="1">  
   **목차**
+  </div>
 
   * **[파트 1: GPT2와 Language Modeling](#part-1-got-and-language-modeling)**
     * Language Model이란
@@ -68,31 +69,6 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * 요약(Summarization)
     * 전이 학습(Transfer Learning)
     * 음악 생성(Music Generation)
-  </div>
-  <span class="tooltiptext" >
-  <span>*</span> <span>**</span> [Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)<span>**</span> 
-    <span>*</span> What is a Language Model
-    <span>*</span> Transformers for Language Modeling
-    <span>*</span> One Difference From BERT
-    <span>*</span> The Evolution of The Transformer Block
-    <span>*</span> Crash Course in Brain Surgery: Looking Inside GPT-2
-    <span>*</span> A Deeper Look Inside
-    <span>*</span> End of part #1: The GPT-2, Ladies and Gentlemen
-  <span>*</span> <span>**</span> [Part 2: The Illustrated Self-Attention](#part-2-illustrated-self-attention)<span>**</span> 
-    <span>*</span> Self-Attention (without masking)
-    <span>*</span> 1- Create Query, Key, and Value Vectors
-    <span>*</span> 2- Score
-    <span>*</span> 3- Sum
-    <span>*</span> The Illustrated Masked Self-Attention
-    <span>*</span> GPT-2 Masked Self-Attention
-    <span>*</span> Beyond Language modeling
-    <span>*</span> You've Made it!
-  <span>*</span> <span>**</span> [Part 3: Beyond Language Modeling](#part-3-beyond-language-modeling)<span>**</span> 
-    <span>*</span> Machine Translation
-    <span>*</span> Summarization
-    <span>*</span> Transfer Learning
-    <span>*</span> Music Generation
-  </span>
 </div>
 
 
