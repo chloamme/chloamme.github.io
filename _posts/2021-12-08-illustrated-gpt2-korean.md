@@ -42,9 +42,9 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
 <!--more-->
 
 
+<div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
 
-<div style="text-align:center" markdown="1">  
-  <div style="font-size:75%; background-color:#eee; border: 1px solid #bbb; display: table; padding: 7px" markdown="1">
+  <div style="text-align:center" markdown="1">  
   **목차**
 
   * **[파트 1: GPT2와 Language Modeling](#part-1-got-and-language-modeling)**
@@ -68,9 +68,8 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * 요약(Summarization)
     * 전이 학습(Transfer Learning)
     * 음악 생성(Music Generation)
-  </div>
-  <span class="tooltiptext" markdown="1">
-  * **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
+  <span class="tooltiptext">
+  <span>*</span> **[Part 1: GPT2 And Language Modeling](#part-1-got-and-language-modeling)**
     * What is a Language Model
     * Transformers for Language Modeling
     * One Difference From BERT
@@ -78,7 +77,7 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * Crash Course in Brain Surgery: Looking Inside GPT-2
     * A Deeper Look Inside
     * End of part #1: The GPT-2, Ladies and Gentlemen
-  * **[Part 2: The Illustrated Self-Attention](#part-2-illustrated-self-attention)**
+  <span>*</span> **[Part 2: The Illustrated Self-Attention](#part-2-illustrated-self-attention)**
     * Self-Attention (without masking)
     * 1- Create Query, Key, and Value Vectors
     * 2- Score
@@ -87,12 +86,13 @@ My goal here is to also supplement my earlier post, [The Illustrated Transformer
     * GPT-2 Masked Self-Attention
     * Beyond Language modeling
     * You've Made it!
-  * **[Part 3: Beyond Language Modeling](#part-3-beyond-language-modeling)**
+  <span>*</span> **[Part 3: Beyond Language Modeling](#part-3-beyond-language-modeling)**
     * Machine Translation
     * Summarization
     * Transfer Learning
     * Music Generation
   </span>
+  </div>
 </div>
 
 
