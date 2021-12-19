@@ -6,9 +6,16 @@ categories: translation
 tags: [gpt3]
 ---
 
+* 이 글은 GPT-3에 대해 이해하기 쉽게 그림 및 애니메이션으로 설명한 Jay Alammar님의 [블로그](https://jalammar.github.io)의 글을 저자의 허락을 받고 번역한 글 입니다.
+ 원문은 [How GPT3 Works - Visualizations and Animations](https://jalammar.github.io/how-gpt3-works-visualizations-animations/)에서 확인하실 수 있습니다.
+* 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역(번역체) 보다는 개념에 대한 설명을 쉽게 하는 문장으로 표현하는 쪽으로 더 무게를 두어 번역 했습니다.
+* 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](https://nlpinkorean.github.io)님께서 만들어두신 툴팁 도움말 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
+<p align="center">(이하 본문)</p>
+
+---
 
 <div class="tooltip" markdown="1">
-요즘 기술분야에서는 GPT3에 대한 [많은 이야기](https://www.theverge.com/21346343/gpt-3-explainer-openai-examples-errors-agi-potential)를 합니다. (GPT3와 같은) 대규모 언어 모델들은 그 능력으로 우리를 놀래키기 시작했습니다. 대부분의 비즈니스에서 고객용으로 사용하기에 충분히 신뢰성(reliable)이 있다고 할 수는 없지만, 이 모델들은 자동화(automation)로의 꾸준한 전환과 지능형 컴퓨터 시스템의 가능성을 가속화할 영리함의 불꽃/가능성(spark)을 보여주고 있습니다.
+요즘(GPT3가 릴리즈 되었을 당시) 기술분야에서는 GPT3에 대한 [많은 이야기](https://www.theverge.com/21346343/gpt-3-explainer-openai-examples-errors-agi-potential)를 합니다. (GPT3와 같은) 대규모 언어 모델들은 그 능력으로 우리를 놀래키기 시작했습니다. 대부분의 비즈니스에서 고객용으로 사용하기에 충분히 신뢰성(reliable)이 있다고 할 수는 없지만, 이 모델들은 자동화(automation)로의 꾸준한 전환과 지능형 컴퓨터 시스템의 가능성을 가속화할 영리함의 불꽃(spark; 깜짝 놀라게 만드는 이벤트)을 보여주고 있습니다.
 <span class="tooltiptext">
 The tech world is [abuzz](https://www.theverge.com/21346343/gpt-3-explainer-openai-examples-errors-agi-potential) with GPT3 hype. Massive language models (like GPT3) are starting to surprise us with their abilities. While not yet completely reliable for most businesses to put in front of their customers, these models are showing sparks of cleverness that are sure to accelerate the march of automation and the possibilities of intelligent computer systems. Let's remove the aura of mystery around GPT3 and learn how it's trained and how it works.
 </span>
