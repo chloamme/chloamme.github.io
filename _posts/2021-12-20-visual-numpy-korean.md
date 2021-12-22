@@ -6,15 +6,6 @@ categories: translation
 tags: [numpy, data representation]
 ---
 
-* 이 글은 Numpy에 대해 이해하기 쉽게 그림으로 설명한 Jay Alammar님의 [블로그](https://jalammar.github.io)의 글을 저자의 허락을 받고 번역한 글 입니다.
- 원문은 [A Visual Intro to NumPy and Data Representation
-](https://jalammar.github.io/visual-numpy/)에서 확인하실 수 있습니다.
-* 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역(번역체) 보다는 개념에 대한 설명을 쉽게 하는 문장으로 표현하는 쪽으로 더 무게를 두어 번역 했습니다.
-* 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](https://nlpinkorean.github.io)님께서 만들어두신 툴팁 도움말 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
-<p align="center">(이하 본문)</p>
-
----
-
 <div class="img-div-any-width" markdown="0">
   <image src="/images/numpy/numpy-array.png"/>
   <br />
@@ -80,6 +71,8 @@ There are often cases when we want NumPy to initialize the values of the array f
 Once we've created our arrays, we can start to manipulate them in interesting ways.
 </span>
 </div>
+
+<br />
 
 <div class="tooltip" markdown="1">
 ## 배열 산술연산
@@ -187,6 +180,7 @@ Aggregation
 </span>
 </div>
 
+<br />
 
 <div class="tooltip" markdown="1">
 NumPy의 추가적인 이점은 집계 함수(aggregation function)들입니다. 
@@ -341,6 +335,7 @@ Matrix Indexing
 </span>
 </div>
 
+<br />
 
 <div class="tooltip" markdown="1">
 인덱싱과 슬라이싱은 행렬을 다룰 때 더 유용합니다:
@@ -363,6 +358,7 @@ Matrix Aggregation
 </span>
 </div>
 
+<br />
 
 <div class="tooltip" markdown="1">
 벡터를 집계했던 것과 동일한 방법은 행렬도 집계 연산을 할 수 있습니다:
@@ -496,6 +492,7 @@ Practical Usage
 </span>
 </div>
 
+<br />
 
 <div class="tooltip" markdown="1">
 마무리입니다. 다음은 NumPy가 도움이 될 만한 몇가지 유용한 것들의 예입니다. 
@@ -603,6 +600,7 @@ Which results in the error value for that prediction and a score for the quality
 </span>
 </div>
 
+<br />
 
 <div class="tooltip" markdown="1">
 ### 데이터 표현
@@ -627,7 +625,7 @@ Tables and Spreadsheets
 </div>
 
  <div class="tooltip" markdown="1">
- * 스프레드시트나 테이블은 2차원 행렬입니다. 스프레드시트의 각 시트가 행렬로 사용될 수 있습니다. 파이썬에서 이 것을 위한 가장 인기있는 추상화는 [판다스 데이터프레임](/gentle-visual-intro-to-data-analysis-python-pandas/)이며, 이 것은 NumPy를 사용했고 그 위에 빌드한 것입니다. 
+ * 스프레드시트나 테이블은 2차원 행렬입니다. 스프레드시트의 각 시트가 행렬로 사용될 수 있습니다. 파이썬에서 이 것을 위한 가장 인기있는 추상화는 [판다스 데이터프레임](https://jalammar.github.io/gentle-visual-intro-to-data-analysis-python-pandas/)이며, 이 것은 NumPy를 사용했고 그 위에 빌드한 것입니다. 
  <span class="tooltiptext" style="display: inline-block; text-align: left;">
  <span>*</span> A spreadsheet or a table of values is a two dimensional matrix. Each sheet in a spreadsheet can be its own variable. The most popular abstraction in python for those is the [pandas dataframe](/gentle-visual-intro-to-data-analysis-python-pandas/), which actually uses NumPy and builds on top of it.
  </span>
@@ -806,4 +804,16 @@ This is now a numeric volume that a model can crunch and do useful things with. 
 </span>
 </div>
 
+<div class="tooltip" markdown="1">
+위의 예에서 [이 시인(Antara)의 시](https://en.wikisource.org/wiki/The_Poem_of_Antara)은 어떤 다른 시들 보다 훨씬 더 불후의 명성을 얻었습니다. 아버지 소유의 노예로 태어난 Antarah(어머니가 노예/포로로 잡혀간 에티오피아 공주)는 용맹과 언어 구사력을 통해 자유를 얻었고, 그의 시가 이슬람 이전 아라비아의 [카바(사우디아라비아 메카 소재 '하람 성원'의 중심에 위치)에 게시된 7개의 시](https://en.wikipedia.org/wiki/Mu%27allaqat) 중 하나로 신화적 지위를 얻었습니다.
+<span class="tooltiptext">
 (It turned out the [poet's words](https://en.wikisource.org/wiki/The_Poem_of_Antara) in our example were immortalized more so than those of the other poets which trigger his anxieties. Born a slave owned by his father, [Antarah's](https://en.wikipedia.org/wiki/Antarah_ibn_Shaddad) valor and command of language gained him his freedom and the mythical status of having his poem as one of [seven poems suspended in the kaaba](https://en.wikipedia.org/wiki/Mu%27allaqat) in pre-Islamic Arabia).
+</span>
+</div>
+
+---
+
+* 이 글은 Numpy에 대해 이해하기 쉽게 그림으로 설명한 Jay Alammar님의 [블로그](https://jalammar.github.io)의 글을 저자의 허락을 받고 번역한 글 입니다. 원문은 [A Visual Intro to NumPy and Data Representation](https://jalammar.github.io/visual-numpy/)에서 확인하실 수 있습니다.
+* 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역(번역체) 보다는 개념에 대한 설명을 쉽게 하는 문장으로 표현하는 쪽으로 더 무게를 두어 번역 했습니다.
+* 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](https://nlpinkorean.github.io)님께서 만들어두신 툴팁 도움말 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
+

@@ -6,15 +6,6 @@ categories: translation
 tags: [gpt2, language model]
 ---
 
-* 이 글은 GPT-2에 대해 이해하기 쉽게 그림으로 설명한 Jay Alammar님의 [블로그](https://jalammar.github.io)의 글을 저자의 허락을 받고 번역한 글 입니다.
- 원문은 [The Illustrated GPT-2 (Visualizing Transformer Language Models)
-](https://jalammar.github.io/illustrated-gpt2/)에서 확인하실 수 있습니다.
-* 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역(번역체) 보다는 개념에 대한 설명을 쉽게 하는 문장으로 표현하는 쪽으로 더 무게를 두어 번역 했습니다.
-* 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](https://nlpinkorean.github.io)님께서 만들어두신 툴팁 도움말 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
-<p align="center">(이하 본문)</p>
-
----
-
 
 <div class="img-div-any-width" markdown="0">
   <image src="/images/gpt2/openAI-GPT-2-3.png"/>
@@ -31,7 +22,7 @@ This year, we saw a dazzling application of machine learning. [The OpenAI GPT-2]
 
 
 <div class="tooltip" markdown="1">
-저의 이번 목표는, 이전 글인 [The Illustrated Transformer](/illustrated-transformer/)에 더 많은 시각적 설명을 더하여 transformer의 내부 동작 원리를 설명하고, 최초의 논문으로 부터 어떻게 발전되어 왔는지에 대해 설명하는 것 입니다. 이러한 시각적 설명을 통해, 내부 동작 방식이 계속 진화되고 있는 transformer 기반의 후속 모델들이 더 쉽게 설명이 되었으면 하는 바람이 있습니다.
+저의 이번 목표는, 이전 글인 [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)에 더 많은 시각적 설명을 더하여 transformer의 내부 동작 원리를 설명하고, 최초의 논문으로 부터 어떻게 발전되어 왔는지에 대해 설명하는 것 입니다. 이러한 시각적 설명을 통해, 내부 동작 방식이 계속 진화되고 있는 transformer 기반의 후속 모델들이 더 쉽게 설명이 되었으면 하는 바람이 있습니다.
 <span class="tooltiptext">
 My goal here is to also supplement my earlier post, [The Illustrated Transformer](/illustrated-transformer/), with more visuals explaining the inner-workings of transformers, and how they've evolved since the original paper. My hope is that this visual language will hopefully make it easier to explain later Transformer-based models as their inner-workings continue to evolve.
 </span>
@@ -110,7 +101,7 @@ So what exactly is a language model?
 
 ### Language Model 이란
 <div class="tooltip" markdown="1">
-이전 글인 [The Illustrated Word2vec](/illustrated-word2vec/)([한국어 번역본](https://databreak.netlify.app/2019-04-25-Illustrated_word2vec/))에서 language model이 무엇인지 살펴보았습니다 -- 기본적으로는, 문장의 일부를 보고 다음 단어를 예측하는 것을 할 수 있는 머신 러닝 모델입니다. 가장 유명한 language model로는 현재까지 입력된 것을 보고 다음 단어를 제안하는 스마트폰 키보드가 있습니다. 
+이전 글인 [The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)([한국어 번역본](https://databreak.netlify.app/2019-04-25-Illustrated_word2vec/))에서 language model이 무엇인지 살펴보았습니다 -- 기본적으로는, 문장의 일부를 보고 다음 단어를 예측하는 것을 할 수 있는 머신 러닝 모델입니다. 가장 유명한 language model로는 현재까지 입력된 것을 보고 다음 단어를 제안하는 스마트폰 키보드가 있습니다. 
 <span class="tooltiptext">
 In [The Illustrated Word2vec](/illustrated-word2vec/), we've looked at what a language model is -- basically a machine learning model that is able to look at part of a sentence and predict the next word. The most famous language models are smartphone keyboards that suggest the next word based on what you've currently typed.
 </span>
@@ -146,7 +137,7 @@ One great way to experiment with GPT-2 is using the [AllenAI GPT-2 Explorer](htt
 ### Language Modeling을 위한 Transformer
 
 <div class="tooltip" markdown="1">
-[Illustrated Transformer](/illustrated-transformer/)에서 본 것과 같이, 최초의 transformer 모델은 encoder와 decoder로 구성되어 있습니다 -- 그 각각은 우리가 transformer 블록(block) 이라고 부르는 것들을 쌓아놓은 것(stacking) 입니다. 이 아키텍처는 원래 기계 번역 용도로 적합했었습니다 -- encoder-decoder 아키텍처가 과거에는 성공적이었습니다.
+[Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)에서 본 것과 같이, 최초의 transformer 모델은 encoder와 decoder로 구성되어 있습니다 -- 그 각각은 우리가 transformer 블록(block) 이라고 부르는 것들을 쌓아놓은 것(stacking) 입니다. 이 아키텍처는 원래 기계 번역 용도로 적합했었습니다 -- encoder-decoder 아키텍처가 과거에는 성공적이었습니다.
 <span class="tooltiptext">
 As we've seen in The [Illustrated Transformer](/illustrated-transformer/), the original transformer model is made up of an encoder and decoder -- each is a stack of what we can call transformer blocks. That architecture was appropriate because the model tackled machine translation  -- a problem where encoder-decoder architectures have been successful in the past.
 </span>
@@ -1349,6 +1340,9 @@ Thanks to [Lukasz Kaiser](https://twitter.com/lukaszkaiser), [Mathias Müller](h
 Comments or corrections? Please tweet me at [@JayAlammar](https://twitter.com/JayAlammar)
 </span>
 </div>
+
+---
+
 
 <!--
 ### Just Add Memory
