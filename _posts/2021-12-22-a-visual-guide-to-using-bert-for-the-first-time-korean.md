@@ -623,7 +623,7 @@ Now that we have the output of BERT, we have assembled the dataset we need to tr
 <div class="img-div-any-width" markdown="0">
   <image src="/images/distilBERT/logistic-regression-dataset-features-labels.png"/>
   <br />
-  <div class="tooltip" markdown="0">
+  <div class="tooltip">
   Logistic Regression을 훈련하는데 사용하는 레이블링된 데이터셋입니다. feature는, 이전 그림에서 슬라이스 했던 (위치 #0) [CLS] 토큰에 대한 BERT의 출력 벡터입니다. 각 행은 데이터셋의 문장에 해당하며, 각 열은 Bert/DistilBERT 모델의 가장 상단 transformer block에 있는 feed-forward neural network의 hidden unit의 출력에 해당합니다. 
   <span class="tooltiptext">
   The labeled dataset we use to train the Logistic Regression. The features are the output vectors of BERT for the [CLS] token (position #0) that we sliced in the previous figure. Each row corresponds to a sentence in our dataset, each column corresponds to the output of a hidden unit from the feed-forward neural network at the top transformer block of the Bert/DistilBERT model.
@@ -710,9 +710,7 @@ For reference, the highest accuracy score for this dataset is currently **96.8**
 The Notebook
 </span>
 </div>
-
 <br />
-
 <div class="tooltip" markdown="1">
 [notebook](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb) 또는 [colab에서 실행](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb)하여 바로 확인해보세요.
 <span class="tooltiptext">
