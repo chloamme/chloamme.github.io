@@ -346,7 +346,7 @@ The training is what we'll discuss in the next section, along with the code of t
 </span>
 </div>
 
-<br />
+<!--<br />-->
 
 <div class="tooltip" markdown="1">
 ## 코드
@@ -490,7 +490,7 @@ Processing with DistilBERT
 </span>
 </div>
 
-<br />
+<!--<br />-->
 
 <div class="tooltip" markdown="1">
 패딩된 토큰 행렬에서 입력 텐서를 생성하여 DistilBERT로 전달합니다. 
@@ -687,7 +687,7 @@ Which shows the model achieves around 81% accuracy.
 </span>
 </div>
 
-<br />
+<!--<br />-->
 
 <div class="tooltip" markdown="1">
 ## 스코어 벤치마크
@@ -711,7 +711,7 @@ The Notebook
 </span>
 </div>
 
-<br />
+<!--<br />-->
 
 <div class="tooltip" markdown="1">
 [notebook](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb) 또는 [colab에서 실행](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb)하여 바로 확인해보세요.
@@ -729,7 +729,7 @@ And that's it! That's a good first contact with BERT. The next step would be to 
 </div>
 
 <div class="tooltip" markdown="1">
-이 튜토리얼의 초기 버전에 대한 피드백을 주신 [Clément Delangue](https://twitter.com/ClementDelangue), [Victor Sanh](https://twitter.com/SanhEstPasMoi), Huggingface 팀 분들께 감사합니다. 
+[Clément Delangue](https://twitter.com/ClementDelangue), [Victor Sanh](https://twitter.com/SanhEstPasMoi), Huggingface 팀께 이 튜토리얼의 초기 버전에 대한 피드백을 주셔서 감사합니다. 
 <span class="tooltiptext">
 Thanks to [Clément Delangue](https://twitter.com/ClementDelangue), [Victor Sanh](https://twitter.com/SanhEstPasMoi), and the Huggingface team for providing feedback to earlier versions of this tutorial.
 </span>
