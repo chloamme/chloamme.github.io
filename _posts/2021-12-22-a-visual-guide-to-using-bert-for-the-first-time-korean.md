@@ -6,9 +6,6 @@ categories: translation
 tags: [BERT, DistilBERT, Logistic Regression, Sentence Classification]
 ---
 
-
-<span class="discussion">Translations: <a href="http://www.junphy.com/wordpress/index.php/2020/10/20/a-visual-guide-using-bert/">Chinese</a>, <a href="https://habr.com/ru/post/498144/">Russian</a></span>
-
 <div class="img-div-any-width" markdown="0">
   <image src="/images/distilBERT/bert-distilbert-sentence-classification.png"/>
   <br />
@@ -349,6 +346,7 @@ The training is what we'll discuss in the next section, along with the code of t
 </span>
 </div>
 
+</br>
 
 <div class="tooltip" markdown="1">
 ## 코드
@@ -408,12 +406,12 @@ df.head()
 <span class="tooltiptext">
 Which outputs:
 </span>
-</div>
-
 <div class="img-div-any-width" markdown="0">
   <image src="/images/distilBERT/sst2-df-head.png"/>
   <br />
 </div>
+</div>
+
 
 <div class="tooltip" markdown="1">
 ### pre-train된 DistilBERT 모델 및 토크나이저 import 하기
@@ -492,6 +490,8 @@ Processing with DistilBERT
 </span>
 </div>
 
+</br>
+
 <div class="tooltip" markdown="1">
 패딩된 토큰 행렬에서 입력 텐서를 생성하여 DistilBERT로 전달합니다. 
 <span class="tooltiptext">
@@ -557,7 +557,7 @@ Each row is associated with a sentence from our dataset. To recap the processing
 
 
 <div class="tooltip" markdown="1">
-### 중요 부분만 자르기
+### 필요한 부분만 자르기
 <span class="tooltiptext">
 Slicing the important part
 </span>
@@ -596,12 +596,12 @@ And now `features` is a 2d numpy array containing the sentence embeddings of all
 <div class="img-div-any-width" markdown="0">
   <image src="/images/distilBERT/bert-output-cls-senteence-embeddings.png"/>
   <br />
-<div class="tooltip" markdown="1">
-BERT의 출력에서 slice한 텐서
-<span class="tooltiptext">
+  <div class="tooltip" markdown="1">
+  BERT의 출력에서 slice한 텐서
+  <span class="tooltiptext">
   The tensor we sliced from BERT's output
-</span>
-</div>
+  </span>
+  </div>
 </div>
 
 
@@ -623,12 +623,12 @@ Now that we have the output of BERT, we have assembled the dataset we need to tr
 <div class="img-div-any-width" markdown="0">
   <image src="/images/distilBERT/logistic-regression-dataset-features-labels.png"/>
   <br />
-<div class="tooltip" markdown="1">
-Logistic Regression을 훈련하는데 사용하는 레이블링된 데이터셋입니다. feature는, 이전 그림에서 슬라이스 했던 (위치 #0) [CLS] 토큰에 대한 BERT의 출력 벡터입니다. 각 행은 데이터셋의 문장에 해당하며, 각 열은 Bert/DistilBERT 모델의 가장 상단 transformer block에 있는 feed-forward neural network의 hidden unit의 출력에 해당합니다. 
-<span class="tooltiptext">
+  <div class="tooltip" markdown="1">
+  Logistic Regression을 훈련하는데 사용하는 레이블링된 데이터셋입니다. feature는, 이전 그림에서 슬라이스 했던 (위치 #0) [CLS] 토큰에 대한 BERT의 출력 벡터입니다. 각 행은 데이터셋의 문장에 해당하며, 각 열은 Bert/DistilBERT 모델의 가장 상단 transformer block에 있는 feed-forward neural network의 hidden unit의 출력에 해당합니다. 
+  <span class="tooltiptext">
   The labeled dataset we use to train the Logistic Regression. The features are the output vectors of BERT for the [CLS] token (position #0) that we sliced in the previous figure. Each row corresponds to a sentence in our dataset, each column corresponds to the output of a hidden unit from the feed-forward neural network at the top transformer block of the Bert/DistilBERT model.
-</span>
-</div>
+  </span>
+  </div>
 </div>
 
 <div class="tooltip" markdown="1">
@@ -670,7 +670,7 @@ lr_clf.fit(train_features, train_labels)
 ```
 
 <div class="tooltip" markdown="1">
-이제 모델이 훈련됭ㅆ고, test set에 대한 점수(score)를 계산할 수 있습니다:
+이제 모델이 훈련됐고, test set에 대한 점수(score)를 계산할 수 있습니다:
 <span class="tooltiptext">
 Now that the model is trained, we can score it against the test set:
 </span>
@@ -687,12 +687,15 @@ Which shows the model achieves around 81% accuracy.
 </span>
 </div>
 
+</br>
+
 <div class="tooltip" markdown="1">
 ## 스코어 벤치마크
 <span class="tooltiptext">
 Score Benchmarks
 </span>
 </div>
+
 
 <div class="tooltip" markdown="1">
 참고로, 이 데이터셋에 대한 최고 정확도 스코어는 **96.8**였습니다. DistilBERT는 이 task에 대해 score를 개선하기 위해 훈련될 수 있습니다 -- 이 프로세스는 fine-tuning이라고 부르며(*downstream task*라고도 부름), BERT의 weight를 문장 분류에서 더 좋은 성능을 달성하도록 업데이트 합니다. fine-tune된 DistilBERT는 **90.7**이 정확도를 달성하는 것으로 나왔습니다. full size BERT 모델은 **94.9**를 달성했습니다. 
@@ -702,11 +705,13 @@ For reference, the highest accuracy score for this dataset is currently **96.8**
 </div>
 
 <div class="tooltip" markdown="1">
-## Notebook
+## Notebook 실습
 <span class="tooltiptext">
 The Notebook
 </span>
 </div>
+
+</br>
 
 <div class="tooltip" markdown="1">
 [notebook](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb) 또는 [colab에서 실행](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb)하여 바로 확인해보세요.
