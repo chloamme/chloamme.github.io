@@ -3,7 +3,7 @@ layout: post
 title: 그림으로 설명하는 GPT-2 (Transformer Language Model 시각화)
 subtitle: The Illustrated GPT-2 (Visualizing Transformer Language Models)
 categories: translation
-tags: [gpt2, language model]
+tags: [GPT-2, Language Model]
 ---
 
 
@@ -24,7 +24,7 @@ This year, we saw a dazzling application of machine learning. [The OpenAI GPT-2]
 <div class="tooltip" markdown="1">
 저의 이번 목표는, 이전 글인 [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)에 더 많은 시각적 설명을 더하여 transformer의 내부 동작 원리를 설명하고, 최초의 논문으로 부터 어떻게 발전되어 왔는지에 대해 설명하는 것 입니다. 이러한 시각적 설명을 통해, 내부 동작 방식이 계속 진화되고 있는 transformer 기반의 후속 모델들이 더 쉽게 설명이 되었으면 하는 바람이 있습니다.
 <span class="tooltiptext">
-My goal here is to also supplement my earlier post, [The Illustrated Transformer](/illustrated-transformer/), with more visuals explaining the inner-workings of transformers, and how they've evolved since the original paper. My hope is that this visual language will hopefully make it easier to explain later Transformer-based models as their inner-workings continue to evolve.
+My goal here is to also supplement my earlier post, [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/), with more visuals explaining the inner-workings of transformers, and how they've evolved since the original paper. My hope is that this visual language will hopefully make it easier to explain later Transformer-based models as their inner-workings continue to evolve.
 </span>
 </div>
 
@@ -103,7 +103,7 @@ So what exactly is a language model?
 <div class="tooltip" markdown="1">
 이전 글인 [The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/)([한국어 번역본](https://databreak.netlify.app/2019-04-25-Illustrated_word2vec/))에서 language model이 무엇인지 살펴보았습니다 -- 기본적으로는, 문장의 일부를 보고 다음 단어를 예측하는 것을 할 수 있는 머신 러닝 모델입니다. 가장 유명한 language model로는 현재까지 입력된 것을 보고 다음 단어를 제안하는 스마트폰 키보드가 있습니다. 
 <span class="tooltiptext">
-In [The Illustrated Word2vec](/illustrated-word2vec/), we've looked at what a language model is -- basically a machine learning model that is able to look at part of a sentence and predict the next word. The most famous language models are smartphone keyboards that suggest the next word based on what you've currently typed.
+In [The Illustrated Word2vec](https://jalammar.github.io/illustrated-word2vec/), we've looked at what a language model is -- basically a machine learning model that is able to look at part of a sentence and predict the next word. The most famous language models are smartphone keyboards that suggest the next word based on what you've currently typed.
 </span>
 </div>
 
@@ -139,7 +139,7 @@ One great way to experiment with GPT-2 is using the [AllenAI GPT-2 Explorer](htt
 <div class="tooltip" markdown="1">
 [Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)에서 본 것과 같이, 최초의 transformer 모델은 encoder와 decoder로 구성되어 있습니다 -- 그 각각은 우리가 transformer 블록(block) 이라고 부르는 것들을 쌓아놓은 것(stacking) 입니다. 이 아키텍처는 원래 기계 번역 용도로 적합했었습니다 -- encoder-decoder 아키텍처가 과거에는 성공적이었습니다.
 <span class="tooltiptext">
-As we've seen in The [Illustrated Transformer](/illustrated-transformer/), the original transformer model is made up of an encoder and decoder -- each is a stack of what we can call transformer blocks. That architecture was appropriate because the model tackled machine translation  -- a problem where encoder-decoder architectures have been successful in the past.
+As we've seen in The [Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/), the original transformer model is made up of an encoder and decoder -- each is a stack of what we can call transformer blocks. That architecture was appropriate because the model tackled machine translation  -- a problem where encoder-decoder architectures have been successful in the past.
 </span>
 </div>
 
@@ -385,7 +385,7 @@ In the next step, we add the output from the first step to our input sequence, a
 </div>
 
 <div class="tooltip" markdown="1">
-이번 계산에서는 두 번째 경로만 활성화되는 것을 주목하세요. GPT-2의 각 레이어는 첫번째 token의 interpretation을 유지하고, 두번째 token을 처리할 때에 사용합니다 (뒤에서 self-attention 섹션에서 더 자세히 알아보겠습니다). GPT-2는 두번째 token에 비추어 첫번째 token을 재계산(re-interpret)하지 않습니다.
+이번 계산에서는 두번째 경로만 활성화되는 것을 주목하세요. GPT-2의 각 레이어는 첫번째 token의 interpretation을 유지하고, 두번째 token을 처리할 때에 사용합니다 (뒤에서 self-attention 섹션에서 더 자세히 알아보겠습니다). GPT-2는 두번째 token에 비추어 첫번째 token을 재계산(re-interpret)하지 않습니다.
 <span class="tooltiptext">
 Notice that the second path is the only that's active in this calculation. Each layer of GPT-2 has retained its own interpretation of the first token and will use it in processing the second token (we'll get into more detail about this in the following section about self-attention). GPT-2 does not re-interpret the first token in light of the second token.
 </span>
@@ -1090,7 +1090,7 @@ And with this, we have produced the vector we can send along to the next layer:
 #### GPT-2의 Fully-Connected Neural Network: #1번 레이어
 
 <div class="tooltip" markdown="1">
-fully-connected neural network은 self-attention이 representation에 적합한 context를 포함시킨 뒤, block이 입력 token을 처리하는 곳 입니다. 이 것은 두 개의 레이어로 구성되어 있습니다. 첫 번째 레이어는 모델 사이즈의 4배 입니다 (GPT2 small의 경우 768 이므로, 이 network는 768*4 = 3072 unit 입니다). 왜 4배 일까요? 그 것은 단순히 최초의 transformer에서 사용한 값과 같습니다 (모델 차원이 512 였고, #1번 레이어는 2048 이었습니다). 이 것은 transformer 모델에 주어진(처리해야 하는) task들을 다루기에 충분한 representation 능력/용량을 주는 것으로 보입니다.
+fully-connected neural network은 self-attention이 representation에 적합한 context를 포함시킨 뒤, block이 입력 token을 처리하는 곳 입니다. 이 것은 두 개의 레이어로 구성되어 있습니다. 첫번째 레이어는 모델 사이즈의 4배 입니다 (GPT2 small의 경우 768 이므로, 이 network는 768*4 = 3072 unit 입니다). 왜 4배 일까요? 그 것은 단순히 최초의 transformer에서 사용한 값과 같습니다 (모델 차원이 512 였고, #1번 레이어는 2048 이었습니다). 이 것은 transformer 모델에 주어진(처리해야 하는) task들을 다루기에 충분한 representation 능력/용량을 주는 것으로 보입니다.
 <span class="tooltiptext">
 The fully-connected neural network is where the block processes its input token after self-attention has included the appropriate context in its representation. It is made up of two layers. The first layer is four times the size of the model (Since GPT2 small is 768, this network would have 768*4 = 3072 units). Why four times? That's just the size the original transformer rolled with (model dimension was 512 and layer #1 in that model was 2048). This seems to give transformer models enough representational capacity to handle the tasks that have been thrown at them so far.
 </span>
@@ -1109,7 +1109,7 @@ The fully-connected neural network is where the block processes its input token 
 #### GPT-2의 Fully-Connected Neural Network: #2번 레이어 - 모델 차원으로 projection 하기
 
 <div class="tooltip" markdown="1">
-두 번째 레이어는 첫 번째 레이어의 결과를 모델 차원(dimension; small GPT2의 경우 768)으로 다시 projection 합니다. 이 곱셈 연산의 결과는 이 token에 대한 transformer block의 결과입니다.
+두번째 레이어는 첫번째 레이어의 결과를 모델 차원(dimension; small GPT2의 경우 768)으로 다시 projection 합니다. 이 곱셈 연산의 결과는 이 token에 대한 transformer block의 결과입니다.
 <span class="tooltiptext">
 The second layer projects the result from the first layer back into model dimension (768 for the small GPT2). The result of this multiplication is the result of the transformer block for this token.
 </span>
@@ -1196,7 +1196,7 @@ An encoder is not required to conduct translation. The same task can be addresse
 ### 요약(Summarization)
 
 <div class="tooltip" markdown="1">
-요약(Summarization)은 첫 번째 decoder-only transformer가 학습된 task 입니다. 즉, (목차 앞쪽의 서두 부분을 제외하고) 위키피디아 아티클을 읽고 요약하도록 학습했습니다. 실제 서두 부분은 학습 dataset에서 레이블로 사용되었습니다:
+요약(Summarization)은 첫번째 decoder-only transformer가 학습된 task 입니다. 즉, (목차 앞쪽의 서두 부분을 제외하고) 위키피디아 아티클을 읽고 요약하도록 학습했습니다. 실제 서두 부분은 학습 dataset에서 레이블로 사용되었습니다:
 <span class="tooltiptext">
 This is the task that the first decoder-only transformer was trained on. Namely, it was trained to read a wikipedia article (without the opening section before the table of contents), and to summarize it. The actual opening sections of the articles were used as the labels in the training datasest:
 </span>
@@ -1307,7 +1307,7 @@ If you're unclear on this representation of musical notes, [check out this video
 
 ## 결론
 <div class="tooltip" markdown="1">
-이것으로 GPT2로의 여정과 상위 모델인 decoder-only transformer에 대한 탐험을 마치겠습니다. 이 포스팅을 통해 self-attention에 대한 더 깊은 이해와 transformer 내부에서 일어나는 것들에 대해 이해하는 것이 더 수월하기를 바랍니다.
+이것으로 GPT2의 전반적인 과정과 상위 모델인 decoder-only transformer에 대한 탐험을 마치겠습니다. 이 포스팅을 통해 self-attention에 대한 더 깊은 이해와 transformer 내부에서 일어나는 것들에 대해 이해하는 것이 더 수월하기를 바랍니다.
 <span class="tooltiptext">
 This concludes our journey into the GPT2, and our exploration of its parent model, the decoder-only transformer. I hope that you come out of this post with a better understanding of self-attention and more comfort that you understand more of what goes on inside a transformer.
 </span>

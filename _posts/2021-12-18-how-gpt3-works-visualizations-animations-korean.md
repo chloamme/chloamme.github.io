@@ -3,7 +3,7 @@ layout: post
 title: GPT3가 작동하는 방법 - 시각화 및 동영상 설명
 subtitle: How GPT3 Works - Visualizations and Animations
 categories: translation
-tags: [gpt3]
+tags: [GPT-3]
 ---
 
 

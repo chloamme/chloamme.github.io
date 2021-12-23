@@ -3,7 +3,7 @@ layout: post
 title: NumPy 및 데이터 표현에 대한 시각적 소개
 subtitle: A Visual Intro to NumPy and Data Representation
 categories: translation
-tags: [numpy, data representation]
+tags: [NumPy, Data Representation]
 ---
 
 <div class="img-div-any-width" markdown="0">
@@ -413,7 +413,7 @@ A common need when dealing with matrices is the need to rotate them. This is oft
 
 
 <div class="tooltip" markdown="1">
-고급 유즈케이스로, 특정 행렬의 차원을 서로 바꾸는(switch) 필요를 느낄 수 있습니다. 데이터셋과 다른 입력이 있고, 그 입력이 특정 형상일 것을 모델이 기대하는 머신러닝 어플리케이션에서 종종 발생합니다. NumPy의 `reshape()` 메서드는 이러한 케이스에서 유용합니다. 원하는 행렬의 차원을 전달하기만 하면 됩니다. 만약 -1을 차원 값으로 전달하면, NumPy는 그 행렬의 정보를 기반으로 정확한 차원 값을 계산해냅니다.
+고급 유즈케이스로, 특정 행렬의 차원을 서로 바꾸는(switch) 필요를 느낄 수 있습니다. 데이터셋과 다른 입력이 있고, 그 입력이 특정 shape일 것을 모델이 기대하는 머신러닝 어플리케이션에서 종종 발생합니다. NumPy의 `reshape()` 메서드는 이러한 케이스에서 유용합니다. 원하는 행렬의 차원을 전달하기만 하면 됩니다. 만약 -1을 차원 값으로 전달하면, NumPy는 그 행렬의 정보를 기반으로 정확한 차원 값을 계산해냅니다.
 <span class="tooltiptext">
 In more advanced use case, you may find yourself needing to switch the dimensions of a certain matrix. This is often the case in machine learning applications where a certain model expects a certain shape for the inputs that is different from your dataset. NumPy's `reshape()` method is useful in these cases. You just pass it the new dimensions you want for the matrix. You can pass -1 for a dimension and NumPy can infer the correct dimension based on your matrix:
 </span>
@@ -627,7 +627,7 @@ Tables and Spreadsheets
  <div class="tooltip" markdown="1">
  * 스프레드시트나 테이블은 2차원 행렬입니다. 스프레드시트의 각 시트가 행렬로 사용될 수 있습니다. 파이썬에서 이 것을 위한 가장 인기있는 추상화는 [판다스 데이터프레임](https://jalammar.github.io/gentle-visual-intro-to-data-analysis-python-pandas/)이며, 이 것은 NumPy를 사용했고 그 위에 빌드한 것입니다. 
  <span class="tooltiptext" style="display: inline-block; text-align: left;">
- <span>*</span> A spreadsheet or a table of values is a two dimensional matrix. Each sheet in a spreadsheet can be its own variable. The most popular abstraction in python for those is the [pandas dataframe](/gentle-visual-intro-to-data-analysis-python-pandas/), which actually uses NumPy and builds on top of it.
+ <span>*</span> A spreadsheet or a table of values is a two dimensional matrix. Each sheet in a spreadsheet can be its own variable. The most popular abstraction in python for those is the [pandas dataframe](https://jalammar.github.io/gentle-visual-intro-to-data-analysis-python-pandas/), which actually uses NumPy and builds on top of it.
  </span>
  </div>
 
@@ -727,7 +727,7 @@ Language
 <div class="tooltip" markdown="1">
 만약 텍스트를 다룬다면, 얘기가 조금 달라집니다. 텍스트의 숫자 표현은 어휘(vocab; 모델이 아는 모든 고유한 단어 목록)이 만들어져야 하고 [임베딩 단계](https://jalammar.github.io/illustrated-word2vec/)가 있어야 합니다. 고대에 쓰여진 (번역된) 아래 인용구를 수치적으로 나타내는 단계를 살펴보겠습니다.
 <span class="tooltiptext">
-If we're dealing with text, the story is a little different. The numeric representation of text requires a step of building a vocabulary (an inventory of all the unique words the model knows) and an [embedding step](/illustrated-word2vec/). Let us see the steps of numerically representing this (translated) quote by an ancient spirit:
+If we're dealing with text, the story is a little different. The numeric representation of text requires a step of building a vocabulary (an inventory of all the unique words the model knows) and an [embedding step](https://jalammar.github.io/illustrated-word2vec/). Let us see the steps of numerically representing this (translated) quote by an ancient spirit:
 </span>
 </div>
 
@@ -773,7 +773,7 @@ We then replace each word by its id in the vocabulary table:
 <div class="tooltip" markdown="1">
 이 id들은 여전히 모델에게 많은 정보 가치를 제공하지는 않습니다. 그래서 모델에게 단어의 시퀀스를 공급하기 전에, 토큰/워드는 임베딩으로 대체될 필요가 있습니다 (이 예에서는 50 차원 [word2vec 임베딩](https://jalammar.github.io/illustrated-word2vec/))
 <span class="tooltiptext">
-These ids still don't provide much information value to a model. So before feeding a sequence of words to a model, the tokens/words need to be replaced with their embeddings (50 dimension [word2vec embedding](/illustrated-word2vec/) in this case):
+These ids still don't provide much information value to a model. So before feeding a sequence of words to a model, the tokens/words need to be replaced with their embeddings (50 dimension [word2vec embedding](https://jalammar.github.io/illustrated-word2vec/) in this case):
 </span>
 </div>
 
@@ -785,9 +785,9 @@ These ids still don't provide much information value to a model. So before feedi
 
 
 <div class="tooltip" markdown="1">
-이 NumPy 배열이 [임베딩_차원 x 시퀀스_길이] 크기의 차원임을 알 수 있습니다. 실제로는 반대일 것이지만, 시각적 일관성을 위해 이렇게 표현하겠습니다. 성능 이유로, 딥러닝 모델은 첫번째 차원을 배치 사이즈로 남겨두는 경향이 있습니다 (왜냐하면 모델은 여러 예제를 병렬로 훈련하는 경우 빠르기 때문입니다). 이 것은 ```reshape()```이 매우 유용해지는 명백한 케이스입니다. 예를들어, [BERT](https://jalammar.github.io/illustrated-bert/)와 같은 모델은 이 것의 입력을 [배치_사이즈, 시퀀스_길이, 임베딩_크기] 형태의 입력을 예상합니다.
+이 NumPy 배열이 [임베딩_차원 x 시퀀스_길이] 크기의 차원임을 알 수 있습니다. 실제로는 반대일 것이지만, 시각적 일관성을 위해 이렇게 표현하겠습니다. 성능 이유로, 딥러닝 모델은 첫번째 차원을 배치 사이즈로 남겨두는 경향이 있습니다 (왜냐하면 모델은 여러 예제를 병렬로 훈련하는 경우 빠르기 때문입니다). 이 것은 ```reshape()```이 매우 유용해지는 명백한 케이스입니다. 예를들어, [BERT](https://jalammar.github.io/illustrated-bert/)와 같은 모델은 이 것의 입력을 [배치_사이즈, 시퀀스_길이, 임베딩_크기] shape의 입력을 예상합니다.
 <span class="tooltiptext">
-You can see that this NumPy array has the dimensions [embedding_dimension x sequence_length]. In practice these would be the other way around, but I'm presenting it this way for visual consistency. For performance reasons, deep learning models tend to preserve the first dimension for batch size (because the model can be trained faster if multiple examples are trained in parallel). This is a clear case where ```reshape()``` becomes super useful. A model like [BERT](/illustrated-bert/), for example, would expect its inputs in the shape: [batch_size, sequence_length, embedding_size].
+You can see that this NumPy array has the dimensions [embedding_dimension x sequence_length]. In practice these would be the other way around, but I'm presenting it this way for visual consistency. For performance reasons, deep learning models tend to preserve the first dimension for batch size (because the model can be trained faster if multiple examples are trained in parallel). This is a clear case where ```reshape()``` becomes super useful. A model like [BERT](https://jalammar.github.io/illustrated-bert/), for example, would expect its inputs in the shape: [batch_size, sequence_length, embedding_size].
 </span>
 </div>
 
