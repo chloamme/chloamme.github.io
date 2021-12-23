@@ -729,7 +729,7 @@ And that's it! That's a good first contact with BERT. The next step would be to 
 </div>
 
 <div class="tooltip" markdown="1">
-[Clément Delangue](https://twitter.com/ClementDelangue), [Victor Sanh](https://twitter.com/SanhEstPasMoi), Huggingface 팀께 이 튜토리얼의 초기 버전에 대한 피드백을 주셔서 감사합니다. 
+이 튜토리얼의 초기 버전에 대한 피드백을 주신 [Clément Delangue](https://twitter.com/ClementDelangue), [Victor Sanh](https://twitter.com/SanhEstPasMoi), Huggingface 팀 분들께 감사합니다. 
 <span class="tooltiptext">
 Thanks to [Clément Delangue](https://twitter.com/ClementDelangue), [Victor Sanh](https://twitter.com/SanhEstPasMoi), and the Huggingface team for providing feedback to earlier versions of this tutorial.
 </span>
