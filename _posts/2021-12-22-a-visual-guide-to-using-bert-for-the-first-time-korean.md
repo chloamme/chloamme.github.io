@@ -51,10 +51,10 @@ The dataset we will use in this example is [SST2](https://nlp.stanford.edu/senti
 <table class="features-table">
   <tr>
     <th class="mdc-text-light-green-600">
-    sentence(문장)
+    sentence (문장)
     </th>
     <th class="mdc-text-purple-600">
-    label(레이블)
+    label (레이블)
     </th>
   </tr>
   <tr>
@@ -122,7 +122,7 @@ Our goal is to create a model that takes a sentence (just like the ones in our d
 
 
 <div class="tooltip" markdown="1">
-내부적으로는, 모델은 사실 두개의 모델로 구성되어 있습니다. 
+모델은 사실 내부적으로 두개의 모델로 구성되어 있습니다. 
 <span class="tooltiptext">
 Under the hood, the model is actually made up of two model.
 </span>
@@ -346,7 +346,7 @@ The training is what we'll discuss in the next section, along with the code of t
 </span>
 </div>
 
-</br>
+<br />
 
 <div class="tooltip" markdown="1">
 ## 코드
@@ -490,7 +490,7 @@ Processing with DistilBERT
 </span>
 </div>
 
-</br>
+<br />
 
 <div class="tooltip" markdown="1">
 패딩된 토큰 행렬에서 입력 텐서를 생성하여 DistilBERT로 전달합니다. 
@@ -687,7 +687,7 @@ Which shows the model achieves around 81% accuracy.
 </span>
 </div>
 
-</br>
+<br />
 
 <div class="tooltip" markdown="1">
 ## 스코어 벤치마크
@@ -711,7 +711,7 @@ The Notebook
 </span>
 </div>
 
-</br>
+<br />
 
 <div class="tooltip" markdown="1">
 [notebook](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb) 또는 [colab에서 실행](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb)하여 바로 확인해보세요.
