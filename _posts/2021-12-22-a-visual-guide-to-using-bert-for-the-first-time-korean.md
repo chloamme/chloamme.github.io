@@ -704,21 +704,21 @@ For reference, the highest accuracy score for this dataset is currently **96.8**
 </span>
 </div>
 
+<p>
 <div class="tooltip" markdown="1">
 ## Notebook 실습<br />
 <span class="tooltiptext">
 The Notebook
 </span>
 </div>
+</p>
 
-<p>
 <div class="tooltip" markdown="1">
 이 [notebook](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb) 또는 [colab에서 실행](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb)하여 바로 확인해보세요.
 <span class="tooltiptext">
 Dive right into [the notebook](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb) or [run it on colab](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb).
 </span>
 </div>
-</p>
 
 <div class="tooltip" markdown="1">
 해냈습니다! 첫번째로 BERT를 다뤄보는 좋은 만남이었습니다. 다음 단계에서는 [fine-tuning](https://huggingface.co/transformers/examples.html#glue)하는 것입니다. 돌아가서 distilBERT와 BERT를 바꿔가면서 어떻게 동작하는지 확인할 수도 있습니다. 
