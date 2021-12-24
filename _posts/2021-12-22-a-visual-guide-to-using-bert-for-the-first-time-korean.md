@@ -706,13 +706,12 @@ For reference, the highest accuracy score for this dataset is currently **96.8**
 
 <div class="tooltip" markdown="1">
 ## Notebook 실습 
-
 <span class="tooltiptext">
 The Notebook
 </span>
 </div>
 
-<div class="tooltip" markdown="1">
+<div class="tooltip" markdown="1" style="white-space: pre-line">
 이 [notebook](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb) 또는 [colab에서 실행](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb)하여 바로 확인해보세요.
 <span class="tooltiptext">
 Dive right into [the notebook](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb) or [run it on colab](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb).
