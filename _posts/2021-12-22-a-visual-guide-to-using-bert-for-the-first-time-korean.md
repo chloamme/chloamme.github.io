@@ -346,14 +346,14 @@ The training is what we'll discuss in the next section, along with the code of t
 </span>
 </div>
 
-<br />
-
+<p>
 <div class="tooltip" markdown="1">
 ## 코드
 <span class="tooltiptext">
 The Code
 </span>
 </div>
+</p>
 
 <div class="tooltip" markdown="1">
 이번 섹션에서는 문장 분류 모델을 훈련하기 위한 코드를 살펴보겠습니다. 모든 코드를 포함하는 notebook은 [colab](https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb)과 [github](https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb)에서 확인하실 수 있습니다.
@@ -481,16 +481,14 @@ After the padding, we have a matrix/tensor that is ready to be passed to BERT:
   <br />
 </div>
 
-
-
+<p>
 <div class="tooltip" markdown="1">
 ### DistilBERT로 처리하기
 <span class="tooltiptext">
 Processing with DistilBERT
 </span>
 </div>
-
-<br />
+</p>
 
 <div class="tooltip" markdown="1">
 패딩된 토큰 행렬에서 입력 텐서를 생성하여 DistilBERT로 전달합니다. 
@@ -687,15 +685,15 @@ Which shows the model achieves around 81% accuracy.
 </span>
 </div>
 
-<br />
 
+<p>
 <div class="tooltip" markdown="1">
 ## 스코어 벤치마크
 <span class="tooltiptext">
 Score Benchmarks
 </span>
 </div>
-
+</p>
 
 <div class="tooltip" markdown="1">
 참고로, 이 데이터셋에 대한 최고 정확도 스코어는 **96.8**였습니다. DistilBERT는 이 task에 대해 score를 개선하기 위해 훈련될 수 있습니다 -- 이 프로세스는 fine-tuning이라고 부르며(*downstream task*라고도 부름), BERT의 weight를 문장 분류에서 더 좋은 성능을 달성하도록 업데이트 합니다. fine-tune된 DistilBERT는 **90.7**이 정확도를 달성하는 것으로 나왔습니다. full size BERT 모델은 **94.9**를 달성했습니다. 
@@ -706,7 +704,7 @@ For reference, the highest accuracy score for this dataset is currently **96.8**
 
 <p>
 <div class="tooltip" markdown="1">
-## Notebook 실습<br />
+## Notebook 실습
 <span class="tooltiptext">
 The Notebook
 </span>
