@@ -6,6 +6,9 @@ categories: translation
 tags: [NumPy, Data Representation]
 ---
 
+* 이 글은 [Jay Alammar님의 글](https://jalammar.github.io/illustrated-gpt2/)을 번역한 글입니다. [추가정보](#추가정보).
+---
+
 <div class="img-div-any-width" markdown="0">
   <image src="/images/numpy/numpy-array.png"/>
   <br />
@@ -33,12 +36,7 @@ import numpy as np
 ```
 
 
-<div class="tooltip" markdown="1">
-## 배열(Array) 생성
-<span class="tooltiptext">
-Creating Arrays
-</span>
-</div>
+## Creating Arrays (배열 생성)
 
 
 <div class="tooltip" markdown="1">
@@ -72,14 +70,7 @@ Once we've created our arrays, we can start to manipulate them in interesting wa
 </span>
 </div>
 
-<br />
-
-<div class="tooltip" markdown="1">
-## 배열 산술연산
-<span class="tooltiptext">
-Array Arithmetic
-</span>
-</div>
+## Array Arithmetic (배열 산술연산)
 
 <div class="tooltip" markdown="1">
 NumPy 배열의 유용성을 설명하기 위해 두 개의 NumPy 배열을 생성합니다. `data`와 `ones`라고 부르겠습니다:
@@ -153,13 +144,7 @@ See how NumPy understood that operation to mean that the multiplication should h
 </div>
 
 
-<div class="tooltip" markdown="1">
-## 인덱싱(Indexing)
-<span class="tooltiptext">
-Indexing
-</span>
-</div>
-
+## Indexing (인덱싱)
 
 <div class="tooltip" markdown="1">
 파이썬 리스트에서 슬라이싱을 할 수 있는 모든 방법으로 NumPy에서도 인덱싱과 슬라이싱을 할 수 있습니다:
@@ -173,14 +158,7 @@ We can index and slice NumPy arrays in all the ways we can slice python lists:
   <br />
 </div>
 
-<div class="tooltip" markdown="1">
-## 집계(Aggregation)
-<span class="tooltiptext">
-Aggregation
-</span>
-</div>
-
-<br />
+## Aggregation (집계)
 
 <div class="tooltip" markdown="1">
 NumPy의 추가적인 이점은 집계 함수(aggregation function)들입니다. 
@@ -202,28 +180,16 @@ In addition to `min`, `max`, and `sum`, you get all the greats like `mean` to ge
 </div>
 
 
-<div class="tooltip" markdown="1">
-## 더 높은 차원
-<span class="tooltiptext">
-In more dimensions
-</span>
-</div>
-
+## In more dimensions (더 높은 차원)
 
 <div class="tooltip" markdown="1">
-현재가지 우리가 살펴본 예제들은 1차원인 벡터들이었습니다. NumPy의 정수는, 우리가 여태껏 배운 능력들을 어떤 차원에도 적용할 수 있다는 것입니다. 
+현재가지 우리가 살펴본 예제들은 1차원인 벡터들이었습니다. NumPy의 정수는, 우리가 지금까지 배운 능력들을 어떤 차원에도 적용할 수 있다는 것입니다. 
 <span class="tooltiptext">
 All the examples we've looked at deal with vectors in one dimension. A key part of the beauty of NumPy is its ability to apply everything we've looked at so far to any number of dimensions.
 </span>
 </div>
 
-<div class="tooltip" markdown="1">
-### 배열 생성
-<span class="tooltiptext">
-Creating Matrices
-</span>
-</div>
-
+### Creating Matrices (배열 생성)
 
 <div class="tooltip" markdown="1">
 아래와 같은 모양의 파이썬의 중첩 리스트를 전달하여, NumPy가 이를 나타내는 행렬을 생성하도록 할 수 있습니다:
@@ -253,15 +219,8 @@ We can also use the same methods we mentioned above (`ones()`, `zeros()`, and `r
   <br />
 </div>
 
-<br />
 
-<div class="tooltip" markdown="1">
-### 행렬 산술연산
-<span class="tooltiptext">
-Matrix Arithmetic
-</span>
-</div>
-
+### Matrix Arithmetic (행렬 산술연산)
 
 <div class="tooltip" markdown="1">
 두 행렬의 크기가 같다면, 산술연산자 (`+-*/`)를 사용해서 행렬을 더하거나 곱할 수 있습니다. NumPy는 연산을 position-wise로 처리합니다:
@@ -289,14 +248,8 @@ We can get away with doing these arithmetic operations on matrices of different 
   <br />
 </div>
 
-<br />
 
-<div class="tooltip" markdown="1">
-### 내적
-<span class="tooltiptext">
-Dot Product
-</span>
-</div>
+### Dot Product (내적)
 
 
 <div class="tooltip" markdown="1">
@@ -325,17 +278,7 @@ I've added matrix dimensions at the bottom of this figure to stress that the two
   <br />
 </div>
 
-<br />
-<br />
-
-<div class="tooltip" markdown="1">
-### 행렬 인덱싱
-<span class="tooltiptext">
-Matrix Indexing
-</span>
-</div>
-
-<br />
+### Matrix Indexing (행렬 인덱싱)
 
 <div class="tooltip" markdown="1">
 인덱싱과 슬라이싱은 행렬을 다룰 때 더 유용합니다:
@@ -349,16 +292,8 @@ Indexing and slicing operations become even more useful when we're manipulating 
   <br />
 </div>
 
-<br />
 
-<div class="tooltip" markdown="1">
-### 행렬 집계연산
-<span class="tooltiptext">
-Matrix Aggregation
-</span>
-</div>
-
-<br />
+### Matrix Aggregation (행렬 집계연산)
 
 <div class="tooltip" markdown="1">
 벡터를 집계했던 것과 동일한 방법은 행렬도 집계 연산을 할 수 있습니다:
@@ -386,16 +321,8 @@ Not only can we aggregate all the values in a matrix, but we can also aggregate 
   <br />
 </div>
 
-<br />
 
-
-<div class="tooltip" markdown="1">
-## 전치 및 형상변경
-<span class="tooltiptext">
-Transposing and Reshaping
-</span>
-</div>
-
+## Transposing and Reshaping (전치 및 재구조화/재배열)
 
 <div class="tooltip" markdown="1">
 행렬을 다룰 때 일반적으로(많은 경우) 회전을 시킬 필요가 있습니다. 우리가 두 행렬에 내적을 취할 필요가 있거나 두 행렬이 공유하는(맞대는) 차원을 맞출 필요가 있을 때입니다. NumPy 배열을 행렬의 전치를 구하는 `T`라는 편리한 기능을 가지고 있습니다. 
@@ -426,14 +353,7 @@ In more advanced use case, you may find yourself needing to switch the dimension
 </div>
 
 
-<br />
-
-<div class="tooltip" markdown="1">
-## 한층 더 높은 차원
-<span class="tooltiptext">
-Yet More Dimensions
-</span>
-</div>
+## Yet More Dimensions (한층 더 높은 차원)
 
 <div class="tooltip" markdown="1">
 NumPy는 앞서 언급한 모든 것을 모든 차원수에 대해 수행할 수 있습니다. 중심이되는 자료 구조를 ndarray(N-Dimensional Array; N-차원 배열)이라고 부르는 이유입니다. 
@@ -485,14 +405,7 @@ array([[[1., 1.],
         [1., 1.]]])
 ```
 
-<div class="tooltip" markdown="1">
-## 실질적인 사용법
-<span class="tooltiptext">
-Practical Usage
-</span>
-</div>
-
-<br />
+## Practical Usage (실질적인 사용법)
 
 <div class="tooltip" markdown="1">
 마무리입니다. 다음은 NumPy가 도움이 될 만한 몇가지 유용한 것들의 예입니다. 
@@ -502,12 +415,7 @@ And now for the payoff. Here are some examples of the useful things NumPy will h
 </div>
 
 
-<div class="tooltip" markdown="1">
-### 수식
-<span class="tooltiptext">
-Formulas
-</span>
-</div>
+### Formulas (수식)
 
 <div class="tooltip" markdown="1">
 행렬과 벡터를 다루는 수학적인 공식을 구현하는 것은 NumPy를 고려해야 하는 주요 사용 사례입니다. 이 것은 왜 NumPy가 과학적 파이썬 커뮤니티에서 사랑받는 이유 입니다. 예를 들어, 회귀 문제를 다루는 지도학습 머신러닝 모델의 중심인 평균 제곱 오차 수식을 고려해보세요:
@@ -600,15 +508,8 @@ Which results in the error value for that prediction and a score for the quality
 </span>
 </div>
 
-<br />
 
-<div class="tooltip" markdown="1">
-### 데이터 표현
-<span class="tooltiptext">
-Data Representation
-</span>
-</div>
-
+### Data Representation (데이터 표현)
 
 <div class="tooltip" markdown="1">
 모델을 처리하거나 빌드하는데 필요한 모든 데이터 유형에 대해 생각해보십시오 (스프레드시트, 이미지, 오디오 등). 대부분의 경우 n-차원 배열의 표현과 완벽하게 적합합니다. 
@@ -617,12 +518,8 @@ Think of all the data types you'll need to crunch and build models around (sprea
 </span>
 </div>
 
-<div class="tooltip" markdown="1">
-#### 테이블 및 스프레드시트
-<span class="tooltiptext">
-Tables and Spreadsheets
-</span>
-</div>
+
+#### Tables and Spreadsheets
 
  <div class="tooltip" markdown="1">
  * 스프레드시트나 테이블은 2차원 행렬입니다. 스프레드시트의 각 시트가 행렬로 사용될 수 있습니다. 파이썬에서 이 것을 위한 가장 인기있는 추상화는 [판다스 데이터프레임](https://jalammar.github.io/gentle-visual-intro-to-data-analysis-python-pandas/)이며, 이 것은 NumPy를 사용했고 그 위에 빌드한 것입니다. 
@@ -636,12 +533,8 @@ Tables and Spreadsheets
    <br />
  </div>
 
-<div class="tooltip" markdown="1">
-#### 오디오 및 시계열
-<span class="tooltiptext">
-Audio and Timeseries
-</span>
-</div>
+
+#### Audio and Timeseries(시계열)
 
  <div class="tooltip" markdown="1">
  * 오디오 파일은 오디오 샘플들의 1차원 배열입니다. 각 샘플들은 오디오 신호의 작은 조각을 숫자로 표현한 것 입니다. CD품질 오디오는 초당 44,100 샘플을 가지며 각 샘플은 -32767 ~ 32767 사이의 정수 값을 갖습니다. CD품질 10초 WAVE 파일을 가지고 있다면, 10 * 44,100 = 441,000 샘플 길이의 NumPy 배열로 로딩할 수 있습니다. 오디오의 첫 1초를 추출하고 싶으신가요? `audio`라고 명명할 파일을 NumPy 배열로 단순히 로드하고 `audio[:44100]`를 가져오면 됩니다. 
@@ -669,12 +562,8 @@ The same goes for time-series data (for example, the price of a stock over time)
 </span>
 </div>
 
-<div class="tooltip" markdown="1">
-#### 이미지
-<span class="tooltiptext">
-Images
-</span>
-</div>
+
+#### Images
 
 
  <div class="tooltip" markdown="1">
@@ -717,12 +606,8 @@ Here's a look at a slice of an image file:
       <br />
     </div>
 
-<div class="tooltip" markdown="1">
-#### 언어
-<span class="tooltiptext">
-Language
-</span>
-</div>
+
+#### Language
 
 <div class="tooltip" markdown="1">
 만약 텍스트를 다룬다면, 얘기가 조금 달라집니다. 텍스트의 숫자 표현은 어휘(vocab; 모델이 아는 모든 고유한 단어 목록)이 만들어져야 하고 [임베딩 단계](https://jalammar.github.io/illustrated-word2vec/)가 있어야 합니다. 고대에 쓰여진 (번역된) 아래 인용구를 수치적으로 나타내는 단계를 살펴보겠습니다.
@@ -805,7 +690,7 @@ This is now a numeric volume that a model can crunch and do useful things with. 
 </div>
 
 <div class="tooltip" markdown="1">
-위의 예에서 [이 시인(Antara)의 시](https://en.wikisource.org/wiki/The_Poem_of_Antara)은 어떤 다른 시들 보다 훨씬 더 불후의 명성을 얻었습니다. 아버지 소유의 노예로 태어난 Antarah(어머니가 노예/포로로 잡혀간 에티오피아 공주)는 용맹과 언어 구사력을 통해 자유를 얻었고, 그의 시가 이슬람 이전 아라비아의 [카바(사우디아라비아 메카 소재 '하람 성원'의 중심에 위치)에 게시된 7개의 시](https://en.wikipedia.org/wiki/Mu%27allaqat) 중 하나로 신화적 지위를 얻었습니다.
+위의 예에서 [이 시인(Antara)의 시](https://en.wikisource.org/wiki/The_Poem_of_Antara)은 어떤 다른 시들 보다 훨씬 더 불후의 명성을 얻었습니다. 아버지 소유의 노예로 태어난 Antarah(어머니가 포로/노예로 잡혀간 에티오피아 공주)는 용맹과 언어 구사력을 통해 자유를 얻었고, 그의 시가 이슬람 이전 아라비아의 [카바(사우디아라비아 메카 소재 '하람 성원'의 중심에 위치)에 게시된 7개의 시](https://en.wikipedia.org/wiki/Mu%27allaqat) 중 하나로 신화적 지위를 얻었습니다.
 <span class="tooltiptext">
 (It turned out the [poet's words](https://en.wikisource.org/wiki/The_Poem_of_Antara) in our example were immortalized more so than those of the other poets which trigger his anxieties. Born a slave owned by his father, [Antarah's](https://en.wikipedia.org/wiki/Antarah_ibn_Shaddad) valor and command of language gained him his freedom and the mythical status of having his poem as one of [seven poems suspended in the kaaba](https://en.wikipedia.org/wiki/Mu%27allaqat) in pre-Islamic Arabia).
 </span>
@@ -813,7 +698,10 @@ This is now a numeric volume that a model can crunch and do useful things with. 
 
 ---
 
-* 이 글은 Numpy에 대해 이해하기 쉽게 그림으로 설명한 Jay Alammar님의 [블로그](https://jalammar.github.io)의 글을 저자의 허락을 받고 번역한 글 입니다. 원문은 [A Visual Intro to NumPy and Data Representation](https://jalammar.github.io/visual-numpy/)에서 확인하실 수 있습니다.
-* 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역(번역체) 보다는 개념에 대한 설명을 쉽게 하는 문장으로 표현하는 쪽으로 더 무게를 두어 번역 했습니다.
+
+## 추가 정보
+
+* 이 글은 GPT2에 대해 이해하기 쉽게 그림으로 설명한 포스팅을 저자인 Jay Alammar님의 허락을 받고 번역한 글 입니다. 원문은 [A Visual Intro to NumPy and Data Representation](https://jalammar.github.io/visual-numpy/)에서 확인하실 수 있습니다.
+* 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역 보다는 개념이나 의미에 대한 설명을 쉽게 하는 문장 쪽으로 더 무게를 두어 번역 했습니다.
 * 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](https://nlpinkorean.github.io)님께서 만들어두신 툴팁 도움말 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
 
