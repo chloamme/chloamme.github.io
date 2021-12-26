@@ -7,7 +7,8 @@ tags: [GPT-2, Language Model]
 ---
 
 <div class="tooltip" markdown="1">
-* 이 글은 [Jay Alammar님의 글](https://jalammar.github.io/illustrated-gpt2/)을 번역한 글입니다. <a href="#additional-info" name="additional-info">[추가정보]</a>
+* 이 글은 [Jay Alammar님의 글](https://jalammar.github.io/illustrated-gpt2/)을 번역한 글입니다. [[추가정보](#additional-info)]
+
 </div>
 ---
 
@@ -1347,7 +1348,7 @@ Comments or corrections? Please tweet me at [@JayAlammar](https://twitter.com/Ja
 
 ---
 
-## [추가 정보](#additional-info)
+## <a href="#additional-info" name="additional-info">추가 정보</a>
 
 * 이 글은 GPT2에 대해 이해하기 쉽게 그림으로 설명한 포스팅을 저자인 Jay Alammar님의 허락을 받고 번역한 글 입니다. 원문은 [The Illustrated GPT-2 (Visualizing Transformer Language Models)](https://jalammar.github.io/illustrated-gpt2/)에서 확인하실 수 있습니다.
 * 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역 보다는 개념이나 의미에 대한 설명을 쉽게 하는 문장 쪽으로 더 무게를 두어 번역 했습니다.
