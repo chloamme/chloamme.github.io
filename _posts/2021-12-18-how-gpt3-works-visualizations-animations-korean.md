@@ -7,9 +7,11 @@ tags: [GPT-3]
 ---
 
 <div class="tooltip" markdown="1">
-* 이 글은 [Jay Alammar님의 글](https://jalammar.github.io/how-gpt3-works-visualizations-animations/)을 번역한 글입니다. [추가정보](#추가정보).
+> 이 글은 [Jay Alammar님의 글](https://jalammar.github.io/how-gpt3-works-visualizations-animations/)을 번역한 글입니다. [[추가정보](#additional-info)]
+<span class="tooltiptext">
+This post is a translated version of [How GPT3 Works - Visualizations and Animations](https://jalammar.github.io/how-gpt3-works-visualizations-animations/) by Jay Alammar.
+</span>
 </div>
----
 
 <div class="tooltip" markdown="1">
 요즘(GPT3가 릴리즈 되었을 당시) 기술분야에서는 GPT3에 대한 [많은 이야기](https://www.theverge.com/21346343/gpt-3-explainer-openai-examples-errors-agi-potential)를 합니다. (GPT3와 같은) 대규모 언어 모델들은 그 능력으로 우리를 놀래키기 시작했습니다. 대부분의 비즈니스에서 고객용으로 사용하기에 충분히 신뢰성(reliable)이 있다고 할 수는 없지만, 이 모델들은 자동화(automation)로의 꾸준한 전환과 지능형 컴퓨터 시스템의 가능성을 가속화할 영리함의 번뜩이는 순간들을 보여주고 있습니다.

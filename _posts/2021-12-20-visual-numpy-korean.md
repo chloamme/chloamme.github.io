@@ -7,9 +7,12 @@ tags: [NumPy, Data Representation]
 ---
 
 <div class="tooltip" markdown="1">
-이 글은 [Jay Alammar님의 글](https://jalammar.github.io/visual-numpy/)을 번역한 글입니다. [추가정보](#추가정보).
+> 이 글은 [Jay Alammar님의 글](https://jalammar.github.io/visual-numpy/)을 번역한 글입니다. [[추가정보](#additional-info)]
+<span class="tooltiptext">
+This post is a translated version of [A Visual Intro to NumPy and Data Representation](https://jalammar.github.io/visual-numpy/) by Jay Alammar.
+</span>
 </div>
----
+
 
 <div class="img-div-any-width" markdown="0">
   <image src="/images/numpy/numpy-array.png"/>

@@ -7,9 +7,11 @@ tags: [BERT, DistilBERT, Logistic Regression, Sentence Classification]
 ---
 
 <div class="tooltip" markdown="1">
-이 글은 [Jay Alammar님의 글](https://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/)을 번역한 글입니다. [추가정보](#추가정보).
+> 이 글은 [Jay Alammar님의 글](https://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/)을 번역한 글입니다. [[추가정보](#additional-info)]
+<span class="tooltiptext">
+This post is a translated version of [A Visual Guide to Using BERT for the First Time](https://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/) by Jay Alammar.
+</span>
 </div>
----
 
 <div class="img-div-any-width" markdown="0">
   <image src="/images/distilBERT/bert-distilbert-sentence-classification.png"/>
