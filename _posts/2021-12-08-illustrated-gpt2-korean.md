@@ -6,7 +6,9 @@ categories: translation
 tags: [GPT-2, Language Model]
 ---
 
+<div class="tooltip" markdown="1">
 * 이 글은 [Jay Alammar님의 글](https://jalammar.github.io/illustrated-gpt2/)을 번역한 글입니다. [추가정보](#추가정보).
+</div>
 ---
 
 <div class="img-div-any-width" markdown="0">
