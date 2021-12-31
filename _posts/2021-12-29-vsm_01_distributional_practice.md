@@ -122,12 +122,12 @@ There are many, many ways to define distributional matrices. Here's a schematic 
 1. Scan through your corpus building a dictionary $d$ mapping word-pairs to co-occurrence values. Every time a pair of words $w$ and $w'$ occurs in the same context (as you defined it in 1), increment $d[(w, w')]$ by whatever value is determined by your weighting scheme. You'd increment by $1$ with the weighting scheme that simply counts co-occurrences.
 
 1. Using the count dictionary $d$ that you collected in 3, establish your full vocabulary $V$, an ordered list of words types. 
-    1. For large collections of documents, $$|V|$$ will typically be huge. You will probably want to winnow the vocabulary at this point. 
+    1. For large collections of documents, $\|V\|$ will typically be huge. You will probably want to winnow the vocabulary at this point. 
     1. You might do this by filtering to a specific subset, or just imposing a minimum count threshold. 
-    1. You might impose a minimum count threshold even if $$|V|$$ is small — for words with very low counts, you simply don't have enough evidence to support good representations.
+    1. You might impose a minimum count threshold even if $\|V\|$ is small — for words with very low counts, you simply don't have enough evidence to support good representations.
     1. For words outside the vocabulary you choose, you could ignore them entirely or accumulate all their values into a designated _UNK_ vector.
 
-1. Now build a matrix $M$ of dimension $$|V| \times |V|$$. Both the rows and the columns of $M$ represent words. Each cell $M[i, j]$ is filled with the value $d[(w_{1}, w_{j})]$.
+1. Now build a matrix $M$ of dimension $\|V\| \times \|V\|$. Both the rows and the columns of $M$ represent words. Each cell $M[i, j]$ is filled with the value $d[(w_{1}, w_{j})]$.
 
 distributional matrix를 정의하는데 많은 방법이 있지만, word $\times$ word matrix를 build하는 데 아래 순서로 가능:
 
