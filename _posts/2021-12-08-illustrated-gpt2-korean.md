@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 그림으로 설명하는 GPT-2 (Transformer Language Model 시각화)
+title: [번역] 그림으로 설명하는 GPT-2 (Transformer Language Model 시각화)
 subtitle: The Illustrated GPT-2 (Visualizing Transformer Language Models)
 categories: translation
 tags: [GPT-2, Language Model]

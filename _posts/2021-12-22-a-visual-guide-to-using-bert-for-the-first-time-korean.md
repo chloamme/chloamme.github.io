@@ -1,6 +1,6 @@
 ---
 layout: post
-title: BERT를 처음 사용하기 위한 시각적 가이드
+title: [번역] BERT를 처음 사용하기 위한 시각적 가이드
 subtitle: A Visual Guide to Using BERT for the First Time
 categories: translation
 tags: [BERT, DistilBERT, Logistic Regression, Sentence Classification]
