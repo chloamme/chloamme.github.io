@@ -6,7 +6,6 @@ categories: CS224U
 tags: [VSM, Distance, Reweighting, Ultralearning]
 use_math: true
 ---
-
 # Vector-space models: designs, distances, basic reweighting
 
 
@@ -26,11 +25,11 @@ __version__ = "CS224u, Stanford, Spring 2019"
 1. [Matrix designs](#Matrix-designs)
 1. [Pre-computed example matrices](#Pre-computed-example-matrices)
 1. [Vector comparison](#Vector-comparison)
-  1. [Euclidean](#Euclidean)
-  1. [Length normalization](#Length-normalization)
-  1. [Cosine distance](#Cosine-distance)
-  1. [Matching-based methods](#Matching-based-methods)
-  1. [Summary](#Summary)
+    1. [Euclidean](#Euclidean)
+    1. [Length normalization](#Length-normalization)
+    1. [Cosine distance](#Cosine-distance)
+    1. [Matching-based methods](#Matching-based-methods)
+    1. [Summary](#Summary)
 1. [Distributional neighbors](#Distributional-neighbors)
 1. [Matrix reweighting](#Matrix-reweighting)
     1. [Normalization](#Normalization)
@@ -123,12 +122,12 @@ There are many, many ways to define distributional matrices. Here's a schematic 
 1. Scan through your corpus building a dictionary $d$ mapping word-pairs to co-occurrence values. Every time a pair of words $w$ and $w'$ occurs in the same context (as you defined it in 1), increment $d[(w, w')]$ by whatever value is determined by your weighting scheme. You'd increment by $1$ with the weighting scheme that simply counts co-occurrences.
 
 1. Using the count dictionary $d$ that you collected in 3, establish your full vocabulary $V$, an ordered list of words types. 
-    1. For large collections of documents, $|V|$ will typically be huge. You will probably want to winnow the vocabulary at this point. 
+    1. For large collections of documents, $$|V|$$ will typically be huge. You will probably want to winnow the vocabulary at this point. 
     1. You might do this by filtering to a specific subset, or just imposing a minimum count threshold. 
-    1. You might impose a minimum count threshold even if $|V|$ is small — for words with very low counts, you simply don't have enough evidence to support good representations.
+    1. You might impose a minimum count threshold even if $$|V|$$ is small — for words with very low counts, you simply don't have enough evidence to support good representations.
     1. For words outside the vocabulary you choose, you could ignore them entirely or accumulate all their values into a designated _UNK_ vector.
 
-1. Now build a matrix $M$ of dimension $|V| \times |V|$. Both the rows and the columns of $M$ represent words. Each cell $M[i, j]$ is filled with the value $d[(w_{1}, w_{j})]$.
+1. Now build a matrix $M$ of dimension $$|V| \times |V|$$. Both the rows and the columns of $M$ represent words. Each cell $M[i, j]$ is filled with the value $d[(w_{1}, w_{j})]$.
 
 distributional matrix를 정의하는데 많은 방법이 있지만, word $\times$ word matrix를 build하는 데 아래 순서로 가능:
 
@@ -143,11 +142,11 @@ distributional matrix를 정의하는데 많은 방법이 있지만, word $\time
 
 The data distribution includes four matrices that we'll use for hands-on exploration. All of them were designed in the same basic way:
 
-* They are word $\times$ word matrices with ~5K~6K rows and ~5K~6K columns. 
+* They are word $\times$ word matrices with 6K rows and 6K columns. 
 
-* The vocabulary is the top ~5K~6K most frequent unigrams.
+* The vocabulary is the top 6K most frequent unigrams.
 
-Two come from ~IMDB~Yelp user-supplied reviews, and two come from Gigaword, a collection of newswire and newspaper text. Further details:
+Two come from Yelp user-supplied reviews, and two come from Gigaword, a collection of newswire and newspaper text. Further details:
 
 |filename | source | window size| count weighting |
 |---------|--------|------------|-----------------|
@@ -1474,8 +1473,8 @@ Here's the tiny vector space from the screencast on vector comparisons associate
 Running example <br>
 • Focus on distance measures <br>
 • Illustrations with row vectors <br>
-어떤 문서(혹은 코퍼스 등) x, y에, ``, ``, ``라는 단어가 등장한다고 할 때 <br>
-혹은, 어떤 단어 x, y와, ``, ``, ``라는 단어가 함께 등장한다고 할 때
+어떤 문서(혹은 코퍼스 등) x, y에, `A`, `B`, `C`라는 단어가 등장한다고 할 때 <br>
+혹은, 어떤 단어 x, y와, `A`, `B`, `C`라는 단어가 함께 등장한다고 할 때
 
 
 ```python
@@ -1556,7 +1555,7 @@ plot_ABC(ABC)
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_28_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
 
 
 The euclidean distances align well with raw visual distance in the plot:
@@ -1634,7 +1633,7 @@ plot_ABC(ABC_normed)
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_37_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
 
 
 
@@ -2442,7 +2441,7 @@ vsm.tsne_viz(imdb20_pmi)
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_102_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
 
 
 ## Exploratory exercises
