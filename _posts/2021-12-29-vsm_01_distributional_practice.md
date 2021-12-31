@@ -15,7 +15,7 @@ __version__ = "CS224u, Stanford, Spring 2019"
 
 # 이 문서는, 아파치 라이선스 2.0 하에, Christopher Potts 교수님의 CS224U 과목을 공부하면서 설명을 추가(번역 아님)한 자료 입니다. 
 ```
-<!-- 
+
 ## Contents
 
 1. [Overview](#Overview)
@@ -166,7 +166,7 @@ yelp5
 
 
 
-
+<!-- 
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
