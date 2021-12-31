@@ -47,7 +47,7 @@ This notebook is the first in our series about creating effective __distributed 
 
 The central idea (which takes some getting used to!) is that we can represent words and phrases as dense vectors of real numbers. These take on meaning by being __embedded__ in a larger matrix of representations with comparable structure.
 
-`matrix design`, `similarity 계산`, `matrix reweighting` 등 __distributed representation__에 대해 알아보겠습니다.
+`matrix design`, `similarity 계산`, `matrix reweighting` 등 __distributed representation__ 에 대해 알아보겠습니다.
 
 ## Motivation
 
@@ -73,11 +73,11 @@ Why build distributed representations? There are potentially many reasons. The t
 
 * In any case, __distributed representation__ seems like the most general cover term for what we're trying to achieve, and its only downside is that sometimes people think it has something to do with distributed databases.
 
-* distributed representation을 build하면 실수 vector로 표현되며, 이 모델을 __vector space model(VSM)__이라고도 부릅니다.
-* 여러 코퍼스들에서 co-occurrence(동시발생) 카운트에서 전체적으로 데이터가 도출된 경우, __distributional representation__이라고 합니다.
-* representation을 뉴럴넷을 활용해서 학습시킨 경우는, __neural representation__이라고 합니다.
-* __word embedding__은 distributed representation에 사용될 수도 있고, distributional representation에 사용될 수도 있다.
-* __distributed representation__이 가장 일반적인 용어, 통칭할 수 있는 용어로 사용될 수 있음 (단, 분산DB와 아무 관련 없는 용어)
+* distributed representation을 build하면 실수 vector로 표현되며, 이 모델을 __vector space model(VSM)__ 이라고도 부릅니다.
+* 여러 코퍼스들에서 co-occurrence(동시발생) 카운트에서 전체적으로 데이터가 도출된 경우, __distributional representation__ 이라고 합니다.
+* representation을 뉴럴넷을 활용해서 학습시킨 경우는, __neural representation__ 이라고 합니다.
+* __word embedding__ 은 distributed representation에 사용될 수도 있고, distributional representation에 사용될 수도 있다.
+* __distributed representation__ 이 가장 일반적인 용어, 통칭할 수 있는 용어로 사용될 수 있음 (단, 분산DB와 아무 관련 없는 용어)
 
 [From Frequency to Meaning: Vector Space Models for Semantics](https://jair.org/index.php/jair/article/view/10640) 참고
 
