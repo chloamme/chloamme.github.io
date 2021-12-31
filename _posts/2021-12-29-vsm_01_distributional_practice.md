@@ -4,6 +4,7 @@ title: Vector-space models 설계, 거리(유사도), 기본적인 reweighting �
 subtitle: Vector-space models designs, distances, basic reweighting
 categories: CS224U
 tags: [VSM, Distance, Reweighting, Ultralearning]
+post-menu: []
 ---
 
 <!DOCTYPE html>
