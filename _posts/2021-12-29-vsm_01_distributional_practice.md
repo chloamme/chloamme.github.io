@@ -15,7 +15,7 @@ __version__ = "CS224u, Stanford, Spring 2019"
 
 # 이 문서는, 아파치 라이선스 2.0 하에, Christopher Potts 교수님의 CS224U 과목을 공부하면서 설명을 추가(번역 아님)한 자료 입니다. 
 ```
-
+<!-- 
 ## Contents
 
 1. [Overview](#Overview)
@@ -2462,4 +2462,4 @@ These are largely meant to give you a feel for the material, but some of them co
 
 1. [Turney and Pantel (2010)](http://www.jair.org/media/2934/live-2934-4846-jair.pdf), p. 158, propose a "contextual discounting" extension of PMI to try to address its bias for low-frequency events. Extend `vsm.pmi` so that the user has the option of performing this discounting with the keyword argument `discounting=True`.
 
-1. Use `vsm.ngram_vsm` and `character_level_rep` to create a VSM with the same vocabulary as `imdb5` but with the representations derived from trigrams, and reweight it with Positive PMI. How is this VSM different from the original?
+1. Use `vsm.ngram_vsm` and `character_level_rep` to create a VSM with the same vocabulary as `imdb5` but with the representations derived from trigrams, and reweight it with Positive PMI. How is this VSM different from the original? -->
