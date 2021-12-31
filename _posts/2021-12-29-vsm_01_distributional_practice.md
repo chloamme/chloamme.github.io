@@ -127,16 +127,16 @@ There are many, many ways to define distributional matrices. Here's a schematic 
     1. You might impose a minimum count threshold even if $\|V\|$ is small — for words with very low counts, you simply don't have enough evidence to support good representations.
     1. For words outside the vocabulary you choose, you could ignore them entirely or accumulate all their values into a designated _UNK_ vector.
 
-1. Now build a matrix $M$ of dimension $\|V\| \times \|V\|$. Both the rows and the columns of $M$ represent words. Each cell $M[i, j]$ is filled with the value $d[(w_{1}, w_{j})]$.
+1. Now build a matrix $M$ of dimension $\|V\| \times \|V\|$. Both the rows and the columns of $M$ represent words. Each cell $M[i, j]$ is filled with the value $d[(w_{i}, w_{j})]$.
 
 distributional matrix를 정의하는데 많은 방법이 있지만, word $\times$ word matrix를 build하는 데 아래 순서로 가능:
 
-1. __co-occurrence context__의 개념을 정의할 것. 전체 문서, 단락, 문장, 절, 명사구(Noun Phrase) 등 연관관계를 보려는 어떤 것이라도 될 수 있음.
-2. __카운트 스케일링 메소드__를 정의할 것. context window 내의 모든 토큰에 같은 weight을 주는 가장 간단한 방법도 있고, 타겟 토큰으로 부터 얼마나 떨어졌는지 거리($d$)에 따라 $1/d$로 weight를 scaling할 수도 있음.
+1. __co-occurrence context__ 의 개념을 정의할 것. 전체 문서, 단락, 문장, 절, 명사구(Noun Phrase) 등 연관관계를 보려는 어떤 것이라도 될 수 있음.
+2. __카운트 스케일링 메소드__ 를 정의할 것. context window 내의 모든 토큰에 같은 weight을 주는 가장 간단한 방법도 있고, 타겟 토큰으로 부터 얼마나 떨어졌는지 거리($d$)에 따라 $1/d$로 weight를 scaling할 수도 있음.
 3. 코퍼스를 스캔해서 단어쌍에 co-occurrence 값을 매핑하는 사전 $d$를 build할 것. 1번에서 정의했던 같은 context 내에서 등장한 단어 $w$와 $w'$의 쌍 마다, 2번에서 정의한 weighting shceme으로 값을 증가시키기. 
 4. 3번에 서 만든 카운트 사전 $d$를 이용해서 전체 vocab $V$ (`word type`의 ordered list)를 만들기.
-    1. aa
-    
+5. 행과 열이 word인 $\|V\| \times \|V\|$인 행렬 $M$ 만들기. $M[i,j]$의 각 셀은 단어쌍 거리의 값($d[(w_{i}. w_{j})]$)으로 채워져있음.
+     
 
 ## Pre-computed example matrices
 
@@ -1555,7 +1555,7 @@ plot_ABC(ABC)
 ```
 
 
-![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
+![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
 
 
 The euclidean distances align well with raw visual distance in the plot:
@@ -1633,7 +1633,7 @@ plot_ABC(ABC_normed)
 ```
 
 
-![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
+![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
 
 
 
@@ -2441,7 +2441,7 @@ vsm.tsne_viz(imdb20_pmi)
 ```
 
 
-![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
+![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
 
 
 ## Exploratory exercises
