@@ -1555,7 +1555,7 @@ plot_ABC(ABC)
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
 
 
 The euclidean distances align well with raw visual distance in the plot:
@@ -1633,7 +1633,7 @@ plot_ABC(ABC_normed)
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
 
 
 
@@ -2441,7 +2441,7 @@ vsm.tsne_viz(imdb20_pmi)
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
 
 
 ## Exploratory exercises
