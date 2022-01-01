@@ -18,6 +18,12 @@
     {%- include extensions/mathjax.html -%}
     {%- endif -%}
 
+    {%- if page.use_math -%}
+    {%- set permalink="/:category/:year/:month/:day/:title:output_ext" -%}
+    {%- else -%}
+    {%- set permalink="/:year/:month/:day/:title:output_ext" -%}
+    {%- endif -%}
+
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
         {{ content }}
