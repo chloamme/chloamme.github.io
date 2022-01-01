@@ -172,7 +172,7 @@ pre {
     font-size: #{$small-font-size};
 
     .gutter, .code {
-      padding: 6px;
+      padding:3px;
       border: none;
     }
   }
@@ -210,6 +210,7 @@ table {
   display: block;
   margin-bottom: $spacing-unit;
   width: 100%;
+  font-size: #{$small-font-size};
   text-align: $table-text-align;
   color: lighten($text-color, 5%);
   border-collapse: collapse;
