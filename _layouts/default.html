@@ -3,9 +3,6 @@
 
   {%- include head.html -%}
   
-  {%- if page.use_math -%}
-  {%- include extensions/mathjax.html -%}
-  {%- endif -%}
 
   <body>
 
@@ -16,6 +13,10 @@
     {%- include extensions/hashlocate.html -%}
 
     {%- include extensions/theme-toggle.html -%}
+    
+    {%- if page.use_math -%}
+    {%- include extensions/mathjax.html -%}
+    {%- endif -%}
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
