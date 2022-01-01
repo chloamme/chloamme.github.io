@@ -152,11 +152,11 @@ lang: "ko"  # default lang is en
 #   - categories.html
 #   - tags.html
 #   - about.md
-{%- if page.use_math -%}
+{% if page.use_math %}
 permalink: /:category/:year/:month/:day/:title:output_ext
-{%- else -%}
+{% else %}
 permalink: /:year/:month/:day/:title:output_ext
-{%- endif -%}
+{% endif %}
 
 # Page default value
 # defaults:
