@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "[실습] VSM(Vector-space model) 기본적인 방법들 소개"
+title: "[실습] VSMs(Vector-space models)"
 subtitle: Vector-space models designs, distances, basic reweighting
 categories: CS224U
-tags: [VSM, Distance, Reweighting, Ultralearning]
+tags: [VSM, Distance, Reweighting, Ultralearning by Scott Young]
 use_math: true
 ---
 # Vector-space models: designs, distances, basic reweighting
 
 
-```jupyter
+```notebook
 __author__ = "Christopher Potts"
 __version__ = "CS224u, Stanford, Spring 2019"
 
@@ -90,7 +90,7 @@ Why build distributed representations? There are potentially many reasons. The t
 * imdb corpus가 yelp corpus로 변경되어 있음에 따라, 수정해서 실습 예정
 
 
-```jupyter
+```notebook
 %matplotlib inline
 import numpy as np
 import os
@@ -99,6 +99,9 @@ import pandas as pd
 import scipy
 import scipy.spatial.distance
 from collections import defaultdict
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 ```
 
 
@@ -158,7 +161,7 @@ Two come from Yelp user-supplied reviews, and two come from Gigaword, a collecti
 Any hunches about how these matrices might differ from each other?
 
 
-```In
+```notebook
 yelp5 = pd.read_csv(
     os.path.join(DATA_HOME, 'yelp_window5-scaled.csv.gz'), index_col=0)
 yelp5
@@ -481,7 +484,7 @@ yelp5
 
 
 
-```jupyter notebook
+```notebook
 yelp20 = pd.read_csv(
     os.path.join(DATA_HOME, 'yelp_window20-flat.csv.gz'), index_col=0)
 yelp20
@@ -804,7 +807,7 @@ yelp20
 
 
 
-```jupyter notebook
+```notebook
 giga5 = pd.read_csv(
     os.path.join(DATA_HOME, 'giga_window5-scaled.csv.gz'), index_col=0)
 giga5
@@ -1127,7 +1130,7 @@ giga5
 
 
 
-```jupyter notebook
+```notebook
 giga20 = pd.read_csv(
     os.path.join(DATA_HOME, 'giga_window20-flat.csv.gz'), index_col=0)
 giga20
@@ -1477,7 +1480,7 @@ Running example <br>
 혹은, 어떤 단어 x, y와, `A`, `B`, `C`라는 단어가 함께 등장한다고 할 때
 
 
-```jupyter notebook
+```notebook
 ABC = pd.DataFrame([
     [ 2.0,  4.0], 
     [10.0, 15.0], 
@@ -1487,7 +1490,7 @@ ABC = pd.DataFrame([
 ```
 
 
-```jupyter notebook
+```notebook
 ABC
 ```
 
@@ -1539,7 +1542,7 @@ ABC
 
 
 
-```jupyter notebook
+```notebook
 def plot_ABC(df):
     ax = df.plot.scatter(x='x', y='y', marker='.', legend=False)
     m = df.values.max(axis=None)
@@ -1550,24 +1553,24 @@ def plot_ABC(df):
 ```
 
 
-```jupyter notebook
+```notebook
 plot_ABC(ABC)
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
 
 
 The euclidean distances align well with raw visual distance in the plot:
 
 
-```jupyter notebook
+```notebook
 def euclidean(u, v):
     return scipy.spatial.distance.euclidean(u, v)
 ```
 
 
-```jupyter notebook
+```notebook
 def abc_comparisons(df, distfunc):
     """(A,B)간, (B,C)간 거리 함수를 parameter로 받아서, 두 점 사이의 거리를 계산하는 함수
     """
@@ -1578,7 +1581,7 @@ def abc_comparisons(df, distfunc):
 ```
 
 
-```jupyter notebook
+```notebook
 abc_comparisons(ABC, euclidean) # plain X, Y축 값을 갖는 dataframe ABC를 넘김.
 ```
 
@@ -1610,7 +1613,7 @@ $$\left[
  \right]$$
 
 
-```jupyter notebook
+```notebook
 def vector_length(u):
     """
     u vector의 dot(inner) product 
@@ -1623,21 +1626,21 @@ def length_norm(u):
 ```
 
 
-```jupyter notebook
+```notebook
 ABC_normed = ABC.apply(length_norm, axis=1) 
 ```
 
 
-```jupyter notebook
+```notebook
 plot_ABC(ABC_normed)    
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
 
 
 
-```jupyter notebook
+```notebook
 abc_comparisons(ABC_normed, euclidean) # normalize된 ABC dataframe의 euclidean distance
 ```
 
@@ -1657,13 +1660,13 @@ $$\textbf{cosine}(u, v) =
 The similarity part of this (the righthand term of the subtraction) is actually measuring the angles between the two vectors. The result is the same (in terms of rank order) as one gets from first normalizing both vectors using $\|\cdot\|_{2}$ and then calculating their Euclidean distance.
 
 
-```jupyter notebook
+```notebook
 def cosine(u, v):
     return scipy.spatial.distance.cosine(u, v)
 ```
 
 
-```jupyter notebook
+```notebook
 abc_comparisons(ABC, cosine)
 ```
 
@@ -1691,7 +1694,7 @@ $$\textbf{jaccard}(u, v) =
 Suppose we set for ourselves the goal of associating A with B and disassociating B from C, in keeping with the semantic intuition expressed above. Then we can assess distance measures by whether they achieve this goal:
 
 
-```jupyter notebook
+```notebook
 def matching(u, v):
     return np.sum(np.minimum(u, v))
 
@@ -1700,7 +1703,7 @@ def jaccard(u, v):
 ```
 
 
-```jupyter notebook
+```notebook
 for m in (euclidean, cosine, jaccard):
     fmt = {
         'n': m.__name__,  
@@ -1721,7 +1724,7 @@ The `neighbors` function in `vsm` is an investigative aide. For a given word `w`
 By playing around with this function, you can start to get a sense for how the distance functions differ. Here are some example uses; you might try some new words to get a feel for what these matrices are like and how different words look.
 
 
-```jupyter notebook
+```notebook
 def neighbors(word, df, distfunc=cosine):
     """Tool for finding the nearest neighbors of `word` in `df` according
     to `distfunc`. The comparisons are between row vectors.
@@ -1757,7 +1760,7 @@ def neighbors(word, df, distfunc=cosine):
 ```
 
 
-```jupyter notebook
+```notebook
 neighbors('A', ABC, distfunc=euclidean)
 ```
 
@@ -1772,7 +1775,7 @@ neighbors('A', ABC, distfunc=euclidean)
 
 
 
-```jupyter notebook
+```notebook
 neighbors('A', ABC, distfunc=cosine)
 ```
 
@@ -1787,7 +1790,7 @@ neighbors('A', ABC, distfunc=cosine)
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', yelp5, distfunc=euclidean).head()
 ```
 
@@ -1804,7 +1807,7 @@ neighbors('good', yelp5, distfunc=euclidean).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', yelp20, distfunc=euclidean).head()
 ```
 
@@ -1821,7 +1824,7 @@ neighbors('good', yelp20, distfunc=euclidean).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', yelp5, distfunc=cosine).head()
 ```
 
@@ -1838,7 +1841,7 @@ neighbors('good', yelp5, distfunc=cosine).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', yelp20, distfunc=cosine).head()
 ```
 
@@ -1855,7 +1858,7 @@ neighbors('good', yelp20, distfunc=cosine).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', giga5, distfunc=euclidean).head()
 ```
 
@@ -1872,7 +1875,7 @@ neighbors('good', giga5, distfunc=euclidean).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', giga20, distfunc=euclidean).head()
 ```
 
@@ -1889,7 +1892,7 @@ neighbors('good', giga20, distfunc=euclidean).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', giga5, distfunc=cosine).head()
 ```
 
@@ -1906,7 +1909,7 @@ neighbors('good', giga5, distfunc=cosine).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', giga20, distfunc=cosine).head()
 ```
 
@@ -1989,7 +1992,7 @@ And the full table looks like this:
 | __y__  | 1.06 | 0.71 |
 
 
-```jupyter notebook
+```notebook
 def observed_over_expected(df):
     col_totals = df.sum(axis=0)
     total = col_totals.sum()
@@ -2000,7 +2003,7 @@ def observed_over_expected(df):
 ```
 
 
-```jupyter notebook
+```notebook
 oe_ex = np.array([[ 34.,  11.], [ 47.,   7.]])
 
 observed_over_expected(oe_ex).round(2)
@@ -2017,17 +2020,17 @@ observed_over_expected(oe_ex).round(2)
 The implementation `vsm.observed_over_expected` should be pretty efficient.
 
 
-```jupyter notebook
+```notebook
 yelp5_oe = observed_over_expected(yelp5)
 ```
 
 
-```jupyter notebook
+```notebook
 yelp20_oe = observed_over_expected(yelp20)
 ```
 
 
-```jupyter notebook
+```notebook
 neighbors('good', yelp5_oe).head()
 ```
 
@@ -2044,7 +2047,7 @@ neighbors('good', yelp5_oe).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', yelp20_oe).head()
 ```
 
@@ -2061,17 +2064,17 @@ neighbors('good', yelp20_oe).head()
 
 
 
-```jupyter notebook
+```notebook
 giga5_oe = observed_over_expected(giga5)
 ```
 
 
-```jupyter notebook
+```notebook
 giga20_oe = observed_over_expected(giga20)
 ```
 
 
-```jupyter notebook
+```notebook
 neighbors('good', giga5_oe).head()
 ```
 
@@ -2088,7 +2091,7 @@ neighbors('good', giga5_oe).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', giga20_oe).head()
 ```
 
@@ -2123,7 +2126,7 @@ $$\textbf{ppmi}(X, i, j) =
 This is the default for `vsm.pmi`.
 
 
-```jupyter notebook
+```notebook
 def pmi(df, positive=True):
     df = observed_over_expected(df)
     # Silence distracting warnings about log(0):
@@ -2136,17 +2139,17 @@ def pmi(df, positive=True):
 ```
 
 
-```jupyter notebook
+```notebook
 yelp5_pmi = pmi(yelp5)
 ```
 
 
-```jupyter notebook
+```notebook
 yelp20_pmi = pmi(yelp20)
 ```
 
 
-```jupyter notebook
+```notebook
 neighbors('good', yelp5_pmi).head()
 ```
 
@@ -2163,7 +2166,7 @@ neighbors('good', yelp5_pmi).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', yelp20_pmi).head()
 ```
 
@@ -2180,17 +2183,17 @@ neighbors('good', yelp20_pmi).head()
 
 
 
-```jupyter notebook
+```notebook
 giga5_pmi = pmi(giga5)
 ```
 
 
-```jupyter notebook
+```notebook
 giga20_pmi = pmi(giga20)
 ```
 
 
-```jupyter notebook
+```notebook
 neighbors('good', giga5_pmi).head()
 ```
 
@@ -2207,7 +2210,7 @@ neighbors('good', giga5_pmi).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('good', giga20_pmi).head()
 ```
 
@@ -2224,12 +2227,12 @@ neighbors('good', giga20_pmi).head()
 
 
 
-```jupyter notebook
+```notebook
 giga20_pmi = vsm.pmi(giga20)
 ```
 
 
-```jupyter notebook
+```notebook
 neighbors('market', giga5_pmi).head()
 ```
 
@@ -2246,7 +2249,7 @@ neighbors('market', giga5_pmi).head()
 
 
 
-```jupyter notebook
+```notebook
 neighbors('market', giga20_pmi).head()
 ```
 
@@ -2282,7 +2285,7 @@ There is an implementation of TF-IDF for dense matrices in `vsm.tfidf`.
 __Important__: `sklearn`'s version, [TfidfTransformer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer), assumes that term frequency (TF) is defined row-wise and document frequency is defined column-wise. That is, it assumes `sklearn`'s document $\times$ word basic design, which makes sense for classification tasks, where the design is example $\times$ features. This is the transpose of the way we've been thinking.
 
 
-```jupyter notebook
+```notebook
 def tfidf(df):
     # Inverse document frequencies:
     doccount = float(df.shape[1])
@@ -2304,7 +2307,7 @@ def tfidf(df):
 It is simple to derive character-level n-gram representations from our existing VSMs. The function `vsm.ngram_vsm` implements the basic step. Here, we create the 4-gram version of `imdb5`:
 
 
-```jupyter notebook
+```notebook
 def ngram_vsm(df, n=2):
     """Create a character-level VSM from `df`.
 
@@ -2356,12 +2359,12 @@ def get_character_ngrams(w, n):
 ```
 
 
-```jupyter notebook
+```notebook
 yelp5_ngrams = ngram_vsm(yelp5, n=4)
 ```
 
 
-```jupyter notebook
+```notebook
 yelp5_ngrams.shape
 ```
 
@@ -2375,7 +2378,7 @@ yelp5_ngrams.shape
 This has the same column dimension as the `yelp5`, but the rows are expanded with all the 4-grams, including boundary symbols `<w>` and `</w>`. Here's a simple function for creating new word representations from the associated character-level ones:
 
 
-```jupyter notebook
+```notebook
 def character_level_rep(word, cf, n=4):
     ngrams = get_character_ngrams(word, n)
     ngrams = [n for n in ngrams if n in cf.index]    
@@ -2388,7 +2391,7 @@ Many variations on this are worth trying – including the original word vector 
 One very powerful thing about this is that we can represent words that are not even in the original VSM:
 
 
-```jupyter notebook
+```notebook
 'superbly' in yelp5.index # yelp5에는 'superbly'라는 단어가 없지만,
 ```
 
@@ -2400,17 +2403,17 @@ One very powerful thing about this is that we can represent words that are not e
 
 
 
-```jupyter notebook
+```notebook
 superbly = character_level_rep("superbly", yelp5_ngrams) # ngram으로 만든 것으로 부터 vector 값을 계산할 수 있다.
 ```
 
 
-```jupyter notebook
+```notebook
 superb = character_level_rep("superb", yelp5_ngrams)
 ```
 
 
-```jupyter notebook
+```notebook
 cosine(superb, superbly) # 두 벡터 사이의 consine distance. 매우 가까움.
 ```
 
@@ -2436,12 +2439,67 @@ cosine(superb, superbly) # 두 벡터 사이의 consine distance. 매우 가까�
 * In addition, `vsm.tsne_viz` is a wrapper around [sklearn.manifold.TSNE](http://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE) that handles the basic preprocessing and layout for you. t-SNE stands for [t-Distributed Stochastic Neighbor Embedding](http://jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf), a powerful method for visualizing high-dimensional vector spaces in 2d. See also [Multiple Maps t-SNE](https://lvdmaaten.github.io/multiplemaps/Multiple_maps_t-SNE/Multiple_maps_t-SNE.html).
 
 
-```jupyter notebook
-vsm.tsne_viz(imdb20_pmi)
+```notebook
+def tsne_viz(df, colors=None, output_filename=None, figsize=(40, 50)):
+    """2d plot of `df` using t-SNE, with the points labeled by `df.index`,
+    aligned with `colors` (defaults to all black).
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The matrix to visualize.
+    colors : list of colornames or None (default: None)
+        Optional list of colors for the vocab. The color names just
+        need to be interpretable by matplotlib. If they are supplied,
+        they need to have the same length as `df.index`. If `colors=None`,
+        then all the words are displayed in black.
+    output_filename : str (default: None)
+        If not None, then the output image is written to this location.
+        The filename suffix determines the image type. If `None`, then
+        `plt.plot()` is called, with the behavior determined by the
+        environment.
+    figsize : (int, int) (default: (40, 50))
+        Default size of the output in display units.
+
+    """
+    # Colors:
+    vocab = df.index
+    if not colors:
+        colors = ['black' for i in vocab]
+    # Recommended reduction via PCA or similar:
+    n_components = 50 if df.shape[1] >= 50 else df.shape[1]
+    dimreduce = PCA(n_components=n_components)
+    X = dimreduce.fit_transform(df)
+    # t-SNE:
+    tsne = TSNE(n_components=2, random_state=0)
+    tsnemat = tsne.fit_transform(X)
+    # Plot values:
+    xvals = tsnemat[: , 0]
+    yvals = tsnemat[: , 1]
+    # Plotting:
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
+    ax.plot(xvals, yvals, marker='', linestyle='')
+    # Text labels:
+    for word, x, y, color in zip(vocab, xvals, yvals, colors):
+        try:
+            ax.annotate(word, (x, y), fontsize=8, color=color)
+        except UnicodeDecodeError:  ## Python 2 won't cooperate!
+            pass
+    # Output:
+    if output_filename:
+        plt.savefig(output_filename, bbox_inches='tight')
+    else:
+        plt.show()
+
 ```
 
 
-![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
+```notebook
+tsne_viz(yelp20_pmi)
+```
+
+
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_104_0.png)
 
 
 ## Exploratory exercises
