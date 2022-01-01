@@ -152,6 +152,7 @@ lang: "ko"  # default lang is en
 #   - categories.html
 #   - tags.html
 #   - about.md
+permalink: /:path/:year/:month/:day/:title:output_ext
 
 # Page default value
 # defaults:
