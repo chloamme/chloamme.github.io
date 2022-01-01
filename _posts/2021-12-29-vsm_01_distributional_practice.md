@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [실습] VSMs(Vector-space models) 
+title: "[실습] VSM(Vector-space model) 기본적인 방법들 소개"
 subtitle: Vector-space models designs, distances, basic reweighting
 categories: CS224U
 tags: [VSM, Distance, Reweighting, Ultralearning]
@@ -1555,7 +1555,7 @@ plot_ABC(ABC)
 ```
 
 
-![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
+![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_29_0.png)
 
 
 The euclidean distances align well with raw visual distance in the plot:
@@ -1633,7 +1633,7 @@ plot_ABC(ABC_normed)
 ```
 
 
-![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
+![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_38_0.png)
 
 
 
@@ -2441,7 +2441,7 @@ vsm.tsne_viz(imdb20_pmi)
 ```
 
 
-![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
+![png](vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
 
 
 ## Exploratory exercises

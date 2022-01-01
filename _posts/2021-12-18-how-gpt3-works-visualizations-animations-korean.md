@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [번역] GPT3가 작동하는 방법 - 시각화 및 동영상 설명
+title: "[번역] GPT3가 작동하는 방법 - 시각화 및 동영상 설명"
 subtitle: How GPT3 Works - Visualizations and Animations
 categories: translation
 tags: [GPT-3]

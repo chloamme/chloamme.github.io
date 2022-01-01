@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [번역] NumPy 및 데이터 표현에 대한 시각적 소개
+title: "[번역] NumPy 및 데이터 표현에 대한 시각적 소개"
 subtitle: A Visual Intro to NumPy and Data Representation
 categories: translation
 tags: [NumPy, Data Representation]
