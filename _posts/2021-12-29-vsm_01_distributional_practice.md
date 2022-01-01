@@ -9,7 +9,7 @@ use_math: true
 # Vector-space models: designs, distances, basic reweighting
 
 
-```jupyter notebook
+```jupyter
 __author__ = "Christopher Potts"
 __version__ = "CS224u, Stanford, Spring 2019"
 
@@ -90,7 +90,7 @@ Why build distributed representations? There are potentially many reasons. The t
 * imdb corpus가 yelp corpus로 변경되어 있음에 따라, 수정해서 실습 예정
 
 
-```jupyter notebook
+```jupyter
 %matplotlib inline
 import numpy as np
 import os
@@ -102,7 +102,7 @@ from collections import defaultdict
 ```
 
 
-```jupyter notebook
+```notebook
 DATA_HOME = os.path.join('data', 'vsmdata')
 !ls $DATA_HOME
 ```
@@ -158,7 +158,7 @@ Two come from Yelp user-supplied reviews, and two come from Gigaword, a collecti
 Any hunches about how these matrices might differ from each other?
 
 
-```jupyter notebook
+```In
 yelp5 = pd.read_csv(
     os.path.join(DATA_HOME, 'yelp_window5-scaled.csv.gz'), index_col=0)
 yelp5
