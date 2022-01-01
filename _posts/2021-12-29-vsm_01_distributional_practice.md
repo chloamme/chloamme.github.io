@@ -2228,11 +2228,6 @@ neighbors('good', giga20_pmi).head()
 
 
 ```notebook
-giga20_pmi = vsm.pmi(giga20)
-```
-
-
-```notebook
 neighbors('market', giga5_pmi).head()
 ```
 
@@ -2499,25 +2494,10 @@ tsne_viz(yelp20_pmi)
 ```
 
 
-![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_104_0.png)
+![png](/images/vsm_01_distributional_practice_files/vsm_01_distributional_practice_103_0.png)
 
 
-## Exploratory exercises
 
-These are largely meant to give you a feel for the material, but some of them could lead to projects and help you with future work for the course. These are not for credit.
+```notebook
 
-1. Recall that there are two versions each of the IMDB and Gigaword matrices: one with window size 5 and counts scaled as $1/d$ where $d$ is the distance from the target word; and one with a window size of 20 and no scaling of the values. Using `vsm.neighbors` to explore, how would you describe the impact of these different designs?
-
-1. IMDB and Gigaword are very different domains. Using `vsm.neighbors`, can you find cases where the dominant sense of a word is clearly different in the two domains in a way that is reflected by vector-space proximity?
-
-1. We saw that euclidean distance favors raw frequencies. Find words in the matrix `imdb20` that help make this point: a pair that are semantically unrelated but close according to `vsm.euclidean`, and a pair that are semantically related by far apart according to `vsm.euclidean`.
-
-1. Run 
-
-  ```amod = pd.read_csv(os.path.join(DATA_HOME, 'gigawordnyt-advmod-matrix.csv.gz'), index_col=0)``` 
-  
-  to read in an adjective $\times$ adverb matrix derived from the Gigaword corpus. Each cell contains the number of times that the modifier phrase __ADV ADJ__ appeared in Gigaword as given by dependency parses of the data. __ADJ__ is the row value and __ADV__ is the column value. Using the above techniques and measures, try to get a feel for what can be done with this matrix.
-
-1. [Turney and Pantel (2010)](http://www.jair.org/media/2934/live-2934-4846-jair.pdf), p. 158, propose a "contextual discounting" extension of PMI to try to address its bias for low-frequency events. Extend `vsm.pmi` so that the user has the option of performing this discounting with the keyword argument `discounting=True`.
-
-1. Use `vsm.ngram_vsm` and `character_level_rep` to create a VSM with the same vocabulary as `imdb5` but with the representations derived from trigrams, and reweight it with Positive PMI. How is this VSM different from the original?
+```
