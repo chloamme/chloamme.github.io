@@ -153,12 +153,6 @@ lang: "ko"  # default lang is en
 #   - tags.html
 #   - about.md
 
-{%- if :category == "translation" -%}
-permalink: /:category/:year/:month/:day/:title:output_ext
-{% else %}
-permalink: /:year/:month/:day/:title:output_ext
-{%- endif -%}
-
 # Page default value
 # defaults:
 #   home:
