@@ -59,7 +59,6 @@ This article breaks down DeepMind's RETRO (**R**etrieval-**E**nhanced **TR**ansf
 </span>
 </div>
 
-<div class="tooltip">
 <div class="img-div" markdown="0">
   <img src="/images/retro/deepmind-retro-retrieval-transformer.png" />
   <br />
@@ -68,7 +67,6 @@ This article breaks down DeepMind's RETRO (**R**etrieval-**E**nhanced **TR**ansf
 <span class="tooltiptext">
 RETRO incorporates information retrieved from a database to free its parameters from being an expensive store of facts and world knowledge.
 </span>
-</div>
   
 <div class="tooltip" markdown="1">
 RETRO는 [Improving Language Models by Retrieving from Trillions of Tokens](https://arxiv.org/abs/2112.04426) 논문에 기술되어 있습니다. 연구 커뮤니티에서 넓고 다양한 retrival work가 꾸준히 build되고 있습니다. (참고: [1](http://www.crm.umontreal.ca/2018/Langue18/pdf/Cheung.pdf) [2](https://ai.facebook.com/blog/retrieval-augmented-generation-streamlining-the-creation-of-intelligent-natural-language-processing-models/) [3](https://openreview.net/forum?id=HklBjCEKvH) [4](https://arxiv.org/abs/2102.02557) [5](https://openreview.net/forum?id=B184E5qee)) 이 글은 RETRO 모델에 대한 설명이며, 모델의 참신성에 대한 것은 아닙니다. 
@@ -81,7 +79,7 @@ RETRO was presented in the paper [Improving Language Models by Retrieving from T
 
 <div class="tooltip" markdown="0">
 중요한 이유: 언어 정보를 World Knowledge 정보와 분리시킴 (?)
-_____________________________________
+----------------------------------
 <span class="tooltiptext">
 Why This is Important: Separating Language Information from World Knowledge Information
 </span>
@@ -438,6 +436,6 @@ Please post in [this thread](https://github.com/jalammar/jalammar.github.io/disc
 
 ## 추가 정보<a href="#additional-info" name="additional-info">.</a>
 
-* 이 글은 GPT2에 대해 이해하기 쉽게 그림으로 설명한 포스팅을 저자인 Jay Alammar님의 허락을 받고 번역한 글 입니다. 원문은 [The Illustrated GPT-2 (Visualizing Transformer Language Models)](https://jalammar.github.io/illustrated-gpt2/)에서 확인하실 수 있습니다.
+* 이 글은 GPT2에 대해 이해하기 쉽게 그림으로 설명한 포스팅을 저자인 Jay Alammar님의 허락을 받고 번역한 글 입니다. 원문은 [The Illustrated Retrieval Transformer](http://jalammar.github.io/illustrated-retrieval-transformer/)에서 확인하실 수 있습니다.
 * 원서/영문블로그를 보실 때 term에 대한 정보 호환을 위해, 이 분야에서 사용하고 있는 단어, 문구에 대해 가급적 번역하지 않고 원문 그대로 두었습니다. 그리고, 직역 보다는 개념이나 의미에 대한 설명을 쉽게 하는 문장 쪽으로 더 무게를 두어 번역 했습니다. 번역에 대한 의견이나 수정 사항은 아래 댓글 창에 남겨주세요.
 * 번역문에 대응하는 영어 원문을 보고싶으신 분들을 위해 [찬](https://nlpinkorean.github.io)님께서 만들어두신 툴팁 도움말 기능(해당 문단에 마우스를 올리면 (모바일의 경우 터치) 원문을 확인할 수 있는 기능)을 가져와서 적용했습니다. 감사합니다.  
