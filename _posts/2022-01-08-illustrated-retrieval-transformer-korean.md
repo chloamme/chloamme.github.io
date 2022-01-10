@@ -59,7 +59,8 @@ This article breaks down DeepMind's RETRO (**R**etrieval-**E**nhanced **TR**ansf
 </span>
 </div>
 
-<div class="img-div" markdown="0">
+<div class="tooltip">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#D81B60; font-size: 4em">
   <img src="/images/retro/deepmind-retro-retrieval-transformer.png" />
   <br />
   RETRO는 database에서 retrieval된 정보를 추가하여, 파라미터들이 fact와 world knowledge의 값비싼 저장소가 되는 것을 방지합니다. (?)
@@ -67,6 +68,7 @@ This article breaks down DeepMind's RETRO (**R**etrieval-**E**nhanced **TR**ansf
 <span class="tooltiptext">
 RETRO incorporates information retrieved from a database to free its parameters from being an expensive store of facts and world knowledge.
 </span>
+</div>
   
 <div class="tooltip" markdown="1">
 RETRO는 [Improving Language Models by Retrieving from Trillions of Tokens](https://arxiv.org/abs/2112.04426) 논문에 기술되어 있습니다. 연구 커뮤니티에서 넓고 다양한 retrival work가 꾸준히 build되고 있습니다. (참고: [1](http://www.crm.umontreal.ca/2018/Langue18/pdf/Cheung.pdf) [2](https://ai.facebook.com/blog/retrieval-augmented-generation-streamlining-the-creation-of-intelligent-natural-language-processing-models/) [3](https://openreview.net/forum?id=HklBjCEKvH) [4](https://arxiv.org/abs/2102.02557) [5](https://openreview.net/forum?id=B184E5qee)) 이 글은 RETRO 모델에 대한 설명이며, 모델의 참신성에 대한 것은 아닙니다. 
@@ -77,8 +79,8 @@ RETRO was presented in the paper [Improving Language Models by Retrieving from T
 
 <!--more-->
 
-<div class="tooltip" markdown="0">
-중요한 이유: 언어 정보를 World Knowledge 정보와 분리시킴 (?)
+<div class="tooltip" markdown="1">
+중요한 이유: 언어 정보를 World Knowledge 정보와 분리시킴
 ----------------------------------
 <span class="tooltiptext">
 Why This is Important: Separating Language Information from World Knowledge Information
