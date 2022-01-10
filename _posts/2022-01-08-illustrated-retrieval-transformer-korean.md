@@ -60,7 +60,7 @@ This article breaks down DeepMind's RETRO (**R**etrieval-**E**nhanced **TR**ansf
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#D81B60; font-size: 4em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 0.5em">
   <img src="/images/retro/deepmind-retro-retrieval-transformer.png" />
   <br />
   RETRO는 database에서 retrieval된 정보를 추가하여, 파라미터들이 fact와 world knowledge의 값비싼 저장소가 되는 것을 방지합니다. (?)
