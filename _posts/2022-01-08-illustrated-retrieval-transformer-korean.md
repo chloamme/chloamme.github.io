@@ -46,7 +46,7 @@ The last few years saw the rise of Large Language Models (LLMs) -- machine learn
 </div>
 
 <div class="tooltip" markdown="1">
-한동안은 모델의 크기를 확장해나가는 것이 성능을 향상시키는 주요 방법인 것처럼 보였습니다. 하지만 DeepMind의 [RETRO Transformer](https://deepmind.com/research/publications/2021/improving-language-models-by-retrieving-from-trillions-of-tokens) 및 OpenAI의 [WebGPT](https://openai.com/blog/improving-factual-accuracy/)와 같은 이 분야의 최근 개발에서, 정보를 검색/쿼리하는 방법으로 확장한다면 작은 생성 언어 모델도 거대 모델과 동등한 성능을 발휘할 수 있음을 보여줌으로써 trend를 바꿔놓았습니다.
+한동안은 모델의 크기를 확장해나가는 것이 성능을 향상시키는 주요 방법인 것처럼 보였습니다. 하지만 DeepMind의 [RETRO Transformer](https://deepmind.com/research/publications/2021/improving-language-models-by-retrieving-from-trillions-of-tokens) 및 OpenAI의 [WebGPT](https://openai.com/blog/improving-factual-accuracy/)와 같은 이 분야의 최근 개발에서, 정보를 검색/쿼리하는 방법으로 확장한다면 작은 생성 언어 모델도 거대 모델과 동등한 성능을 발휘할 수 있음을 보여줌으로써 트렌드를 바꿔놓았습니다.
 <span class="tooltiptext">
 For a while, it seemed like scaling larger and larger models is the main way to improve performance. Recent developments in the field, like , reverse this trend by showing that smaller generative language models can perform on par with massive models if we augment them with a way to search/query for information.
 </span>
@@ -59,17 +59,17 @@ This article breaks down DeepMind's RETRO (**R**etrieval-**E**nhanced **TR**ansf
 </span>
 </div>
 
+<div class="tooltip">
 <div class="img-div" markdown="0">
   <img src="/images/retro/deepmind-retro-retrieval-transformer.png" />
   <br />
-  <div class="tooltip">
   RETRO는 database에서 retrieval된 정보를 추가하여, 파라미터들이 fact와 world knowledge의 값비싼 저장소가 되는 것을 방지합니다. (?)
-  <span class="tooltiptext">
-  RETRO incorporates information retrieved from a database to free its parameters from being an expensive store of facts and world knowledge.
-  </span>
-  </div>
 </div>
-
+<span class="tooltiptext">
+RETRO incorporates information retrieved from a database to free its parameters from being an expensive store of facts and world knowledge.
+</span>
+</div>
+  
 <div class="tooltip" markdown="1">
 RETRO는 [Improving Language Models by Retrieving from Trillions of Tokens](https://arxiv.org/abs/2112.04426) 논문에 기술되어 있습니다. 연구 커뮤니티에서 넓고 다양한 retrival work가 꾸준히 build되고 있습니다. (참고: [1](http://www.crm.umontreal.ca/2018/Langue18/pdf/Cheung.pdf) [2](https://ai.facebook.com/blog/retrieval-augmented-generation-streamlining-the-creation-of-intelligent-natural-language-processing-models/) [3](https://openreview.net/forum?id=HklBjCEKvH) [4](https://arxiv.org/abs/2102.02557) [5](https://openreview.net/forum?id=B184E5qee)) 이 글은 RETRO 모델에 대한 설명이며, 모델의 참신성에 대한 것은 아닙니다. 
 <span class="tooltiptext">
@@ -80,7 +80,8 @@ RETRO was presented in the paper [Improving Language Models by Retrieving from T
 <!--more-->
 
 <div class="tooltip" markdown="0">
-## 중요한 이유: 언어 정보를 World Knowledge 정보와 분리시킴 (?)
+중요한 이유: 언어 정보를 World Knowledge 정보와 분리시킴 (?)
+_____________________________________
 <span class="tooltiptext">
 Why This is Important: Separating Language Information from World Knowledge Information
 </span>
@@ -199,16 +200,11 @@ The value is text in two parts:
 </div>
 
 <div class="tooltip" markdown="1">
-1.  Neighbor: key를 계산하기 위해 사용됨
+1. Neighbor: key를 계산하기 위해 사용됨
+2. Completion: 원본 문서에서 text의 연속 (Neighbor 문장에서의 연속적으로 연결된 다음 텍스트)
 <span class="tooltiptext">
-1.  Neighbor, which is used to compute the key
-</span>
-</div>
-
-<div class="tooltip" markdown="1">
-2.  Completion: 원본 문서에서 text의 연속 (Neighbor 문장에서의 연속적으로 연결된 다음 텍스트)
-<span class="tooltiptext">
-2.  Completion, the continuation of the text in the original document.
+1. Neighbor, which is used to compute the key
+2. Completion, the continuation of the text in the original document.
 </span>
 </div>
 
