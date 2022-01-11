@@ -60,7 +60,7 @@ This article breaks down DeepMind's RETRO (**R**etrieval-**E**nhanced **TR**ansf
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/deepmind-retro-retrieval-transformer.png" />
   <br />
   RETRO는 database에서 retrieval된 정보를 추가하여, 파라미터들이 fact와 world knowledge의 값비싼 저장소가 되는 것을 방지합니다. 
@@ -157,7 +157,7 @@ Mechanically, RETRO is an encoder-decoder model just like the original transform
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/dune-prompt-into-retro-transformer-4.png" />
   <br />
   RETRO는 database를 활용하여 입력 프롬프트를 보강합니다. 프롬프트는 관련 정보를 database에서 retrieve하는데 사용됩니다. 
@@ -270,7 +270,7 @@ The two nearest neighbors are retrieved, and their text becomes a part of the in
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/neighbor-retrieval-from-retro-neural-database-with-bert-embeddings.png" />
   <br />
   BERT 문장 임베딩은 RETRO의 neural database에서 근접 이웃을 retrieve하는데에 사용됩니다. 검색된 결과들을 언어 모델의 입력에 추가됩니다.   
@@ -295,7 +295,7 @@ From here, the Transformer and RETRO Blocks incorporate the information into the
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/input-prompt-and-retrieved-text-retro-transformer.png" />
   <br />
   retrieve된 이웃은 언어 모델의 입력에 추가됩니다. 하지만, 그 이웃들은 모델 안에서 조금 다르게 처리됩니다. 
@@ -321,7 +321,7 @@ RETRO's architecture is an encoder stack and a decoder stack.
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/Retro-transformer-encoder-decoder-stacks-2.png" />
   <br />
   RETRO transformer는 (neighbor들을 처리하기 위한) 인코더 스택과 (입력을 처리하기 위한) 디코더 스택으로 구성되어 있습니다. 
@@ -355,7 +355,7 @@ The decoder stack interleaves two kinds of decoder blocks:
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/retro-transformer-blocks-4.png" />
   <br />
   세 종류의 Transformer 블록이 RETRO를 구성합니다. 
@@ -373,7 +373,7 @@ Let's start by looking at the encoder stack, which processes the retrieved neigh
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/retro-encoder-block-keys-values-2.png" />
   <br />
   인코더 스택은 retrive된 이웃을 처리하여 KEYS 및 VALUES 행렬을 생성합니다.
@@ -391,7 +391,7 @@ Decoder blocks process the input text just like a GPT would. It applies self-att
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/retro-transformer-decoders-2.png" />
   <br />
   입력 프롬프트는 self-attention 및 FFNN 레이어를 포함하는 일반 디코더 블록을 통과합니다.
@@ -409,7 +409,7 @@ It's only when a RETRO decoder is reached do we start to incorporate the retriev
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/retro-decoder-attention-2.png" />
   <br />
   입력 프롬프트는 RETRO 디코더 블록에 도달하고 정보 retrieval이 시작됩니다. 
@@ -427,7 +427,7 @@ So effectively, this is the step where the retrieved information can glance at t
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: left; color:#92A9BD; font-size: 1em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
   <img src="/images/retro/retro-decoder-chunked-cross-attention.png" />
   <br />
   Chunked Cross-Attention을 이용하여 근접 이웃 chunk로 부터 정보를 retrieving하는 RETRO 디코더 블록.
