@@ -59,18 +59,17 @@ This article breaks down DeepMind's RETRO (**R**etrieval-**E**nhanced **TR**ansf
 </span>
 </div>
 
-
-<div class="img-div" markdown="0">
-  <img src="/images/retro/deepmind-retro-retrieval-transformer.png" />
-  <br />
-  <div class="tooltip" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
-  RETRO는 database에서 retrieval된 정보를 추가하여, 파라미터들이 fact와 world knowledge의 값비싼 저장소가 되는 것을 방지합니다. 
+<div class="tooltip">
+  <div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
+    <img src="/images/retro/deepmind-retro-retrieval-transformer.png" />
+    <br />
+    RETRO는 database에서 retrieval된 정보를 추가하여, 파라미터들이 fact와 world knowledge의 값비싼 저장소가 되는 것을 방지합니다. 
+  </div>
   <span class="tooltiptext">
   RETRO incorporates information retrieved from a database to free its parameters from being an expensive store of facts and world knowledge.
   </span>
-  </div>
-</div>
-  
+</div>  
+
 <div class="tooltip" markdown="1">
 RETRO는 [Improving Language Models by Retrieving from Trillions of Tokens](https://arxiv.org/abs/2112.04426) 논문에 기술되어 있습니다. 연구 커뮤니티에서 넓고 다양한 retrival work가 꾸준히 build되고 있습니다. (참고: [1](http://www.crm.umontreal.ca/2018/Langue18/pdf/Cheung.pdf) [2](https://ai.facebook.com/blog/retrieval-augmented-generation-streamlining-the-creation-of-intelligent-natural-language-processing-models/) [3](https://openreview.net/forum?id=HklBjCEKvH) [4](https://arxiv.org/abs/2102.02557) [5](https://openreview.net/forum?id=B184E5qee)) 이 글은 RETRO 모델에 대한 설명이며, 모델의 참신성에 대한 것은 아닙니다. 
 <span class="tooltiptext">
@@ -136,12 +135,17 @@ By including a retrieval method in the language model, the model can be much sma
 </span>
 </div>
 
-<div class="img-div-any-width" markdown="0">
+<div class="tooltip">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/Large-GPT-vs-Retro-transformer-world-knowledge-information.png" />
   <br />
-  retrieval 방법으로 언어 모델을 지원하는 것은, 언어 모델이 텍스트를 잘 생성하기 위해 파라미터에 인코딩하는 정보의 양(크기)를 줄일 수 있게 합니다.  
-  Aiding language models with retrieval methods allows us to reduce the amount of information a language model needs to encode in its parameters to perform well at text generation.
+  retrieval 방법으로 언어 모델을 지원하는 것은, 언어 모델이 텍스트를 잘 생성하기 위해 파라미터에 인코딩하는 정보의 양(크기)를 줄일 수 있게 합니다. 
 </div>
+<span class="tooltiptext">
+Aiding language models with retrieval methods allows us to reduce the amount of information a language model needs to encode in its parameters to perform well at text generation.
+</span>
+</div>
+
 
 <div class="tooltip" markdown="1">
 훈련 데이터 암기(memorization)가 줄어들기 때문에 작은 언어 모델로 훈련이 빨라집니다. 누구나 작고 저렴한 GPU를 이용하여 이런 작은 모델들을 deploy할 수 있고 필요에 따라 조정할 수 있습니다. 
@@ -158,7 +162,7 @@ Mechanically, RETRO is an encoder-decoder model just like the original transform
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/dune-prompt-into-retro-transformer-4.png" />
   <br />
   RETRO는 database를 활용하여 입력 프롬프트를 보강합니다. 프롬프트는 관련 정보를 database에서 retrieve하는데 사용됩니다. 
@@ -271,7 +275,7 @@ The two nearest neighbors are retrieved, and their text becomes a part of the in
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/neighbor-retrieval-from-retro-neural-database-with-bert-embeddings.png" />
   <br />
   BERT 문장 임베딩은 RETRO의 neural database에서 근접 이웃을 retrieve하는데에 사용됩니다. 검색된 결과들을 언어 모델의 입력에 추가됩니다.   
@@ -296,7 +300,7 @@ From here, the Transformer and RETRO Blocks incorporate the information into the
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/input-prompt-and-retrieved-text-retro-transformer.png" />
   <br />
   retrieve된 이웃은 언어 모델의 입력에 추가됩니다. 하지만, 그 이웃들은 모델 안에서 조금 다르게 처리됩니다. 
@@ -322,7 +326,7 @@ RETRO's architecture is an encoder stack and a decoder stack.
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/Retro-transformer-encoder-decoder-stacks-2.png" />
   <br />
   RETRO transformer는 (neighbor들을 처리하기 위한) 인코더 스택과 (입력을 처리하기 위한) 디코더 스택으로 구성되어 있습니다. 
@@ -356,7 +360,7 @@ The decoder stack interleaves two kinds of decoder blocks:
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/retro-transformer-blocks-4.png" />
   <br />
   세 종류의 Transformer 블록이 RETRO를 구성합니다. 
@@ -374,7 +378,7 @@ Let's start by looking at the encoder stack, which processes the retrieved neigh
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/retro-encoder-block-keys-values-2.png" />
   <br />
   인코더 스택은 retrive된 이웃을 처리하여 KEYS 및 VALUES 행렬을 생성합니다.
@@ -392,7 +396,7 @@ Decoder blocks process the input text just like a GPT would. It applies self-att
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/retro-transformer-decoders-2.png" />
   <br />
   입력 프롬프트는 self-attention 및 FFNN 레이어를 포함하는 일반 디코더 블록을 통과합니다.
@@ -410,7 +414,7 @@ It's only when a RETRO decoder is reached do we start to incorporate the retriev
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/retro-decoder-attention-2.png" />
   <br />
   입력 프롬프트는 RETRO 디코더 블록에 도달하고 정보 retrieval이 시작됩니다. 
@@ -428,7 +432,7 @@ So effectively, this is the step where the retrieved information can glance at t
 </div>
 
 <div class="tooltip">
-<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.7em">
+<div class="img-div" markdown="0" style="display: inline-block; text-align: center; color:#92A9BD; font-size: 0.8em">
   <img src="/images/retro/retro-decoder-chunked-cross-attention.png" />
   <br />
   Chunked Cross-Attention을 이용하여 근접 이웃 chunk로 부터 정보를 retrieving하는 RETRO 디코더 블록.
