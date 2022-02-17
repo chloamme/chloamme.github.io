@@ -407,9 +407,10 @@ Input prompt passes through standard decoder block containing self-attention and
 </div>
 
 <div class="tooltip" markdown="1">
-RETRO 디코더에 도달해서야 retrieve된 정보를 통합하기 시작합니다. 9번 이후의 매 세번째 블록들은 RETRO 블록입니다 (입력을 이웃에 attention을 줄 수 있도록 합니다). 그래서 9, 12, 15...32는 RETRO 블록입니다. 
+RETRO 디코더에 도달해서야 retrieve된 정보를 통합하기 시작합니다. 9번 이후의 매 세번째 블록들은 RETRO 블록입니다 (입력을 이웃에 attention을 줄 수 있도록 합니다). 그래서 9, 12, 15...32는 RETRO 블록입니다. (두개의 더 작은 Retro 모델과 Retrofit 모델들은 9번째가 아닌 6번째 부터 이러한 레이어들이 시작됩니다.)
 <span class="tooltiptext">
-It's only when a RETRO decoder is reached do we start to incorporate the retrieved information. Every third block starting from 9 is a RETRO block (that allows its input to attend to the neighbors). So layers 9, 12, 15... are RETRO blocks.
+It's only when a RETRO decoder is reached do we start to incorporate the retrieved information. Every third block starting from 9 is a RETRO block (that allows its input to attend to the neighbors). So layers 9, 12, 15... are RETRO blocks. (The two smaller Retro models, and the Retrofit models have these layers starting from the 6th instead of the 9th layer).
+
 </span>
 </div>
 
