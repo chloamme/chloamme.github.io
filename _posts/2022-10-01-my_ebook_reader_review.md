@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "My e-book reader device brief review"
+title: "My e-book reader device review"
 subtitle: Onyx Boox Products
 categories: daily life
 tags: [E-book reader, device]
@@ -12,7 +12,8 @@ So, I thought I needed a device to help me read. A device that I can use every t
 
 While using the device, I found a few uncomfortable things, and I thought I needed another device. So, I decided to buy a new one, but this time, I bought the **13.3 inches big device** with the same brand.
 
-![13.3 vs A4](/images/221001-ebook_reader/1.png "13.3vsA4") ![13.3 vs 7.8](/images/221001-ebook_reader/2.png "13.3vs7.8")
+<image src="/images/221001-ebook_reader/1.png" width="200"/>
+<image src="/images/221001-ebook_reader/2.png" width="200"/>
 
 * Pros
   * _Eye comfortability:_
