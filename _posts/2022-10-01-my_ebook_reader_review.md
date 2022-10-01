@@ -17,7 +17,7 @@ While using the device, I found a few uncomfortable things, and I thought I need
 <td>  <img src="/images/221001-ebook_reader/2.png" width="300"/></td>
 </tr>
 
-![]("/images/221001-ebook_reader/2.png") | ![]("/images/221001-ebook_reader/2.png")
+![](/images/221001-ebook_reader/2.png) | ![](/images/221001-ebook_reader/2.png)
 
 * Pros
   * _Eye comfortability:_
