@@ -12,11 +12,6 @@ So, I thought I needed a device to help me read. A device that I can use every t
 
 While using the device, I found a few uncomfortable things, and I thought I needed another device. So, I decided to buy a new one, but this time, I bought the **13.3" big device** with the same brand.
 
-<tr>
-<td> <img src="/images/221001-ebook_reader/1.png" width="300"/> </td>
-<td>  <img src="/images/221001-ebook_reader/2.png" width="300"/></td>
-</tr>
-
 ![](/images/221001-ebook_reader/2.png) | ![](/images/221001-ebook_reader/2.png)
 
 * Pros
