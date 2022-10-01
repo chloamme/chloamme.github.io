@@ -10,10 +10,12 @@ I have decided to read a bunch of books and papers during my free time. I have b
 
 So, I thought I needed a device to help me read. A device that I can use every time and everywhere. I already had an iPad mini, but it doesn't fit the screen. And I got attracted to the Onyx Boox Nova 3 Color E-book reader and bought it. At that time, there wasn't any stock available on the website. So, I reserved one. And after a week, they notified me that the device was already available. So, I happily bought it right away. But a new version (which is even cheaper) was coming in a few days or a week after. I felt a little bit sad because I wasn't informed about the new version of the device, but it's okay. 
 
-While using the device, I found a few uncomfortable things, and I thought I needed another device. So, I decided to buy a new one, but this time, I bought the **13.3 inches big device** with the same brand.
+While using the device, I found a few uncomfortable things, and I thought I needed another device. So, I decided to buy a new one, but this time, I bought the **13.3" big device** with the same brand.
 
-<image src="/images/221001-ebook_reader/1.png" width="200"/>
-<image src="/images/221001-ebook_reader/2.png" width="200"/>
+<p float="left">
+  <img src="/images/221001-ebook_reader/1.png" width="300"/>
+  <img src="/images/221001-ebook_reader/2.png" width="300"/>
+</p>
 
 * Pros
   * _Eye comfortability:_
