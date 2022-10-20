@@ -10,7 +10,7 @@ This post is a note-taking for the 'Reading Research Papers' part of the Stanfor
 
 * Compiled list of papers(+ medium/blog posts)
 * Skip around list	
-  - <img src="images/221020-reading_research_papers/1.png" width="200">
+  - ![](/images/221020-reading_research_papers/1.png)
   - (1) 10% of each paper or try to quickly skim and understand each of these papers.
   - (2) If based on that you decide that paper 2 is worthless, others say they sure got it wrong, or you read it, and it just doesn't make sense. Then go ahead and forget it.
   - (3) As you skip around to different papers, it might decide that paper 3 is a seminal one and then it will continuosly go ahead and read and understand the whole thing.
